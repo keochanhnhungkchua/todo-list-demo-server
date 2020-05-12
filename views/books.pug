@@ -1,5 +1,16 @@
 h1 Books Store Online
 form(action="/books/create" method="POST" )
-  input(type="text" name="title"  placeholder="input title for book")
-  textarea(name="description " rows="10" cols="30" placeholder="input description  for book")
-  
+  input(type="text" name="title"  placeholder="input title for book here")
+  br
+  br
+  textarea(name="description " rows="5" cols="30" placeholder="input description  for book here")
+  br
+  br
+  button Add
+h2 List Books:
+ul
+ each book in books
+  li=book.title
+  span
+    a(href="#") Edit
+    a(href="#") Delete

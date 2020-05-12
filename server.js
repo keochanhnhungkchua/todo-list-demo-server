@@ -5,6 +5,8 @@
 // but feel free to use whatever libraries or frameworks you'd like through `package.json`.
 const express = require("express");
 const app = express();
+app.set('view engine', 'pug');
+app.set('views', './views');
 
 //setup lowdb
 const low = require('lowdb');
@@ -26,6 +28,9 @@ app.use(bodyParser.json())
 
 app.get("/" , (req, res)=> {
   res.render("index");
+});
+app.get("/books", (req, res) => {
+  res.render("books")
 });
 
 // listen for requests :)
