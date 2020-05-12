@@ -7,36 +7,25 @@ const express = require("express");
 const app = express();
 
 //setup lowdb
-const low = require('lowdb')
-const FileSync = require('lowdb/adapters/FileSync')
+const low = require('lowdb');
+const FileSync = require('lowdb/adapters/FileSync');
  
-const adapter = new FileSync('db.json')
-const db = low(adapter)
- 
+const adapter = new FileSync('db.json');
+const db = low(adapter);
+
 // Set some defaults
 db.defaults({ books: []})
   .write()
+//setup body-paser
+var bodyParser = require('body-parser');
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+ 
+// parse application/json
+app.use(bodyParser.json())
 
-// our default array of dreams
-const dreams = [
-  "Find and count some sheep",
-  "Climb a really tall mountain",
-  "Wash the dishes"
-];
-
-// make all the files in 'public' available
-// https://expressjs.com/en/starter/static-files.html
-app.use(express.static("public"));
-
-// https://expressjs.com/en/starter/basic-routing.html
-app.get("/", (request, response) => {
-  response.sendFile(__dirname + "/views/index.html");
-});
-
-// send the default array of dreams to the webpage
-app.get("/dreams", (request, response) => {
-  // express helps us take JS objects and send them as JSON
-  response.json(dreams);
+app.get("/" , (req, res)=> {
+  res.render("index");
 });
 
 // listen for requests :)
