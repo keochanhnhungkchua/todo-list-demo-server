@@ -33,10 +33,24 @@ app.get("/" , (req, res)=> {
 app.get("/books", (req, res) => {
   res.render("books",{books:db.get("books").value()});
 });
+app.get("/books/:id/delete", (req, res) =>{
+  var id = req.params.id;
+  db.get("books")
+    .remove({id})
+    .write();
+  res.redirect("back");
+} );
 
+app.get("/books/:id/edit" , (req, res) => {
+  var id= req.params.id;
+  
+});
 app.post("/books/create", (req, res) => {
   req.body.id=shortid.generate();
-  
+  db.get("books")
+    .push(req.body)
+    .write();
+  res.redirect("back");
 } );
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
