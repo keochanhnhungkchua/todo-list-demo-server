@@ -45,7 +45,7 @@ app.get("/books/:id/delete", (req, res) =>{
 app.get("/books/:id/edit" , (req, res) => {
   var id= req.params.id;
   var book=db.get("books").find({id}).value();
-  res.render("edit",{books:book});
+  res.render("edit",{book});
 });
 
 
@@ -56,6 +56,7 @@ app.post("/books/create", (req, res) => {
     .write();
   res.redirect("back");
 } );
+app.post("/books/edit", (req, res) => {})
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
   console.log("Your app is listening on port " + listener.address().port);
