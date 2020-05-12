@@ -5,6 +5,7 @@
 // but feel free to use whatever libraries or frameworks you'd like through `package.json`.
 const express = require("express");
 const app = express();
+const shortid= require("shortid");
 app.set('view engine', 'pug');
 app.set('views', './views');
 
@@ -30,9 +31,13 @@ app.get("/" , (req, res)=> {
   res.render("index");
 });
 app.get("/books", (req, res) => {
-  res.render("books")
+  res.render("books",{books:db.get("books").value()});
 });
 
+app.post("/books/create", (req, res) => {
+  req.body.id=shortid.generate();
+  
+} );
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
   console.log("Your app is listening on port " + listener.address().port);
