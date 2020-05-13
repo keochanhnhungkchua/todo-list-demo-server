@@ -11,15 +11,22 @@ table
       tr
           td=transaction.id
           td=transaction.userId
-          td=transaction.bookId
+          td=transaction.bookId      
+br
+br
+a(href='/transactions') Back
 form(method="POST")
   label Transaction name: 
   input(name='name')
   br 
- 
+  label Choose a user: 
+  select(name='userId')
+    each user in users
+      option(value=user.id)=user.name
+  br
   label Choose a book: 
   select(name='bookId')
     each book in books
       option(value=book.id)=book.title
   br
-  button Create        
+  button Create
