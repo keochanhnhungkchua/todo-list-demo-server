@@ -1,19 +1,25 @@
 a(href='/') Home
 br
-a(href='/transactions/create') Create transaction
 br  
 table 
     caption Transactions List
     tr
-      th Id
-      th Name
-      th Status
+      th ID
+      th USerID
+      th BookID
     each transaction in transactions  
       tr
           td=transaction.id
-          td=transaction.name
-          if transaction.isComplete 
-            td=transaction.isComplete
-          else
-            td
-              a(href='/transactions/'+transaction.id+'/complete')=transaction.isComplete
+          td=transaction.userId
+          td=transaction.bookId
+form(method="POST")
+  label Transaction name: 
+  input(name='name')
+  br 
+ 
+  label Choose a book: 
+  select(name='bookId')
+    each book in books
+      option(value=book.id)=book.title
+  br
+  button Create        

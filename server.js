@@ -9,7 +9,7 @@ const app = express();
 
 const userRouter = require("./routes/user.router");
 const bookRouter = require("./routes/book.router");
-const transactionRouter =  require("./routers/transaction.router")
+const transactionRouter =  require("./routes/transaction.router")
 
 var bodyParser = require('body-parser');
 
