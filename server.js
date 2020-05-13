@@ -6,21 +6,23 @@
 const express = require("express");
 const app = express();
 const shortid= require("shortid");
+const low = require('lowdb');
+var bodyParser = require('body-parser');
+
 app.set('view engine', 'pug');
 app.set('views', './views');
 
-//setup lowdb
-const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
- 
 const adapter = new FileSync('db.json');
 const db = low(adapter);
+
+
 
 // Set some defaults
 db.defaults({ books: []})
   .write()
 //setup body-paser
-var bodyParser = require('body-parser');
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
  
@@ -30,6 +32,7 @@ app.use(bodyParser.json())
 app.get("/" , (req, res)=> {
   res.render("index");
 });
+//get books
 app.get("/books", (req, res) => {
   res.render("books",{books:db.get("books").value()});
 });
@@ -48,6 +51,10 @@ app.get("/books/:id/edit" , (req, res) => {
   res.render("edit",{book});
 });
 
+//get user
+app.get("/users", (req, res) => {
+  res.render("users");
+});
 
 app.post("/books/create", (req, res) => {
   req.body.id=shortid.generate();
