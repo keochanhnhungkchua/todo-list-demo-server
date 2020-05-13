@@ -1,0 +1,14 @@
+h1 Edit info user
+  br
+  br
+form(action="/users/" +user.id+ "/edit-user" method="POST")
+  lable Edit name here:
+  |
+  |
+  input(type="text" name="title"  value=book.title)
+  |
+  |
+  button Update
+  h4 title :
+   span=user.name
+  

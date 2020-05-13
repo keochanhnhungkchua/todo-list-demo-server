@@ -54,7 +54,13 @@ app.get("/books/:id/edit" , (req, res) => {
 app.get("/users", (req, res) => {
   res.render("users",{users:db.get("users").value()});
 });
-
+app.get("/users/:id/delete", (req, res) =>{
+  var id=req.params.id;
+  db.get("users")
+    .remove({id})
+    .write();
+  res.redirect("back");
+});
 //post books
 app.post("/books/create", (req, res) => {
   req.body.id=shortid.generate();
@@ -79,6 +85,14 @@ app.post("/users/create", (req, res) =>{
     .push(req.body)
     .write();
   res.redirect("back");
+});
+app.post("/users/:id/edit-user", (req, res) =>{
+var id= req.params.id;
+  db.get("users")
+    .find({id})
+    .assign({name:req.body.name})
+    .write()
+  res.redirect("/users");
 });
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
