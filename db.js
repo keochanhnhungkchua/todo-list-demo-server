@@ -9,5 +9,6 @@ db.defaults({ books: []})
   .write()
 db.defaults({ users: []})
   .write()
-
+db.defaults({ transaction: []})
+  .write()
 module.exports= db;
