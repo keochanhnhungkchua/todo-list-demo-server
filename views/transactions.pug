@@ -10,9 +10,8 @@ table
     each transaction in transactions  
       tr
           td=transaction.id
-          td=transaction.userId
-          td=transaction.bookId      
-br
+          td=users.name
+          td=books.title  
 br
 a(href='/transactions') Back
 form(method="POST")
