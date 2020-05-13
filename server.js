@@ -61,6 +61,11 @@ app.get("/users/:id/delete", (req, res) =>{
     .write();
   res.redirect("back");
 });
+app.get("/users/:id/edit-user" , (req, res) => {
+  var id= req.params.id;
+  var user=db.get("users").find({id}).value();
+  res.render("edit-user",{user});
+});
 //post books
 app.post("/books/create", (req, res) => {
   req.body.id=shortid.generate();
@@ -86,7 +91,7 @@ app.post("/users/create", (req, res) =>{
     .write();
   res.redirect("back");
 });
-app.post("/users/:id/edit-user", (req, res) =>{
+app.post("/users/:id/edit-user", (req, res) => {
 var id= req.params.id;
   db.get("users")
     .find({id})
