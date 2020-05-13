@@ -15,20 +15,19 @@ app.set('views', './views');
 const FileSync = require('lowdb/adapters/FileSync');
 const adapter = new FileSync('db.json');
 const db = low(adapter);
+app.use(bodyParser.urlencoded({ extended: false }))
+// parse application/json
+app.use(bodyParser.json())
 
 
 
 // Set some defaults
 db.defaults({ books: []})
   .write()
-//setup body-paser
+db.defaults({ users: []})
+  .write()
 
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
- 
-// parse application/json
-app.use(bodyParser.json())
-
+//home page
 app.get("/" , (req, res)=> {
   res.render("index");
 });
@@ -53,9 +52,10 @@ app.get("/books/:id/edit" , (req, res) => {
 
 //get user
 app.get("/users", (req, res) => {
-  res.render("users");
+  res.render("users",{users:db.get("users").value()});
 });
 
+//post books
 app.post("/books/create", (req, res) => {
   req.body.id=shortid.generate();
   db.get("books")
@@ -71,6 +71,14 @@ var id= req.params.id;
     .assign({title:req.body.title})
     .write();
   res.redirect("/books");
+});
+//post user
+app.post("/users/create", (req, res) =>{
+  req.body.id=shortid.generate();
+  db.get("users")
+    .push(req.body)
+    .write();
+  res.redirect("back");
 });
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {

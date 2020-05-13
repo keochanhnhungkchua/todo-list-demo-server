@@ -1,8 +1,18 @@
 label Create new users:
   br
-  br
-  input(type="text" name="user")
+  form(action="/users/create" method="POST")
+  input(type="text" name="name" placeholder="Enter user name...")
+  |
+  |
+  button Add
 h1 List users:
-  ul
-    each user in users
-     li=user.name
+ul
+  each user in users
+    li=user.name
+     span
+       |
+       |
+       a(href="#") Edit
+       |
+       |
+       a(href="#") Delete
