@@ -30,5 +30,12 @@
       "name": "abc123",
       "id": "j5z06zo2a"
     }
+  ],
+  "transactions": [
+    {
+      "userId": "iyb0O1t1L",
+      "bookId": "ZTJ86ZjrH",
+      "id": "j5z06zoee"
+    }
   ]
 }

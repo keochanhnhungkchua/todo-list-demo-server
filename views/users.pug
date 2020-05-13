@@ -1,4 +1,4 @@
-label Create new users:
+label Create new user:
   br
   form(action="/users/create" method="POST")
     input(type="text" name="name" placeholder="Enter user name...")
@@ -6,6 +6,9 @@ label Create new users:
     |
     button Add
 h1 List users:
+a(href="/") Home page
+br
+br
 ul
   each user in users
     li=user.name
