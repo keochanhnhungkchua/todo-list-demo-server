@@ -6,7 +6,9 @@
 const express = require("express");
 const app = express();
 const shortid= require("shortid");
-const db = require("./db");
+
+const userRouter = require("./routes/user.router");
+
 
 var bodyParser = require('body-parser');
 
@@ -26,6 +28,7 @@ app.use(bodyParser.json())
 app.get("/" , (req, res)=> {
   res.render("index");
 });
+app.get("/users", userRouter);
 //get books
 app.get("/books", (req, res) => {
   res.render("books",{books:db.get("books").value()});

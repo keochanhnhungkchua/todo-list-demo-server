@@ -1,5 +1,8 @@
-var express = require('express')
-var router = express.Router()
+var express = require('express');
+var router = express.Router();
+const shortid= require("shortid");
+
+const db = require("../db");
 
 //get user
 router.get("/", (req, res) => {
@@ -12,21 +15,21 @@ router.get("/:id/delete", (req, res) =>{
     .write();
   res.redirect("back");
 });
-app.get("/:id/edit-user" , (req, res) => {
+router.get("/:id/edit-user" , (req, res) => {
   var id= req.params.id;
   var user=db.get("users").find({id}).value();
   res.render("edit-user",{user});
 });
 
 //post user
-app.post("/create", (req, res) =>{
+router.post("/create", (req, res) =>{
   req.body.id=shortid.generate();
   db.get("users")
     .push(req.body)
     .write();
   res.redirect("back");
 });
-app.post("/:id/edit-user", (req, res) => {
+router.post("/:id/edit-user", (req, res) => {
 var id= req.params.id;
   db.get("users")
     .find({id})
@@ -34,4 +37,5 @@ var id= req.params.id;
     .write()
   res.redirect("/");
 });
-module.exports = router
+
+module.exports = router;
