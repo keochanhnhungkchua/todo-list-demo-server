@@ -9,6 +9,7 @@ const app = express();
 
 const userRouter = require("./routes/user.router");
 const bookRouter = require("./routes/book.router");
+const transactionRouter =  require("./routers/transaction.router")
 
 var bodyParser = require('body-parser');
 
@@ -26,9 +27,10 @@ app.get("/" , (req, res)=> {
 
 //get user
 app.use("/users", userRouter);
-
 //get books
 app.use("/books", bookRouter);
+// get transaction
+app.use("/transactions", transactionRouter);
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
