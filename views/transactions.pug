@@ -5,7 +5,21 @@ form(action="/" method="POST")
   lable Create new transaction:
   br
   lable Choose a user :
-    slect("name="userTrans"")
+    select(name="userTransaction")
+    each user in users
+      option(value=user.name)=user.name
+form(method="POST")
+  label Choose a user: 
+  select(name='userId')
+    each user in users
+      option(value=user.id)=user.name
+  br
+  label Choose a book: 
+  select(name='bookId')
+    each book in books
+      option(value=book.id)=book.title
+  br
+  button Create
 table 
     caption Transactions List
     tr
