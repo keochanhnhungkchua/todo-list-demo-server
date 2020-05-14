@@ -14,7 +14,7 @@ form(action="/transactions/create" method="POST")
   label Choose a book:
   |
   |
-  select(name="bookTransasction")
+  select(name="bookTransaction")
     each book in books
       option(value=book.title)=book.title
   br
@@ -22,11 +22,11 @@ form(action="/transactions/create" method="POST")
 table 
     caption Transactions List:
     tr
-      th ID
-      th USer
+      th Index
+      th User Name
       th Book
-      tr
-        each transaction in transactions  
-          td=transaction.id
+      each transaction,index in transactions 
+        tr 
+          td=index+1
           td=transaction.userTransaction
           td=transaction.bookTransaction

@@ -1,17 +1,12 @@
 {
   "books": [
     {
-      "title": "mắt biếc 123",
-      "description": "viet nam",
-      "id": "ZTJ86ZjrH"
-    },
-    {
       "title": "harry poster",
       "description": "story",
       "id": "V21ZyuxC2"
     },
     {
-      "title": "mua mua ha 123",
+      "title": "one pice",
       "description": "vn",
       "id": "fF435ilUB"
     },
@@ -23,7 +18,7 @@
   ],
   "users": [
     {
-      "name": "demo123",
+      "name": "Rolado",
       "id": "iyb0O1t1L"
     },
     {
@@ -31,17 +26,5 @@
       "id": "j5z06zo2a"
     }
   ],
-  "transactions": [
-    {
-      "userTransaction": "demo123",
-      "bookTransaction": "harry poster",
-      "id": "j5z06zoee"
-    },
-    {
-      "userTransaction": "abc123",
-      "bookTransasction": "mua mua ha 123",
-      "id": "DckjoZwV3"
-    }
-  ],
-  "transaction": []
+  "transactions": []
 }
