@@ -9,5 +9,12 @@ router.get("/", (req, res) => {
                              books: db.get("books").value(),
                              transactions:db.get("transactions").value()});
 });
+router.post("/create", (req, res) =>{
+  req.body.id=shortid.generate();
+  db.get("transactions")
+    .push(req.body)
+    .write();
+  res.redirect("back");
+});
 
 module.exports= router;

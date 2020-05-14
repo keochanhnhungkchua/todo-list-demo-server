@@ -1,27 +1,26 @@
 a(href='/') Home
 br
 br  
-form(action="/" method="POST")
-  lable Create new transaction:
+form(action="/transactions/create" method="POST")
+  label Create new transaction:
   br
-  lable Choose a user :
-    select(name="userTransaction")
+  label Choose a user :
+  |
+  |
+  select(name="userTransaction")
     each user in users
       option(value=user.name)=user.name
-form(method="POST")
-  label Choose a user: 
-  select(name='userId')
-    each user in users
-      option(value=user.id)=user.name
   br
-  label Choose a book: 
-  select(name='bookId')
+  label Choose a book:
+  |
+  |
+  select(name="bookTransasction")
     each book in books
-      option(value=book.id)=book.title
+      option(value=book.title)=book.title
   br
   button Create
 table 
-    caption Transactions List
+    caption Transactions List:
     tr
       th ID
       th USer
