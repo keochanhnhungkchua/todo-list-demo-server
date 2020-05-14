@@ -1,28 +1,19 @@
 a(href='/') Home
 br
 br  
+form(action="/" method="POST")
+  lable Create new transaction:
+  br
+  lable Choose a user :
+    slect("name="userTrans"")
 table 
     caption Transactions List
     tr
       th ID
-      th USerID
-      th BookID
+      th USer
+      th Book
       tr
-        each transaction in users  
-          td=user.name
-        each user in users
-          td=users.name
-        each book in books 
-          td=books.title  
-br
-ul
-  each user,index in users
-    li= index+1 + ' : '+ user.name
-     span
-       |
-       |
-       a(href="/users/" +user.id+ "/edit-user") Edit
-       |
-       |
-       a(href="/users/" +user.id+ "/delete") Delete
-//tesst       
+        each transaction in transactions  
+          td=transaction.id
+          td=transaction.userTransaction
+          td=transaction.bookTransaction
