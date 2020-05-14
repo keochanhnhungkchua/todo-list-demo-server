@@ -7,25 +7,21 @@ table
       th ID
       th USerID
       th BookID
-    each transaction in transactions  
       tr
-          td=transaction.id
+        each user in users  
+          td=user.name
+        each user in users
           td=users.name
+        each book in books 
           td=books.title  
 br
-a(href='/transactions') Back
-form(method="POST")
-  label Transaction name: 
-  input(name='name')
-  br 
-  label Choose a user: 
-  select(name='userId')
-    each user in users
-      option(value=user.id)=user.name
-  br
-  label Choose a book: 
-  select(name='bookId')
-    each book in books
-      option(value=book.id)=book.title
-  br
-  button Create
+ul
+  each user,index in users
+    li= index+1 + ' : '+ user.name
+     span
+       |
+       |
+       a(href="/users/" +user.id+ "/edit-user") Edit
+       |
+       |
+       a(href="/users/" +user.id+ "/delete") Delete
