@@ -35,7 +35,7 @@ var id= req.params.id;
     .find({id})
     .assign({name:req.body.name})
     .write()
-  res.redirect("back");
+  res.redirect("/users");
 });
 
 module.exports = router;
