@@ -3,6 +3,7 @@ var router = express.Router();
 const shortid= require("shortid");
 
 const db = require("../db");
+var controller = require("../controller/user.controller")
 
 //get user
 router.get("/", (req, res) => {
