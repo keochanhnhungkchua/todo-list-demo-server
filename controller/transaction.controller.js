@@ -7,4 +7,10 @@ module.exports.index = (req, res) => {
                              books: db.get("books").value(),
                              transactions:db.get("transactions").value()});
 }
-module.exports.postC
+module.exports.postCreateTransaction = (req, res) =>{
+  req.body.id=shortid.generate();
+  db.get("transactions")
+    .push(req.body)
+    .write();
+  res.redirect("back");
+}

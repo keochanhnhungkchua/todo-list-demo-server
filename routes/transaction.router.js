@@ -4,12 +4,6 @@ var router = express.Router();
 
 router.get("/", controller.index);
 
-router.post("/create", (req, res) =>{
-  req.body.id=shortid.generate();
-  db.get("transactions")
-    .push(req.body)
-    .write();
-  res.redirect("back");
-});
+router.post("/create", controller.postCreateTransaction);
 
 module.exports= router;
