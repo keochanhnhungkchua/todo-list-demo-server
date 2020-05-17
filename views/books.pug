@@ -1,23 +1,24 @@
-h1 Books Store Online
-a(href="/") Home page
-br
-br
-form(action="/books/create" method="POST" )
-  input(type="text" name="title"  placeholder="input title for book here")
-  br
-  br
-  textarea( name="description" placeholder='Enter book\'s discription')
-  br
-  br
-  button Add
-h2 List Books:
-ul
- each book in books
-  li=book.title
-    |
-    |
-    span
-      a(href="/books/"+ book.id +"/edit") Edit
-      |
-      |
-      a(href="/books/"+ book.id+"/delete") Delete
+
+      h1 Books Store Online
+      a(href="/") Home page
+      br
+      br
+      form(action="/books/create" method="POST" )
+        input(type="text" name="title"  placeholder="input title for book here")
+        br
+        br
+        textarea( name="description" placeholder='Enter book\'s discription')
+        br
+        br
+        button Add
+      h2 List Books:
+      ul
+       each book in books
+        li=book.title
+          |
+          |
+          span
+            a(href="/books/"+ book.id +"/edit") Edit
+            |
+            |
+            a(href="/books/"+ book.id+"/delete") Delete

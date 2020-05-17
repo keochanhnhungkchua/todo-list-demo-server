@@ -26,9 +26,15 @@ table
       th Id
       th User Name
       th Book
+      th Status
       each transaction,index in transactions 
         tr 
           td=index+1
           td=transaction.id
           td=transaction.userTransaction
           td=transaction.bookTransaction
+          if transaction.isComplete 
+            td=transaction.isComplete
+          else
+            td
+              a(href='/transactions/'+transaction.id+'/complete')=transaction.isComplete

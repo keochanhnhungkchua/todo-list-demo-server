@@ -34,22 +34,26 @@
     {
       "userTransaction": "Rolado",
       "bookTransaction": "harry poster",
-      "id": "qv6wW_Ews"
+      "id": "qv6wW_Ews",
+      "isComplete": false
     },
     {
       "userTransaction": "donald trump",
       "bookTransaction": "one pice",
-      "id": "e1e1D66rZ"
+      "id": "e1e1D66rZ",
+      "isComplete": false
     },
     {
       "userTransaction": "Messi",
-      "bookTransaction": "demo",
-      "id": "ZY5nnGkDU"
+      "bookTransaction": "harry poster",
+      "id": "vZffWaite",
+      "isComplete": true
     },
     {
-      "userTransaction": "donald trump",
+      "userTransaction": "Rolado",
       "bookTransaction": "demo",
-      "id": "3m9NhRFyW"
+      "id": "WIz1I8qDX",
+      "isComplete": false
     }
   ]
 }
