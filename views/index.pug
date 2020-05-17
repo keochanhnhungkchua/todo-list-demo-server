@@ -2,23 +2,12 @@ extends ../layout/commonLayout
 
 block content
   h1 I Love CoderX
-  div (class="collapse navbar-collapse" id="navbarNav")
-      a(href="/books" class="nav-link") => Books Store
-      br
-      br
-      a(href="/users" class="nav-link") => Users 
-      br
-      br
-      a(href="/transactions" class="nav-link") => Transactions
-  #navbarNav.collapse.navbar-collapse
-  ul.navbar-nav
-    li.nav-item.active
-      a.nav-link(href='#')
-        | Home 
-        span.sr-only (current)
-    li.nav-item
-      a.nav-link(href='#') Features
-    li.nav-item
-      a.nav-link(href='#') Pricing
-    li.nav-item
-      a.nav-link.disabled(href='#', tabindex='-1', aria-disabled='true') Disabled
+  
+  a(href="/books" class="nav-link") => Books Store
+  br
+  br
+  a(href="/users" class="nav-link") => Users 
+  br
+  br
+  a(href="/transactions" class="nav-link") => Transactions
+  
