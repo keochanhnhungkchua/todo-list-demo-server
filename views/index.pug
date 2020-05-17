@@ -2,12 +2,9 @@ extends ../layout/commonLayout
 
 block content
   h1 I Love CoderX
-  
-  a(href="/books" class="nav-link") => Books Store
-  br
-  br
-  a(href="/users" class="nav-link") => Users 
-  br
-  br
-  a(href="/transactions" class="nav-link") => Transactions
+  nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
+    a.navbar-brand(href="/books") Books
+    a(href="/users" class="navbar-brand") Users
+    a.navbar-brand(href="/books") Transactions
+
   
