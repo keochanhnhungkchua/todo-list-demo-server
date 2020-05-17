@@ -3,8 +3,10 @@ extends ../layout/commonLayout
 block content
   h1 I Love CoderX
   nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
-    a.navbar-brand(href="/books") Books
-    a(href="/users" class="navbar-brand") Users
-    a.navbar-brand(href="/books") Transactions
+    ul.navbar-nav.mr-auto
+      li.nav-item.text-uppercase
+        a.navbar-brand.nav-link(href="/books") Books
+        a(href="/users" class="navbar-brand nav-link") Users
+        a.navbar-brand.nav-link(href="/transactions") Transactions
 
   

@@ -1,21 +1,24 @@
-label Create new user:
+extends ../layout/commonLayout
+
+block content
+  label Create new user:
+    br
+    form(action="/users/create" method="POST")
+      input(type="text" name="name" placeholder="Enter user name...")
+      |
+      |
+      button Add
+  h1 List users:
+  a(href="/") Home page
   br
-  form(action="/users/create" method="POST")
-    input(type="text" name="name" placeholder="Enter user name...")
-    |
-    |
-    button Add
-h1 List users:
-a(href="/") Home page
-br
-br
-ul
-  each user in users
-    li=user.name
-     span
-       |
-       |
-       a(href="/users/" +user.id+ "/edit-user") Edit
-       |
-       |
-       a(href="/users/" +user.id+ "/delete") Delete
+  br
+  ul
+    each user in users
+      li=user.name
+       span
+         |
+         |
+         a(href="/users/" +user.id+ "/edit-user") Edit
+         |
+         |
+         a(href="/users/" +user.id+ "/delete") Delete
