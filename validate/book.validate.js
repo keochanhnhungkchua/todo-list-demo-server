@@ -9,7 +9,11 @@ module.exports.postBook = function (req, res, next) {
     errors.push('Description is require...')  
   } 
   if (errors.length){
-    res.render('books', {books:db.get('books').value(), errors});
+    res.render('books', 
+      {books:db.get('books')
+      .value(), 
+      errors:errors,
+      values:req.body});
     return ;
   }
   
