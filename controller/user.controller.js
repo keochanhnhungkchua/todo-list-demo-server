@@ -21,6 +21,15 @@ module.exports.editUser = (req, res) => {
 
 //post
 module.exports.postCreateUser = (req, res) =>{
+  let errors = [];
+  if (req.body.name.length > 30) {
+    errors.push("Username must have max 30 characters");
+  }
+  if (errors.length) {
+    res.render("users", {users: db.get("users").value(), errors });
+    return;
+  }
+  
   req.body.id=shortid.generate();
   db.get("users")
     .push(req.body)
