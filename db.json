@@ -53,7 +53,7 @@
       "userTransaction": "Rolado",
       "bookTransaction": "demo",
       "id": "WIz1I8qDX",
-      "isComplete": false
+      "isComplete": true
     }
   ]
 }
