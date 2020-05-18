@@ -10,13 +10,13 @@ block content
       each error in errors
         .alert.alert-danger= error
   form(action="/books/create" method="POST" )
-    input(type="text" name="title" value = values ? values.title : ''  placeholder="input title for book here")
+    input.form-control.ml-2.mr-2(type="text" name="title" value = values ? values.title : ''  placeholder="input title for book here")
     br
     br
-    textarea( name="description" values ? values.description : '' placeholder='Enter book\'s discription')
+    input.form-control.ml-2.mr-2(type="text" name="description" value = values ? values.description : ''  placeholder='Enter book\'s discription')
     br
     br
-    button Add
+    button.btn.btn-primary Add
   h2 List Books:
   ul
    each book in books
