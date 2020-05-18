@@ -16,9 +16,9 @@ block content
     input.form-control.ml-2.mr-2(type="text" name="description" value = values ? values.description : ''  placeholder='Enter book\'s discription')
     br
     br
-    button.btn.btn-primary Add
+    button.btn.btn-primary.ml-2 Add
   h2 List Books:
-  ul
+  ul.ml-3
    each book in books
     li=book.title
       |
