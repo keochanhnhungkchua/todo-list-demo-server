@@ -13,5 +13,5 @@ module.exports.postBook = function (req, res, next) {
     return ;
   }
   
-  
+  next();
 }
