@@ -11,7 +11,7 @@ var cookieParser = require('cookie-parser')
 const userRouter = require("./routes/user.router");
 const bookRouter = require("./routes/book.router");
 const transactionRouter =  require("./routes/transaction.router");
-const authRouter = require("./routers/auth.router");
+const authRouter = require("./routes/auth.router");
 
 
 
