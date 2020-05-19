@@ -31,7 +31,7 @@ app.get("/" , (req, res)=> {
 app.use("/users", userRouter);
 app.use("/books", bookRouter);
 app.use("/transactions", transactionRouter);
-app.use("/auth", authRouter);
+app.use("/login", authRouter);
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
