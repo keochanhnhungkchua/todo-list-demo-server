@@ -13,6 +13,7 @@ const bookRouter = require("./routes/book.router");
 const transactionRouter =  require("./routes/transaction.router");
 const authRouter = require("./routes/auth.router");
 
+const authMiddleware =  require("./middleware/auth.middleware");
 
 
 app.set('view engine', 'pug');
@@ -28,7 +29,7 @@ app.get("/" , (req, res)=> {
 });
 
 
-app.use("/users", userRouter);
+app.use("/users",authMiddleware.requireAuth , userRouter);
 app.use("/books", bookRouter);
 app.use("/transactions", transactionRouter);
 app.use("/login", authRouter);
