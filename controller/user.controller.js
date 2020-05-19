@@ -1,5 +1,6 @@
 const shortid= require("shortid");
 const db = require("../db");
+var cookies=0;
 
 module.exports.index = (req, res) => {
   res.render("users",{users:db.get("users").value()});
@@ -14,9 +15,11 @@ module.exports.deleteUser = (req, res) =>{
 }
 
 module.exports.editUser = (req, res) => {
-  var cookies =[]
-  cookies.push(req.cookies);
-  console.log(cookies.name, ':' ,cookies.length);
+  
+  if (req.cookies){
+  cookies ++; 
+  console.log(req.cookies, ':' ,cookies);
+  }
   
   var id= req.params.id;
   var user=db.get("users").find({id}).value();
