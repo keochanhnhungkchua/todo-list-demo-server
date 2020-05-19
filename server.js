@@ -6,18 +6,20 @@
 const express = require("express");
 const app = express();
 const bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser')
 
 const userRouter = require("./routes/user.router");
 const bookRouter = require("./routes/book.router");
-const transactionRouter =  require("./routes/transaction.router")
+const transactionRouter =  require("./routes/transaction.router");
 
 
 
 app.set('view engine', 'pug');
 app.set('views', './views');
 
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(cookieParser());
 
 //home page
 app.get("/" , (req, res)=> {

@@ -14,6 +14,7 @@ module.exports.deleteUser = (req, res) =>{
 }
 
 module.exports.editUser = (req, res) => {
+  console.log(req.cookie);
   var id= req.params.id;
   var user=db.get("users").find({id}).value();
   res.render("edit-user",{user});

@@ -7,6 +7,11 @@ var controller = require("../controller/user.controller")
 //get user
 router.get("/",controller.index);
 
+router.get("/cookie",function(req, res, next){
+  res.cookie('user-id', 12345);
+  res.send('hello');
+})
+
 router.get("/:id/delete", controller.deleteUser);
 
 router.get("/:id/edit-user" , controller.editUser);
