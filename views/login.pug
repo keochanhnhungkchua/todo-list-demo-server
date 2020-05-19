@@ -10,11 +10,11 @@ block content
         .alert.alert-danger= error
   form(action="/login" method="POST" )
     label(for="email") Email
-    input#email.form-control.ml-2.mr-2(type="email" name="title" value = values ? values.title : ''  placeholder="enter email here.")
+    input#email.form-control.ml-2.mr-2(type="email" name="email" value = values ? values.email : ''  placeholder="Enter email here....")
     br
     br
     label(for="password") Password
-    input#password.form-control.ml-2.mr-2(type="text" name="description" value = values ? values.description : ''  placeholder='Enter password here')
+    input#password.form-control.ml-2.mr-2(type="password" name="password" value = values ? values.password : ''  placeholder='Enter password here...')
     br
     br
     button.btn.btn-primary.ml-2 Login

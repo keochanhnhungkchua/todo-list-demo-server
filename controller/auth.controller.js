@@ -7,15 +7,16 @@ module.exports.login = (req, res) => {
 module.exports.postLogin = (req, res) =>{
  var email = req.body.email;
  var password = req.body.password;
- var user = db.get("users")
-              .find({email:email})
+ var user = db.get('users')
+              .find({email})
               .value();
-  
+  console.log(user);
  if (!user){
     res.render("login",{
       errors:[
         'user does not exists.'
-      ]
+      ],
+      values: req.body
     });
     return;
  } 
@@ -23,8 +24,9 @@ module.exports.postLogin = (req, res) =>{
   if(user.password !== password){
     res.render("login",{
       errors:[
-        'user does not exists.'
-      ]
+        'wrong password'
+      ],
+      values: req.body
   });
     return;
   }
