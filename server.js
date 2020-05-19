@@ -28,10 +28,9 @@ app.get("/" , (req, res)=> {
   res.render("index");
 });
 
-
 app.use("/users",authMiddleware.requireAuth , userRouter);
-app.use("/books", bookRouter);
-app.use("/transactions", transactionRouter);
+app.use("/books",authMiddleware.requireAuth , bookRouter);
+app.use("/transactions",authMiddleware.requireAuth , transactionRouter);
 app.use("/login", authRouter);
 
 // listen for requests :)

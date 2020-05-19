@@ -3,11 +3,11 @@ var router = express.Router();
 
 var validate = require("../validate/user.validate")
 var controller = require("../controller/user.controller")
-var authMiddleware = require("../middleware/auth.middleware")
+
 
 //get user
-res.clearCookie('name', { path: '/admin' })
-router.get("/",authMiddleware.requireAuth,controller.index);
+
+router.get("/",controller.index);
 
 router.get("/cookie",function(req, res, next){
   res.cookie('user-id', 12345);
