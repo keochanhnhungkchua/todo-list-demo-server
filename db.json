@@ -47,7 +47,10 @@
     },
     {
       "name": "Admin",
-      "id": "610lU0O8s"
+      "id": "610lU0O8s",
+      "email": "admin@gmail.com",
+      "password": "123123",
+      "isAdmin": "true"
     }
   ],
   "transactions": [
