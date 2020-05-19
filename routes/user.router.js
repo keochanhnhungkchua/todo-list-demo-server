@@ -3,6 +3,7 @@ var router = express.Router();
 
 var validate = require("../validate/user.validate")
 var controller = require("../controller/user.controller")
+var authMiddle
 
 //get user
 router.get("/",controller.index);
