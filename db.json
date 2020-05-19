@@ -30,15 +30,24 @@
     {
       "name": "Rolado",
       "id": "iyb0O1t1L",
-      "email": ""
+      "email": "demo@gmail.com",
+      "password": "123123"
     },
     {
       "name": "donald trump",
-      "id": "j5z06zo2a"
+      "id": "j5z06zo2a",
+      "email": "demo2@gmail.com",
+      "password": "123123"
     },
     {
       "name": "Messi",
-      "id": "zGA45tPXd"
+      "id": "zGA45tPXd",
+      "email": "demo3@gmail.com",
+      "password": "123123"
+    },
+    {
+      "name": "Admin",
+      "id": "610lU0O8s"
     }
   ],
   "transactions": [
