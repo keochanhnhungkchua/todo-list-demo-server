@@ -11,6 +11,7 @@ var cookieParser = require('cookie-parser')
 const userRouter = require("./routes/user.router");
 const bookRouter = require("./routes/book.router");
 const transactionRouter =  require("./routes/transaction.router");
+const authRouter = require("./routers/auth.router");
 
 
 
@@ -30,6 +31,7 @@ app.get("/" , (req, res)=> {
 app.use("/users", userRouter);
 app.use("/books", bookRouter);
 app.use("/transactions", transactionRouter);
+app.use("/auth", authRouter);
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {

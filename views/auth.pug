@@ -9,11 +9,12 @@ block content
       each error in errors
         .alert.alert-danger= error
   form(action="/books/create" method="POST" )
-  lab
-    input.form-control.ml-2.mr-2(type="email" name="title" value = values ? values.title : ''  placeholder="enter email here.")
+    label(for="email") Email
+    input#email.form-control.ml-2.mr-2(type="email" name="title" value = values ? values.title : ''  placeholder="enter email here.")
     br
     br
-    input.form-control.ml-2.mr-2(type="text" name="description" value = values ? values.description : ''  placeholder='Enter password here')
+    label(for="password") Password
+    input#password.form-control.ml-2.mr-2(type="text" name="description" value = values ? values.description : ''  placeholder='Enter password here')
     br
     br
     button.btn.btn-primary.ml-2 login
