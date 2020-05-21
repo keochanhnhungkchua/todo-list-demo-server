@@ -18,7 +18,6 @@ router.get("/:id/delete", controller.deleteUser);
 
 router.get("/:id/edit-user" , controller.editUser);
 
-router.get("/userTransaction", controller.userTransaction);//user
 //post user
 router.post("/create",validate.postCreatUser, controller.postCreateUser);
 

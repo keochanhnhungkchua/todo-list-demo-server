@@ -4,13 +4,7 @@ var user;
 module.exports.login = (req, res) => {
   res.render("login");
 };
-//userTransaction when login
-module.exports.userTransaction = (req, res) =>{
-var userTransaction = db.get('transaction')
-                        .find({userTransaction :user.name})
-                        .value();  
-res.render("userTransaction");
-}
+
 
 module.exports.postLogin = (req, res) =>{
  var email = req.body.email;
@@ -38,8 +32,17 @@ module.exports.postLogin = (req, res) =>{
     return;
   }
 res.cookie('userId', user.id); 
+  
   if(!user.isAdmin){
     res.redirect("/userTransaction");
   }  
 res.redirect("/");
+}
+
+//userTransaction when login
+module.exports.userTransaction = (req, res) =>{
+var userTransaction = db.get('transaction')
+                        .find({userTransaction :user.name})
+                        .value();  
+res.render("userTransaction");
 }

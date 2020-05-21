@@ -5,6 +5,8 @@ var controller = require("../controller/auth.controller")
 //get
 router.get("/", controller.login)
 
+router.get("/userTransaction" , controller.userTransaction);
+
 router.post("/", controller.postLogin)
 
 module.exports = router;
