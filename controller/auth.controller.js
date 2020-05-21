@@ -11,7 +11,7 @@ module.exports.postLogin = (req, res) =>{
               .find({email})
               .value();
   var userTransaction = db.get('transaction')
-                          .find({userTransaction :''})
+                          .find({userTransaction :user.name})
                           .value();  
  if (!user){
     res.render("login",{
