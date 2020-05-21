@@ -4,15 +4,14 @@ var user;
 module.exports.login = (req, res) => {
   res.render("login");
 };
- //var userTransaction = db.get('transaction')
-               //           .find({userTransaction :user.name})
-                //          .value();  
+//userTransaction when login
 module.exports.userTransaction = (req, res) =>{
 var userTransaction = db.get('transaction')
-                      .find({userTransaction :user.name})
-                      .value();  
-res.render("transaction",{users:db.get("users").value()});
+                        .find({userTransaction :user.name})
+                        .value();  
+res.render("userTransaction");
 }
+
 module.exports.postLogin = (req, res) =>{
  var email = req.body.email;
  var password = req.body.password;
