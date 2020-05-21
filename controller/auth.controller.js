@@ -42,9 +42,8 @@ res.redirect("/");
 
 //userTransaction when login
 module.exports.userTransaction = (req, res) =>{
-var userName= user.name;  
 var userTransaction = db.get('transactions')
-                        .find({userTransaction : userName})
+                        .find({userTransaction :"Rolado"})
                         .value();  
   console.log(userTransaction);
 res.render("userTransaction", {userTransaction});
