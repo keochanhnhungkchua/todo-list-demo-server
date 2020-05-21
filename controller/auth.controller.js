@@ -1,18 +1,24 @@
 var db = require("../db");
+var user;
 
 module.exports.login = (req, res) => {
   res.render("login");
 };
-
+ //var userTransaction = db.get('transaction')
+               //           .find({userTransaction :user.name})
+                //          .value();  
+module.exports.userTransaction = (req, res) =>{
+var userTransaction = db.get('transaction')
+                      .find({userTransaction :user.name})
+                      .value();  
+res.render("transaction",{users:db.get("users").value()});
+}
 module.exports.postLogin = (req, res) =>{
  var email = req.body.email;
  var password = req.body.password;
- var user = db.get('users')
+ user = db.get('users')
               .find({email})
               .value();
-  var userTransaction = db.get('transaction')
-                          .find({userTransaction :user.name})
-                          .value();  
  if (!user){
     res.render("login",{
       errors:[
