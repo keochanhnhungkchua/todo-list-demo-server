@@ -4,10 +4,15 @@ block content
   caption Transactions List: 
   table.table 
     tr
+      th Index
       th Id
       th User Name
       th Book
+      th Status
+      each user,index in userTransaction
         tr 
-          td=userTransaction.id
-          td=userTransaction.userTransaction
-          td=userTransaction.bookTransaction
+          td=index+1
+          td=user.id
+          td=user.userTransaction
+          td=user.bookTransaction
+          td=user.isComplete

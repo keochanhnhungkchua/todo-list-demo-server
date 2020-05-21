@@ -38,13 +38,15 @@ res.cookie('userId', user.id);
     return;
   }  
 res.redirect("/");
+  return ;
 }
 
 //userTransaction when login
 module.exports.userTransaction = (req, res) =>{
 var name= user.name
 var userTransaction = db.get('transactions')
-                        .find({userTransaction:name})
+                        .filter({userTransaction:name})
                         .value();  
+  console.log(userTransaction);
 res.render("userTransaction", {userTransaction});
 }
