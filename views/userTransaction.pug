@@ -3,12 +3,11 @@ extends ../layout/commonLayout
 block content
   caption Transactions List: 
   table.table 
-      tr
-        th Id
-        th User Name
-        th Book
-          tr 
-            td=userTransaction.id
-            td=UserTransaction.userTransaction
-            td=userTransaction.bookTransaction
-         
+    tr
+      th Id
+      th User Name
+      th Book
+        tr 
+          td=userTransaction.id
+          td=userTransaction.userTransaction
+          td=userTransaction.bookTransaction

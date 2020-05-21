@@ -12,7 +12,6 @@ module.exports.postLogin = (req, res) =>{
  user = db.get('users')
               .find({email})
               .value();
-
  if (!user){
     res.render("login",{
       errors:[
@@ -35,16 +34,17 @@ module.exports.postLogin = (req, res) =>{
 res.cookie('userId', user.id); 
   
   if(!user.isAdmin){
-    res.redirect("/userTransaction");
+    res.redirect("login/userTransaction");
+    return;
   }  
 res.redirect("/");
 }
 
 //userTransaction when login
 module.exports.userTransaction = (req, res) =>{
+var name= user.name
 var userTransaction = db.get('transactions')
-                        .find({userTransaction :"Rolado"})
+                        .find({userTransaction:name})
                         .value();  
-  console.log(userTransaction);
 res.render("userTransaction", {userTransaction});
 }
