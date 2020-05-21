@@ -10,7 +10,9 @@ module.exports.postLogin = (req, res) =>{
  var user = db.get('users')
               .find({email})
               .value();
-  console.log(user);
+  var userTransaction = db.get('transaction')
+                          .find({userTransaction :''})
+                          .value();  
  if (!user){
     res.render("login",{
       errors:[
@@ -30,6 +32,9 @@ module.exports.postLogin = (req, res) =>{
   });
     return;
   }
-res.cookie('userId', user.id);               
-res.redirect("/users");
+res.cookie('userId', user.id); 
+  if(!user.isAdmin){
+    res.redirect("/userTransaction");
+  }  
+res.redirect("/");
 }
