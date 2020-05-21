@@ -12,6 +12,7 @@ module.exports.postLogin = (req, res) =>{
  user = db.get('users')
               .find({email})
               .value();
+
  if (!user){
     res.render("login",{
       errors:[
@@ -41,8 +42,10 @@ res.redirect("/");
 
 //userTransaction when login
 module.exports.userTransaction = (req, res) =>{
-var userTransaction = db.get('transaction')
-                        .find({userTransaction :user.name})
+var userName= user.name;  
+var userTransaction = db.get('transactions')
+                        .find({userTransaction : userName})
                         .value();  
-res.render("userTransaction");
+  console.log(userTransaction);
+res.render("userTransaction", {userTransaction});
 }
