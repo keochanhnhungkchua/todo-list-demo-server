@@ -7,6 +7,8 @@ router.get("/", controller.login)
 
 router.get("/userTransaction" , controller.userTransaction);
 
+router.get("/loginFalse", controller.loginFalse);
+
 router.post("/", controller.postLogin)
 
 module.exports = router;

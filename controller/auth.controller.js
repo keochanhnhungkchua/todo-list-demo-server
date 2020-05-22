@@ -23,7 +23,10 @@ module.exports.postLogin = async(req, res) => {
     });
     return;
   }
-  
+  if(user.wrongLoginCount>3){
+    res.render("login/loginFalse");
+    return;
+  }
   var match = await bcrypt.compare(password, user.password);
   if (!match){
     db.get("users")
@@ -61,3 +64,8 @@ module.exports.userTransaction = (req, res) => {
     .value();
   res.render("userTransaction", { userTransaction });
 };
+//login false
+module.exports.loginFalse = (req, res) =>
+{
+  res.render("loginFalse");
+}
