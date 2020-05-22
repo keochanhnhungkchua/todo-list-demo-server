@@ -8,10 +8,10 @@ module.exports.login = (req, res) => {
   res.render("login");
 };
 
-module.exports.postLogin = (req, res) => {
+module.exports.postLogin = async(req, res) => {
   var email = req.body.email;
   var password = req.body.password;
-  //var hashedPassword = md5(password);
+  
   user = db
     .get("users")
     .find({ email })
@@ -23,9 +23,25 @@ module.exports.postLogin = (req, res) => {
     });
     return;
   }
-bcrypt.compare(password, user.password, function(err, result) {
-    if (result) {
-      res.cookie("userId", user.id);
+  
+  var match = await bcrypt.compare(password, user.password);
+  if (!match){
+    db.get("users")
+      .find({ email })
+      .assign({ wrongLoginCount: user.wrongLoginCount + 1 })
+      .write();
+    console.log(user.wrongLoginCount );
+    res.render("login", {
+        errors: ["wrong password"],
+        values: req.body
+      });
+      return;
+    }
+  db.get("users")
+    .find({ email })
+    .assign({ wrongLoginCount: 0 })
+    .write();
+  res.cookie("userId", user.id);
       if (!user.isAdmin) {
         res.redirect("login/userTransaction");
         return;
@@ -33,14 +49,7 @@ bcrypt.compare(password, user.password, function(err, result) {
         res.redirect("/");
         return;
       }
-    } else {
-      res.render("login", {
-        errors: ["wrong password"],
-        values: req.body
-      });
-      return;
-    }
-  });
+
 };
 
 //userTransaction when login
