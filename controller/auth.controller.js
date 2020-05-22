@@ -24,7 +24,7 @@ module.exports.postLogin = async(req, res) => {
     return;
   }
   if(user.wrongLoginCount>3){
-    res.render("login/loginFalse");
+    res.render("loginFalse");
     return;
   }
   var match = await bcrypt.compare(password, user.password);
