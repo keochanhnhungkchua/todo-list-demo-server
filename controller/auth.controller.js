@@ -30,8 +30,16 @@ module.exports.postLogin = (req, res) =>{
     return;
  } 
 bcrypt.compare(password, user.password, function (err, res) {
-       if()
-        })
+  if(!res){
+    res.render("login",{
+      errors:[
+        'wrong password'
+      ],
+      values: req.body
+  });
+    return;
+  }
+        });
 
   // if(user.password !== password){
   //   res.render("login",{
