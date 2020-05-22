@@ -30,7 +30,7 @@ module.exports.postLogin = async(req, res) => {
       .find({ email })
       .assign({ wrongLoginCount: user.wrongLoginCount + 1 })
       .write();
-    console.log(user.wrongLoginCount );
+   
     res.render("login", {
         errors: ["wrong password"],
         values: req.body

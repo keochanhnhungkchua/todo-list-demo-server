@@ -31,26 +31,30 @@
       "name": "Rolado",
       "id": "iyb0O1t1L",
       "email": "demo@gmail.com",
-      "password": "$2b$10$Pbug69.D3bBzKZZNSmVxH.Ag2OrCB7nMnzhtSVI6ylycWexS1Pcp6"
+      "password": "$2b$10$Pbug69.D3bBzKZZNSmVxH.Ag2OrCB7nMnzhtSVI6ylycWexS1Pcp6",
+      "wrongLoginCount": 0
     },
     {
       "name": "donald trump",
       "id": "j5z06zo2a",
       "email": "demo2@gmail.com",
-      "password": "$2b$10$Pbug69.D3bBzKZZNSmVxH.Ag2OrCB7nMnzhtSVI6ylycWexS1Pcp6"
+      "password": "$2b$10$Pbug69.D3bBzKZZNSmVxH.Ag2OrCB7nMnzhtSVI6ylycWexS1Pcp6",
+      "wrongLoginCount": 0
     },
     {
       "name": "Messi",
       "id": "zGA45tPXd",
       "email": "demo3@gmail.com",
-      "password": "$2b$10$Pbug69.D3bBzKZZNSmVxH.Ag2OrCB7nMnzhtSVI6ylycWexS1Pcp6"
+      "password": "$2b$10$Pbug69.D3bBzKZZNSmVxH.Ag2OrCB7nMnzhtSVI6ylycWexS1Pcp6",
+      "wrongLoginCount": 0
     },
     {
       "name": "Admin",
       "id": "610lU0O8s",
       "email": "admin@gmail.com",
       "password": "$2b$10$Pbug69.D3bBzKZZNSmVxH.Ag2OrCB7nMnzhtSVI6ylycWexS1Pcp6",
-      "isAdmin": "true"
+      "isAdmin": "true",
+      "wrongLoginCount": 0
     }
   ],
   "transactions": [
@@ -94,12 +98,6 @@
       "userTransaction": "Rolado",
       "bookTransaction": "Solutions",
       "id": "LPpfQeMCF",
-      "isComplete": false
-    },
-    {
-      "userTransaction": "Rolado",
-      "bookTransaction": "demo",
-      "id": "lyPXRi4gg",
       "isComplete": false
     }
   ]
