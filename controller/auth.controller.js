@@ -1,8 +1,8 @@
 var db = require("../db");
 
-var md5 = require("md5");
+//var md5 = require("md5");
 
-
+const bcrypt = require('bcrypt');
 
 var user;
 
@@ -16,7 +16,7 @@ module.exports.login = (req, res) => {
 module.exports.postLogin = (req, res) =>{
  var email = req.body.email;
  var password = req.body.password;
- var hashedPassword = md5(password); 
+ //var hashedPassword = md5(password); 
  user = db.get('users')
               .find({email})
               .value();
@@ -30,7 +30,7 @@ module.exports.postLogin = (req, res) =>{
     return;
  } 
 
-  if(user.password !== hashedPassword){
+  if(user.password !== password){
     res.render("login",{
       errors:[
         'wrong password'

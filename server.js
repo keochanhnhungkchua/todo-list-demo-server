@@ -17,25 +17,9 @@ const authMiddleware =  require("./middleware/auth.middleware");
 
 const bcrypt = require('bcrypt')
 
-bcrypt.genSalt(10, function (err, salt) {
-    bcrypt.hash('B4c0/\/', salt, function (err, hash) {
+var hash ='$2b$10$Pbug69.D3bBzKZZNSmVxH.Ag2OrCB7nMnzhtSVI6ylycWexS1Pcp6';
+var pass='123123'
 
-        console.log(hash)
-
-        // To check a password  
-        bcrypt.compare('B4c0/\/', hash, function (err, res) {
-            // res == true
-            console.log('equal')
-            console.log(res)
-        })
-
-        bcrypt.compare('not_bacon', hash, function (err, res) {
-            // res == false
-            console.log('not equal')
-            console.log(res);
-        })
-    })
-})
 
 
 
