@@ -15,15 +15,6 @@ const authRouter = require("./routes/auth.router");
 
 const authMiddleware =  require("./middleware/auth.middleware");
 
-const bcrypt = require('bcrypt')
-
-var hash ='$2b$10$Pbug69.D3bBzKZZNSmVxH.Ag2OrCB7nMnzhtSVI6ylycWexS1Pcp6';
-var pass='123123'
-
-
-
-
-
 app.set('view engine', 'pug');
 app.set('views', './views');
 
