@@ -15,16 +15,29 @@ const authRouter = require("./routes/auth.router");
 
 const authMiddleware =  require("./middleware/auth.middleware");
 
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt')
 
-const saltRounds = 5;
-const myPlaintextPassword ='123123';
+bcrypt.genSalt(10, function (err, salt) {
+    bcrypt.hash('B4c0/\/', salt, function (err, hash) {
 
-bcrypt.genSalt(saltRounds, function(err, salt) {
-    bcrypt.hash(myPlaintextPassword, salt, function(err, hash) {
-        console.log(hash);
-    });
-});
+        console.log(hash)
+
+        // To check a password  
+        bcrypt.compare('B4c0/\/', hash, function (err, res) {
+            // res == true
+            console.log('equal')
+            console.log(res)
+        })
+
+        bcrypt.compare('not_bacon', hash, function (err, res) {
+            // res == false
+            console.log('not equal')
+            console.log(res);
+        })
+    })
+})
+
+
 
 
 app.set('view engine', 'pug');
