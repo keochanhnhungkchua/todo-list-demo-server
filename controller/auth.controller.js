@@ -2,6 +2,8 @@ var db = require("../db");
 
 var md5 = require("md5");
 
+
+
 var user;
 
 
@@ -53,6 +55,5 @@ var name= user.name
 var userTransaction = db.get('transactions')
                         .filter({userTransaction:name})
                         .value();  
-  console.log(userTransaction);
 res.render("userTransaction", {userTransaction});
 }

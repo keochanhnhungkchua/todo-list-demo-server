@@ -15,6 +15,17 @@ const authRouter = require("./routes/auth.router");
 
 const authMiddleware =  require("./middleware/auth.middleware");
 
+const bcrypt = require('bcrypt');
+
+const saltRounds = 5;
+const myPlaintextPassword ='123123';
+
+bcrypt.genSalt(saltRounds, function(err, salt) {
+    bcrypt.hash(myPlaintextPassword, salt, function(err, hash) {
+        console.log(hash);
+    });
+});
+
 
 app.set('view engine', 'pug');
 app.set('views', './views');
