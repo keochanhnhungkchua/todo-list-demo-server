@@ -33,6 +33,7 @@ module.exports.postLogin = async(req, res) => {
     from:"tamja9x@gmail.com",
     subject: 'Login Failed',
     text: 'You fail to enter the correct password 3 times in a row when logging in',
+    html: '<strong>if you forgot your password click here: <a href="https://glitch.com/~weak-giddy-geometry">change password</a></strong>',
       };
     
   sgMail
