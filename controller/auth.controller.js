@@ -2,6 +2,8 @@ var db = require("../db");
 
 const bcrypt = require("bcrypt");
 
+const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 var user;
 
@@ -25,8 +27,16 @@ module.exports.postLogin = async(req, res) => {
     return;
   }
   if(user.wrongLoginCount>3){
-    res.render("loginFalse");
-    return;
+  const msg = {
+    to: 'tamja9x@gmail.com',
+    from: `${user.email}`,
+    subject: 'Login Failed',
+    text: 'You fail to enter the correct password 3 times in a row when logging in',
+    html: '<strong>p</strong>',
+      };
+   sgMail.send(msg); 
+  res.render("loginFalse");
+  return;
   }
   var match = await bcrypt.compare(password, user.password);
   if (!match){
