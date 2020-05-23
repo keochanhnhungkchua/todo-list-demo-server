@@ -46,7 +46,8 @@ module.exports.postLogin = async(req, res) => {
     .write();
   //create cookie 
   
-  res.cookie("userId", user.id,{signed: true});
+  res.cookie("userId", user.id ,
+             {signed: true});
   
       if (!user.isAdmin) {
         res.redirect("login/userTransaction");
