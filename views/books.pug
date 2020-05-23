@@ -1,6 +1,8 @@
 extends index
 
 block headbar
+  ul.pagination
+    li.page-item
    .container
     .row
         each book in books
@@ -11,3 +13,4 @@ block headbar
                   h5.card-title= book.title
                   p.card-text=book.description
                   a.btn.btn-primary(href='/cart/add/'+book.id) Add to Cart
+                  
