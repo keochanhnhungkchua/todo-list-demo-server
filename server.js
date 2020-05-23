@@ -25,7 +25,7 @@ app.get("/" , (req, res)=> {
 });
 
 app.use("/users",authMiddleware.requireAuth , userRouter);
-app.use("/books",authMiddleware.requireAuth , bookRouter);
+app.use("/books", bookRouter);
 app.use("/transactions",authMiddleware.requireAuth , transactionRouter);
 app.use("/login", authRouter);
 
