@@ -1,7 +1,8 @@
 extends ../layout/commonLayout
 
 block content
-  h1.text-danger aI Love CoderX
+  h1
+    a.text-decoration-none.text-danger(href='/') I love coderX
   nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
     ul.navbar-nav.mr-auto
       li.nav-item.text-uppercase
@@ -14,6 +15,6 @@ block content
       .container
         br
         br
-        h1 Book Store
+        //h1 Book Store
         br
         a.btn.btn-primary(href='/login') Login
