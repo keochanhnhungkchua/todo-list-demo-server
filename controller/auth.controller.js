@@ -28,13 +28,24 @@ module.exports.postLogin = async(req, res) => {
   }
   if(user.wrongLoginCount>3){
   const msg = {
-    to: 'tamja9x@gmail.com',
-    from: `${user.email}`,
+    to: `${user.email}`,
+    //from: `${user.email}`,
+    from:"tamja9x@gmail.com",
     subject: 'Login Failed',
     text: 'You fail to enter the correct password 3 times in a row when logging in',
     html: '<strong>p</strong>',
       };
-   sgMail.send(msg); 
+    
+  sgMail
+  .send(msg)
+  .then(() => {}, error => {
+    console.error(error);
+ 
+    if (error.response) {
+      console.error(error.response.body)
+    }
+  });
+    
   res.render("loginFalse");
   return;
   }
