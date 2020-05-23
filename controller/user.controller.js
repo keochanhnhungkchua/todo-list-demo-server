@@ -29,6 +29,7 @@ module.exports.editUser = (req, res) => {
 //post
 module.exports.postCreateUser = (req, res) =>{ 
   req.body.id=shortid.generate();
+  req.body.avatar = req.file.path
   db.get("users")
     .push(req.body)
     .write();

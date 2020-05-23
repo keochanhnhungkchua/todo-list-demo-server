@@ -330,6 +330,11 @@
       "password": "$2b$10$Pbug69.D3bBzKZZNSmVxH.Ag2OrCB7nMnzhtSVI6ylycWexS1Pcp6",
       "isAdmin": "true",
       "wrongLoginCount": 0
+    },
+    {
+      "name": "vietnamese",
+      "id": "zf_k6FwPc",
+      "avatar": "public/uploads/4e725cd87eb24c8bea3a4a07109e309e"
     }
   ],
   "transactions": [
