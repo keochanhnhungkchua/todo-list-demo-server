@@ -1,13 +1,11 @@
-h1 Edit info user:
-  br
-form(action="/users/" +user.id+ "/edit-user" method="POST")
-  lable Edit name here:
-  |
-  |
-  input(type="text" name="name"  value=user.name)
-  |
-  |
-  button Update
-  h4 title :
-   span=user.name
-  
+extends index
+
+block headbar
+  form.mt-2(action="/users/" +user.id+ "/edit-user" method="POST")
+    lable(for="name") Edit name here:
+      input#name.form-control.ml-4(type="text" name="name"  value=user.name)
+    button.btn.btn-primary.m-4 Update
+    label.ml-4(for="avatar") Avatar:
+      input#avatar.form-control-file.ml-4(type="file" name="avatar")
+    h4.text-danger Title :
+     span=user.name

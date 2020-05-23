@@ -6,10 +6,9 @@ block headbar
     form(action="/users/create" method="POST")
       label.ml-4(for="name") Name:
       input#name.form-control.ml-4(type="text" name="name" placeholder="Enter user name...")
+      
       label.ml-4(for="avatar") Avatar:
       input#avatar.form-control-file.ml-4(type="file" name="avatar")
-      |
-      |
       button.btn.btn-primary.ml-2.mt-3 Add
       if errors
               each error in errors
@@ -22,7 +21,7 @@ block headbar
         th Avtar
         th User Id
         th User Name
-        th #
+        th Change
         each user,index in users
           tr 
             td=index+1
