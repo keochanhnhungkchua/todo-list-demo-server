@@ -3,7 +3,7 @@ extends index
 block headbar
   label Create new user:
     br
-    form(action="/users/create" method="POST")
+    form(action="/users/create" method="POST" enctype="multipart/form-data")
       label.ml-4(for="name") Name:
       input#name.form-control.ml-4(type="text" name="name" placeholder="Enter user name...")
       
