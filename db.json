@@ -303,9 +303,11 @@
   ],
   "users": [
     {
+      "name": "Rolado",
       "id": "iyb0O1t1L",
       "email": "khophukiendienthoaivip@gmail.com",
       "password": "$2b$10$Pbug69.D3bBzKZZNSmVxH.Ag2OrCB7nMnzhtSVI6ylycWexS1Pcp6",
+      "avatar": "uploads/4e725cd87eb24c8bea3a4a07109e309e",
       "wrongLoginCount": 4
     },
     {
@@ -313,7 +315,8 @@
       "id": "j5z06zo2a",
       "email": "demo2@gmail.com",
       "password": "$2b$10$Pbug69.D3bBzKZZNSmVxH.Ag2OrCB7nMnzhtSVI6ylycWexS1Pcp6",
-      "wrongLoginCount": 0
+      "wrongLoginCount": 0,
+      "avatar": "uploads/9ae9c5fcb35a075ed31814a878b30f61"
     },
     {
       "name": "Messi",
@@ -332,8 +335,13 @@
     },
     {
       "name": "vietnamese",
-      "id": "zrLzDbqzE",
-      "avatar": "uploads/0209370233eb292c08629b200210091f"
+      "id": "zf_k6FwPc",
+      "avatar": "uploads/4e725cd87eb24c8bea3a4a07109e309e"
+    },
+    {
+      "name": "chung le",
+      "id": "3llZQbwc2",
+      "avatar": "uploads/f0b1950b51d3f2d145768e4c227722a7"
     }
   ],
   "transactions": [

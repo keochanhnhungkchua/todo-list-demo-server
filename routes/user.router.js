@@ -25,6 +25,8 @@ router.post("/create",upload.single('avatar'),
             validate.postCreatUser,
             controller.postCreateUser);
 
-router.post("/:id/edit-user", controller.postEditUser);
+router.post("/:id/edit-user",
+            upload.single('avatar'),
+            controller.postEditUser);
 
 module.exports = router;
