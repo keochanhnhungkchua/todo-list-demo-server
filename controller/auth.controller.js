@@ -2,6 +2,7 @@ var db = require("../db");
 
 const bcrypt = require("bcrypt");
 
+
 var user;
 
 module.exports.login = (req, res) => {
