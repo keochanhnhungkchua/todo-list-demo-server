@@ -303,7 +303,6 @@
   ],
   "users": [
     {
-      "name": "Rolado",
       "id": "iyb0O1t1L",
       "email": "khophukiendienthoaivip@gmail.com",
       "password": "$2b$10$Pbug69.D3bBzKZZNSmVxH.Ag2OrCB7nMnzhtSVI6ylycWexS1Pcp6",
@@ -333,8 +332,8 @@
     },
     {
       "name": "vietnamese",
-      "id": "zf_k6FwPc",
-      "avatar": "public/uploads/4e725cd87eb24c8bea3a4a07109e309e"
+      "id": "zrLzDbqzE",
+      "avatar": "uploads/0209370233eb292c08629b200210091f"
     }
   ],
   "transactions": [
