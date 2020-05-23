@@ -18,14 +18,22 @@ block headbar
   br
   br
   table.table
-    
-  ul
-    each user in users
-      li=user.name
-       span
-         |
-         |
-         a(href="/users/" +user.id+ "/edit-user") Edit
-         |
-         |
-         a(href="/users/" +user.id+ "/delete") Delete
+        th Index
+        th Avtar
+        th User Id
+        th User Name
+        th #
+        each user,index in users
+          tr 
+            td=index+1
+            td=user.avatar
+            td=user.id
+            td=user.name
+            td=a
+              span
+               |
+               |
+               a(href="/users/" +user.id+ "/edit-user") Edit
+               |
+               |
+               a(href="/users/" +user.id+ "/delete") Delete
