@@ -5,8 +5,9 @@ const db = require("../db");
 module.exports.index = (req, res) => {
   var page = parseInt(req.query.page) || 1;//x
   var perPage=8;//n
-  var start=
-  res.render("books",{books:db.get("books").value().slice(0,8)});
+  var start = (page-1)*perPage;
+  var end = page*perPage;
+  res.render("books",{books:db.get("books").value().slice(start,end)});
 }
 
 module.exports.deleteBook = (req, res) =>{
