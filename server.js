@@ -1,8 +1,5 @@
-// server.js
-// where your node app starts
+require('dotenv').config();
 
-// we've started you off with Express (https://expressjs.com/)
-// but feel free to use whatever libraries or frameworks you'd like through `package.json`.
 const express = require("express");
 const app = express();
 const bodyParser = require('body-parser');
