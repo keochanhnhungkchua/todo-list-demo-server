@@ -1,5 +1,6 @@
 extends ../layout/commonLayout
 
 block content
-  p= user.name
+  if user
+    p= user.name
   h3.text-danger You fail to enter the correct password 3 times in a row when logging in please contact admin to unlock account
