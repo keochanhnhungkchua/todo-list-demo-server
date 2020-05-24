@@ -303,20 +303,12 @@
   ],
   "users": [
     {
-      "name": "Rolado",
-      "id": "iyb0O1t1L",
-      "email": "khophukiendienthoaivip@gmail.com",
-      "password": "$2b$10$Pbug69.D3bBzKZZNSmVxH.Ag2OrCB7nMnzhtSVI6ylycWexS1Pcp6",
-      "avatar": "uploads/4754c823dcc79f00bfeffe5e71978ae3",
-      "wrongLoginCount": 4
-    },
-    {
       "name": "donald trump",
       "id": "j5z06zo2a",
       "email": "demo2@gmail.com",
       "password": "$2b$10$Pbug69.D3bBzKZZNSmVxH.Ag2OrCB7nMnzhtSVI6ylycWexS1Pcp6",
       "wrongLoginCount": 0,
-      "avatar": "uploads/4b6409c7ace0ad76aaa73b9e3fa78025"
+      "avatar": "http://res.cloudinary.com/keochanhnhungkchua/image/upload/v1590290449/ksughb3qvfxd8pxkrex8.png"
     },
     {
       "name": "Messi",
@@ -334,24 +326,16 @@
       "wrongLoginCount": 0
     },
     {
-      "name": "Jesica",
-      "id": "6ZztPWyiu",
-      "avatar": "http://res.cloudinary.com/keochanhnhungkchua/image/upload/v1590287506/d7jx3lvusnlwxlh28ux0.jpg"
-    },
-    {
-      "name": "vietnamese",
-      "id": "kvBKuSRVJ"
-    },
-    {
-      "name": "Windy",
-      "id": "rCrfPqau0",
-      "avatar": "http://res.cloudinary.com/keochanhnhungkchua/image/upload/v1590287641/kqtq0qdk3bgsl4u032bm.png"
-    },
-    {
       "name": "Rob",
       "email": "demo3@gmail.com",
       "id": "aodaU6zjl",
       "avatar": "http://res.cloudinary.com/keochanhnhungkchua/image/upload/v1590288005/wunun9zs12y3daqcfgn8.jpg"
+    },
+    {
+      "name": "Windy",
+      "email": "Windyo@gmail.com",
+      "id": "J1WECCWhY",
+      "avatar": "http://res.cloudinary.com/keochanhnhungkchua/image/upload/v1590290531/z8fpl4r9nqqolnngx4kz.png"
     }
   ],
   "transactions": [

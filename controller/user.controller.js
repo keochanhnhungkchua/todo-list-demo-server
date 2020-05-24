@@ -59,28 +59,28 @@ module.exports.postCreateUser = (req, res) =>{
 }
 
 module.exports.postEditUser = (req, res) => {
-var id= req.params.id;
-  if (req.file)
-    {
-      cloudinary.uploader.upload(req.file.path, 
-                               { tags: "avatar" },
-                               function(err,result)
-                               {
-                                  req.body.avatar = result.url;
-                                  db.get("users")
-                                  .find({id})
-                                  .assign({name:req.body.name,
-                                           email:req.body.email,
-                                           avatar:req.body.avatar })
-                                  .write();
-                                res.redirect("/users");
-                                }}
-                                 }
+  var id = req.params.id
+  if (req.file){
+  cloudinary.uploader.upload(req.file.path, 
+                             {tags : "avatar"},
+                             function(err, result){
+       req.body.avatar= result.url;
+      db.get("users")
+        .find({id})
+        .assign({name:req.body.name,
+                 email:req.body.email,
+                 avatar:req.body.avatar })
+        .write();
+      res.redirect("/users");
+    })
+  }else{
     db.get("users")
-    .find({id})
-    .assign({name:req.body.name,
-             email:req.body.email,
-             avatar:req.body.avatar })
-    .write();
-  res.redirect("/users");
+        .find({id})
+        .assign({name:req.body.name,
+                 email:req.body.email,
+                 })
+        .write();
+      res.redirect("/users");
+  }
+  
 }
