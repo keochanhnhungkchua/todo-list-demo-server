@@ -6,6 +6,8 @@ block headbar
     form(action="/users/create" method="POST" enctype="multipart/form-data")
       label.ml-4(for="name") Name:
       input#name.form-control.ml-4(type="text" name="name" placeholder="Enter user name...")
+      label.ml-4(for="email") Email:
+      input#email.form-control.ml-4(type="text" name="email" placeholder="Enter email here...")
       label.ml-4(for="avatar") Avatar:
       input#avatar.form-control-file.ml-4(type="file" name="avatar")
       button.btn.btn-primary.ml-2.mt-3 Add
@@ -18,7 +20,7 @@ block headbar
   table.table
         th Index
         th Avtar
-        th User Id
+        th Email
         th User Name
         th Change
         each user,index in users
@@ -26,10 +28,10 @@ block headbar
             td=index+1
             td
               if user.avatar
-               img(src=user.avatar||"https://cdn.glitch.com/4d924758-ce91-4a18-abb2-d20d20a646c2%2F22.png",alt="Avatar" width="32" height="32")
+               img(src=user.avatar alt="Avatar" width="32")
               else
-               img(src="https://cdn.glitch.com/e3606d21-c6e3-4a31-ae27-7fbbf6be0c66%2Ffavicon.png" width="32")
-            td=user.id
+               img(src="https://cdn.glitch.com/e3606d21-c6e3-4a31-ae27-7fbbf6be0c66%2Ffavicon.png" alt="Avatar" width="32")
+            td=user.email
             td=user.name
             td
               span

@@ -45,15 +45,14 @@ module.exports.postCreateUser = (req, res) =>{
                                function(err,result)
                                {
                                   req.body.avatar = result.url;
-                                  db. db.get("users")
+                                  db.get("users")
                                     .push(req.body)
                                     .write();
                                   res.redirect("back");
                                 });
     } else {
       db.get("users")
-        .find({ id })
-        .assign({ name: req.body.name })
+        .push(req.body)
         .write();
       res.redirect("/users");
             }
