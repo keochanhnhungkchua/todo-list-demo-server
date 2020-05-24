@@ -6,9 +6,9 @@ const db = low(adapter);
 
 // Set some defaults
 db.defaults({ books: []})
-  .write()
+  .write();
 db.defaults({ users: []})
-  .write()
-db.defaults({ transactions: []})
-  .write()
+  .write();
+db.defaults({ transactions: [], sissions:[]})
+  .write();
 module.exports= db;

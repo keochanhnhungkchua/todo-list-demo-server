@@ -4,15 +4,15 @@ var db = require('../db')
 module.exports = function(req, res, next) {
   if(!req.signedCookies.sessionId){
     var sessionId = shortid.generate();
-    res.cookie("sessionId", sessionId ,{ 
+    res.cookie("sessions", sessionId ,{ 
       signed: true});
-    console.log(req.signedCookies.sessionId); 
-    db.get('sessionId')
+    console.log(sessionId); 
+    db.get('sessions')
       .push({id: sessionId})
       .write();
-  }
+  } 
   
-   db.get('sessionId').value();
-  //console.log(sessionId.id);
+   var na=db.get('sessions').value();
+  console.log(na); 
   next();
 }
