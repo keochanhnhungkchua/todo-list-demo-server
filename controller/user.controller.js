@@ -37,11 +37,26 @@ module.exports.editUser = (req, res) => {
 //post
 module.exports.postCreateUser = (req, res) =>{ 
   req.body.id=shortid.generate();
-  req.body.avatar = req.file.path;
-  db.get("users")
-    .push(req.body)
-    .write();
-  res.redirect("back");
+  
+    if (req.file) 
+    {
+    cloudinary.uploader.upload(req.file.path, 
+                               { tags: "avatar" },
+                               function(err,result)
+                               {
+                                  req.body.avatar = result.url;
+                                  db. db.get("users")
+                                    .push(req.body)
+                                    .write();
+                                  res.redirect("back");
+                                });
+    } else {
+      db.get("users")
+        .find({ id })
+        .assign({ name: req.body.name })
+        .write();
+      res.redirect("/users");
+            }
 }
 
 module.exports.postEditUser = (req, res) => {
