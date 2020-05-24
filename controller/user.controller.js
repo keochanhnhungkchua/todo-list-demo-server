@@ -60,7 +60,6 @@ module.exports.postCreateUser = (req, res) =>{
 
 module.exports.postEditUser = (req, res) => {
 var id= req.params.id;
-  req.body.avatar = req.file.path;
   if (req.file)
     {
       cloudinary.uploader.upload(req.file.path, 
@@ -75,9 +74,8 @@ var id= req.params.id;
                                            avatar:req.body.avatar })
                                   .write();
                                 res.redirect("/users");
-}
-      
-    }
+                                }}
+                                 }
     db.get("users")
     .find({id})
     .assign({name:req.body.name,
