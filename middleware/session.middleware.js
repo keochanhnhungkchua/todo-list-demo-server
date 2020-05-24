@@ -6,13 +6,9 @@ module.exports = function(req, res, next) {
     var sessionId = shortid.generate();
     res.cookie("sessions", sessionId ,{ 
       signed: true});
-    console.log(sessionId); 
     db.get('sessions')
       .push({id: sessionId})
-      .write();
+      .write();  
   } 
-  
-   var na=db.get('sessions').value();
-  console.log(na); 
   next();
 }
