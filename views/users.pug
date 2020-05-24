@@ -25,7 +25,10 @@ block headbar
           tr 
             td=index+1
             td
-             img(src=user.avatar, width="32")
+              if user.avtar
+               img(src=user.avatar, width="32")
+              else
+               img(src="https://cdn.glitch.com/e3606d21-c6e3-4a31-ae27-7fbbf6be0c66%2Ffavicon.png", width="32")
             td=user.id
             td=user.name
             td
