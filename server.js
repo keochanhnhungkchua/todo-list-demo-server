@@ -10,7 +10,9 @@ const bookRouter = require("./routes/book.router");
 const transactionRouter =  require("./routes/transaction.router");
 const authRouter = require("./routes/auth.router");
 
+
 const authMiddleware =  require("./middleware/auth.middleware");
+const sessionIdMiddleware = require('./middleware/session.middleware');
 
 app.set('view engine', 'pug');
 app.set('views', './views');
@@ -18,6 +20,7 @@ app.set('views', './views');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser(process.env.SECRET_COOKIES));
+app.use(sessionIdMiddleware);
 
 //home page
 app.get("/" , (req, res)=> {
