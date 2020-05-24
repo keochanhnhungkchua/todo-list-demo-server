@@ -9,6 +9,7 @@ const userRouter = require("./routes/user.router");
 const bookRouter = require("./routes/book.router");
 const transactionRouter =  require("./routes/transaction.router");
 const authRouter = require("./routes/auth.router");
+const cartRoute = require("./routes/cart/cart.route");
 
 
 const authMiddleware =  require("./middleware/auth.middleware");

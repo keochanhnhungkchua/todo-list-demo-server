@@ -13,6 +13,7 @@ block headbar
       a.page-link(href='#') 3
     li.page-item
       a.page-link(href='#') Next
+      
  .container
     .row
         each book in books
@@ -23,6 +24,7 @@ block headbar
                   h5.card-title= book.title
                   p.card-text=book.description
                   a.btn.btn-primary(href='/cart/add/'+book.id) Add to Cart
+                                   
  nav.m-5(aria-label='Page navigation example')
   ul.pagination.justify-content-end
     li.page-item
