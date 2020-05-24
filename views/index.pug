@@ -9,7 +9,10 @@ block content
         a.navbar-brand.nav-link(href="/books") Books
         a.navbar-brand.nav-link(href="/users") Users
         a.navbar-brand.nav-link(href="/transactions") Transactions
-        a.navbar-brand.nav-link(href="/cart") Cart
+        if quantity > 0
+            a.nav-item.nav-link(href='/cart') Cart(#{quantity})
+        else 
+            a.nav-item.nav-link(href='/cart') Cart
 
   
   block headbar

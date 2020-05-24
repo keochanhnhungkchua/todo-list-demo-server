@@ -13,8 +13,13 @@ module.exports.addToCart = (req, res ) => {
     return;
   }
   
+  var count = db.get('sessions')
+                .find({ id : sessionId})
+                .get('cart.' + bookId ,0)
+                .value();
   db.get('sessions')
-    .find({ sessionId : sessionId})
-    .set(cart. +)
-  
+    .find({ id : sessionId})
+    .set('cart.' + bookId ,count + 1)
+    .write();
+  res.redirect('/books');
 }
