@@ -29,7 +29,7 @@ module.exports.editUser = (req, res) => {
 //post
 module.exports.postCreateUser = (req, res) =>{ 
   req.body.id=shortid.generate();
-  req.body.avatar = req.file.path.split("/").slice(1).join('/');
+  req.body.avatar = req.file.path;
   db.get("users")
     .push(req.body)
     .write();
@@ -38,7 +38,7 @@ module.exports.postCreateUser = (req, res) =>{
 
 module.exports.postEditUser = (req, res) => {
 var id= req.params.id;
-  req.body.avatar = req.file.path.split("/").slice(1).join('/');
+  req.body.avatar = req.file.path;
   db.get("users")
     .find({id})
     .assign({name:req.body.name, avatar:req.body.avatar })
