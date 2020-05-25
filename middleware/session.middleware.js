@@ -11,10 +11,16 @@ module.exports = function(req, res, next) {
       .push({id: sessionId})
       .write();  
   } 
+  var data = db.get('sessions').value
+     data.map(session => {
+       if(session !== sessionId){
+         db.get
+       }
+     });
   //count number boook in cart
   var session = db.get('sessions')
-                  .find({id : sessionId})
+                  //.find({id : sessionId})
                   .value();
-    console.log(session.cart);
+    console.log(session);
   next();
 }
