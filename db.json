@@ -5,14 +5,14 @@
       "title": "Beer - Steamwhistle",
       "description": "nunc donec quis orci eget orci vehicula condimentum curabitur in libero ut massa volutpat convallis morbi odio odio",
       "image": "https://loremflickr.com/320/240/dog",
-      "quantity": 1
+      "quantity": 6
     },
     {
       "id": "f5cbedba-39bc-4f01-8e6f-e7d5f85f0354",
       "title": "Lamb - Whole Head Off,nz",
       "description": "ornare imperdiet sapien urna pretium nisl ut volutpat sapien arcu sed augue aliquam erat volutpat in",
       "image": "https://loremflickr.com/320/240/dog",
-      "quantity": 5
+      "quantity": 2
     },
     {
       "id": "711737fb-495a-4634-87dc-d9f106afcf8a",
@@ -462,13 +462,5 @@
       "bookId": "ff599e82-5a6a-48a1-ac9f-503fbf39e330"
     }
   ],
-  "sessions": [
-    {
-      "id": "_0yzYskrc",
-      "cart": {
-        "6722e4d4-22d0-44ad-bc79-624cde577d25": 6,
-        "f5cbedba-39bc-4f01-8e6f-e7d5f85f0354": 2
-      }
-    }
-  ]
+  "sessions": []
 }
