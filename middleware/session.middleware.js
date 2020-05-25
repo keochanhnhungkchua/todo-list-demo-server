@@ -22,9 +22,14 @@ module.exports = function(req, res, next) {
   //count number boook in cart
   var session = db.get('sessions')
                   .find({id : sessionId})
-                  .value()
+                  .value();
   //get values of ojbect and sum => show (set locals for "quantity" show(index>cart)
   res.locals.quantity = Object.values(session.cart).reduce( (a , b) => a + b);
-  
+  var book = Object.keys(session.cart).map( item => {
+    db.get("books")
+      .find({id : item})
+      .value();
+  });
+  console.log(book);
   next();
 }
