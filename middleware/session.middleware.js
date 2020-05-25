@@ -25,8 +25,14 @@ module.exports = function(req, res, next) {
     .get("sessions")
     .find({ id: sessionId })
     .value();
-  //get values of ojbect and sum => show (set locals for "quantity" show(index>cart)
   var items = session.cart;
+  
+  //get values of ojbect and sum => show (set locals for "quantity" show(index>cart)
+  
+   if(items.cart)
+   {
+    // console.log(session);
+  console.log(items);
   res.locals.quantity = Object.values(items).reduce((a, b) => a + b);
 //get data for cart page
   var books = Object.keys(items).map(key => {
@@ -37,6 +43,8 @@ module.exports = function(req, res, next) {
     book.quantity = items[key]; //insert quantity 
     return book;
   });
-  res.locals.books = books;
+      res.locals.books = books;
+   }
+ 
   next();
 };

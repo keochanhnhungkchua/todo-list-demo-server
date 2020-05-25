@@ -30,24 +30,26 @@ module.exports.addToCart = (req, res ) => {
 }
 
 module.exports.hire = (req, res ) =>{
+  
    var books = res.locals.books;
-  for (var book of books) {
-    for (var i = 1; i <= book.quantity; i++) {
-      var transaction = {};
-      transaction.id = shortid.generate();
-      transaction.isComplete = false;
-      transaction.name = `${res.locals.user.name}_${book.title}_${i}`;
-      transaction.userId = res.locals.user.id;
-      transaction.bookId = book.id;
-      db.get("transactions")
-        .push(transaction)
-        .write();
-    }
-  }
-  var sessionId = req.signedCookies.sessionId;
-  db.get("sessions")
-  .find({id: sessionId})
-     .unset('cart')
-    .write();
-  res.redirect("/transactions");
+  console.log(books)
+  // for (var book of books) {
+  //   for (var i = 1; i <= book.quantity; i++) {
+  //     var transaction = {};
+  //     transaction.id = shortid.generate();
+  //     transaction.isComplete = false;
+  //     transaction.name = `${res.locals.user.name}_${book.title}_${i}`;
+  //     transaction.userId = res.locals.user.id;
+  //     transaction.bookId = book.id;
+  //     db.get("transactions")
+  //       .push(transaction)
+  //       .write();
+  //   }
+  // }
+  // var sessionId = req.signedCookies.sessionId;
+  // db.get("sessions")
+  // .find({id: sessionId})
+  //    .unset('cart')
+  //   .write();
+  // res.redirect("/transactions");
 }
