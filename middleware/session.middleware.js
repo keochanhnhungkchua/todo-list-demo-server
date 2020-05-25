@@ -13,18 +13,17 @@ module.exports = function(req, res, next) {
   } 
   var data = db.get('sessions').value();
      data.map(item => {
-       
        if(item.id !== sessionId){
          db.get('sessions')
-           .remove({id : session.id})
-           .write();
+           .remove({id : item.id})
+          .write();
        }
      });
   //count number boook in cart
   var session = db.get('sessions')
-                  //.find({id : sessionId})
+                  .find({id : sessionId})
                   .value();
-    console.log(session);
+    console.log(session.cart);
   
   next();
 }
