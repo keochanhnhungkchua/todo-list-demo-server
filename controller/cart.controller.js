@@ -32,7 +32,7 @@ module.exports.addToCart = (req, res ) => {
 module.exports.hire = (req, res ) =>{
   
    var books = res.locals.books;
-  console.log(books)
+  //console.log(books)
   // for (var book of books) {
   //   for (var i = 1; i <= book.quantity; i++) {
   //     var transaction = {};

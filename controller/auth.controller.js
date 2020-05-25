@@ -11,6 +11,7 @@ module.exports.login = (req, res) => {
   res.render("login");
 };
 
+//check mail and password
 module.exports.postLogin = async(req, res) => {
   var email = req.body.email;
   var password = req.body.password;
@@ -70,7 +71,8 @@ module.exports.postLogin = async(req, res) => {
   
   res.cookie("userId", user.id ,
              {signed: true});
-  res.locals.user = user;
+  res.locals.users = user.name;
+  console.log(user.name)
       if (!user.isAdmin) {
         res.redirect("login/userTransaction");
         return;
@@ -83,7 +85,7 @@ module.exports.postLogin = async(req, res) => {
 
 //userTransaction when login
 module.exports.userTransaction = (req, res) => {
-  var name = user.name;
+  var name= res.locals.users;
   var userTransaction = db
     .get("transactions")
     .filter({ userTransaction: name })
