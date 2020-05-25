@@ -16,7 +16,7 @@ module.exports = function(req, res, next) {
        if(item.id !== sessionId){
          db.get('sessions')
            .remove({id : item.id})
-          .write();
+           .write();
        }
      });
   //count number boook in cart
@@ -26,6 +26,7 @@ module.exports = function(req, res, next) {
   //get values of ojbect and sum => show (set locals for "quantity" show(index>cart)
   res.locals.quantity = Object.values(session.cart).reduce( (a , b) => a + b);
   var book = Object.keys(session.cart).map( item => {
+   console.log(item);
     db.get("books")
       .find({id : item})
       .value();
