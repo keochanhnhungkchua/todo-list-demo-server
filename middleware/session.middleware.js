@@ -7,20 +7,24 @@ module.exports = function(req, res, next) {
     var sessionId = shortid.generate();
     res.cookie("sessionId", sessionId ,{ 
       signed: true});
-    db.get('sessions')
+    db.get("sessions")
       .push({id: sessionId})
       .write();  
   } 
-  var data = db.get('sessions').value
-     data.map(session => {
-       if(session !== sessionId){
-         db.get
-       }
-     });
+  var data = db.get('sessions').value();
+  //console.log(data);
+     // data.map(session => {
+     //   if(session !== sessionId){
+     //     db.get('sessions')
+     //       .remove({id : session.id})
+     //       .write();
+     //   }
+     // });
   //count number boook in cart
   var session = db.get('sessions')
                   //.find({id : sessionId})
                   .value();
-    console.log(session);
+   // console.log(sessionId);
+  
   next();
 }
