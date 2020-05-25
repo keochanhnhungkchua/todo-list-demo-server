@@ -20,7 +20,9 @@ app.set('views', './views');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(cookieParser(process.env.SECRET_COOKIES));
+//app.use(cookieParser(process.env.SECRET_COOKIES));
+app.use(cookieParser("process.env.SECRET_COOKIES"));
+
 app.use(sessionIdMiddleware);
 
 //home page
