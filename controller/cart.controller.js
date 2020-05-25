@@ -12,7 +12,6 @@ module.exports.addToCart = (req, res ) => {
     res.redirect('/books');
     return;
   }
-  
   var count = db.get('sessions')
                 .find({ id : sessionId})
                 .get('cart.' + bookId ,0)
