@@ -16,9 +16,9 @@ block headbar
               th Quantity
             each book in books  
               tr  
-                  if book.coverUrl
+                  if book.image
                     td.d-flex.justify-content-center.align-items-center
-                      img(src=book.coverUrl, width='64')
+                      img(src=book.image, width='64')
                   td=book.title
                   td=book.quantity
           
