@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-var user;
+
 
 module.exports.login = (req, res) => {
   res.render("login");
@@ -15,7 +15,7 @@ module.exports.postLogin = async(req, res) => {
   var email = req.body.email;
   var password = req.body.password;
   
-  user = db
+  var user = db
     .get("users")
     .find({ email })
     .value();
@@ -70,7 +70,7 @@ module.exports.postLogin = async(req, res) => {
   
   res.cookie("userId", user.id ,
              {signed: true});
-  
+  res.locals.user = user;
       if (!user.isAdmin) {
         res.redirect("login/userTransaction");
         return;

@@ -34,7 +34,7 @@ app.get("/" , (req, res)=> {
 
 app.use("/users",authMiddleware.isAdmin,authMiddleware.requireAuth , userRouter);
 app.use("/books", bookRouter);
-app.use("/transactions",authMiddleware.requireAuth , transactionRouter);
+app.use("/transactions",authMiddleware.isAdmin, authMiddleware.requireAuth , transactionRouter);
 app.use("/login", authRouter);
 app.use("/cart", cartRouter);
 
