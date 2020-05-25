@@ -9,6 +9,8 @@ db.defaults({ books: []})
   .write();
 db.defaults({ users: []})
   .write();
-db.defaults({ transactions: [], sissions:[]})
+db.defaults({ transactions: []})
+  .write();
+db.defaults({ sessions: []})
   .write();
 module.exports= db;

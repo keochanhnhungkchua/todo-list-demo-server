@@ -1,12 +1,13 @@
 const shortid= require("shortid");
 const db = require("../db");
 
+
 module.exports.index = function(req, res) {
   res.render("cart");
 };
 module.exports.addToCart = (req, res ) => {
   var bookId = req.params.bookId;
-  var sessionId = req.signedCookies.sessionId;
+  var sessionId = req.signedCookies;
   console.log(sessionId);
   console.log(bookId);
 

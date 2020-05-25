@@ -24,7 +24,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 //app.use(cookieParser(process.env.SECRET_COOKIES));
 app.use(cookieParser("process.env.SECRET_COOKIES"));
-app.use(express.static("public"));
 
 app.use(sessionIdMiddleware);
 
