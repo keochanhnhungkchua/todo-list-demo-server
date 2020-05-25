@@ -11,5 +11,10 @@ module.exports = function(req, res, next) {
       .push({id: sessionId})
       .write();  
   } 
+  //count number boook in cart
+  var session = db.get('sessions')
+                  .find({id : sessionId})
+                  .value();
+    console.log(session.cart);
   next();
 }
