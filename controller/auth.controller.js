@@ -71,7 +71,7 @@ module.exports.postLogin = async(req, res) => {
   
   res.cookie("userId", user.id ,
              {signed: true});
-  res.locals.users = user.name;
+  res.locals.userName = user.name;
   console.log(user.name)
       if (!user.isAdmin) {
         res.redirect("login/userTransaction");
@@ -85,7 +85,7 @@ module.exports.postLogin = async(req, res) => {
 
 //userTransaction when login
 module.exports.userTransaction = (req, res) => {
-  var name= res.locals.users;
+  var name= res.locals.userName;
   var userTransaction = db
     .get("transactions")
     .filter({ userTransaction: name })

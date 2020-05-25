@@ -25,7 +25,6 @@ module.exports = function(req, res, next) {
     .get("sessions")
     .find({ id: sessionId })
     .value();
-  console.log(session);
 
   //get values of ojbect and sum => show (set locals for "quantity" show(index>cart)
 if (session && session.cart){
