@@ -12,19 +12,19 @@ module.exports = function(req, res, next) {
       .write();  
   } 
   var data = db.get('sessions').value();
-  //console.log(data);
-     // data.map(session => {
-     //   if(session !== sessionId){
-     //     db.get('sessions')
-     //       .remove({id : session.id})
-     //       .write();
-     //   }
-     // });
+     data.map(item => {
+       
+       if(item.id !== sessionId){
+         db.get('sessions')
+           .remove({id : session.id})
+           .write();
+       }
+     });
   //count number boook in cart
   var session = db.get('sessions')
                   //.find({id : sessionId})
                   .value();
-   // console.log(sessionId);
+    console.log(session);
   
   next();
 }
