@@ -22,8 +22,7 @@ block headbar
                     td.d-flex.justify-content-center.align-items-center
                       img(src=book.image, width='64')
                   td=book.title
-                  each book in index
-                   td=book
+                  td=book.quantity
           
           a.btn.btn-primary(href='/cart/hire') Hire
   else

@@ -23,15 +23,18 @@ module.exports = function(req, res, next) {
   var session = db.get('sessions')
                   .find({id : sessionId})
                   .value();
-  console.log(session);
- //  //get values of ojbect and sum => show (set locals for "quantity" show(index>cart)
- // res.locals.quantity = Object.values(session.cart).reduce( (a , b) => a + b);
- //  var book = Object.keys(session.cart).map( item => {
- //   return db.get("books")
- //      .find({id : item})
- //      .value();
- //  });
- //  res.locals.books=book;
- //  res.locals.index=Object.values(session.cart);
+  //console.log(session);
+  //get values of ojbect and sum => show (set locals for "quantity" show(index>cart)
+ res.locals.quantity = Object.values(session.cart)
+                              .reduce( (a , b) => a + b);
+  var items = session.cart;
+  var books = Object.keys(session.cart).map( key => {
+   var book = db.get("books")
+                .find({id : key})
+                .value();
+       book.quantity = items[key];
+    return book
+  });
+  res.locals.books=books;
   next();
 }
