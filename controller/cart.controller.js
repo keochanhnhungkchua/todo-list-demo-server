@@ -28,6 +28,7 @@ module.exports.hire = (req, res ) =>{
   var user = res.locals.user;// middleware/auth.middleware
   var session = res.locals.session;// middleware/session.middleware
   console.log(session);
+  console.log('++++++++');
   var userId = db.get('transactions')
      .find({userId : user.id})
      .value(); 
