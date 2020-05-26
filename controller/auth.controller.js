@@ -11,7 +11,7 @@ module.exports.login = (req, res) => {
   res.render("login");
 };
 
-//check mail and password
+//check mail
 module.exports.postLogin = async(req, res) => {
   var email = req.body.email;
   var password = req.body.password;
@@ -27,6 +27,7 @@ module.exports.postLogin = async(req, res) => {
     });
     return;
   }
+  //check wrong login
   if(user.wrongLoginCount>3){
   const msg = {
     to: `${user.email}`,
@@ -50,6 +51,7 @@ module.exports.postLogin = async(req, res) => {
   res.render("loginFalse");
   return;
   }
+  //check pass
   var match = await bcrypt.compare(password, user.password);
   if (!match){
     db.get("users")
@@ -71,9 +73,10 @@ module.exports.postLogin = async(req, res) => {
   
   res.cookie("userId", user.id ,
              {signed: true});
-  res.locals.userName = user.name;
+  res.locals.user = user;
+  console.log(user);
       if (!user.isAdmin) {
-        res.redirect("login/userTransaction");
+        res.redirect("transactions");
         return;
       } else {
         res.redirect("/");

@@ -11,12 +11,12 @@ module.exports.requireAuth = (req, res, next) => {
      res.redirect('/login');
     return ;
   }
-  res.locals.isAdmin = user.isAdmin;
   next();
 }
 
 module.exports.isAdmin = function(req, res, next) {
-  if (!res.locals.isAdmin) {
+  var user = res.locals.user;
+  if (!user.isAdmin) {
     //res.send("NO PERMISSION!");
     res.redirect('/books');
     return;
