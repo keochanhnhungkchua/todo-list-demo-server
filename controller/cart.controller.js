@@ -31,16 +31,13 @@ module.exports.hire = (req, res,next ) =>{
     .get("sessions")
     .find({ id: sessionId })
     .value();
-   console.log(user)
-  data.userId= user.id
-   console.log(data);
-  // var userId = db.get('transactions')
-  //    .find({userId : user.id})
-  //    .value(); 
-  // if(!userId){
-  //  data.id = user.id;
-  //  console.log(data);
-//    transaction.books = session.cart;
+
+  var userId = db.get('transactions')
+     .find({userId : user.id})
+     .value(); 
+  if(!userId){
+  var transaction = {};
+    transaction.id = ;
     // db.get('transactions')
     //   .push(transaction)
     //    .write();
@@ -52,7 +49,7 @@ module.exports.hire = (req, res,next ) =>{
     //    .unset('cart')
     //   .write();
     // res.redirect("/transactions"); 
-  //}
+  }
   //     db.get("transactions")
   //       .push(transaction)
   //       .write();
