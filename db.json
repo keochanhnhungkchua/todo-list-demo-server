@@ -19,7 +19,7 @@
       "title": "Olives - Black, Pitted",
       "description": "in hac habitasse platea dictumst etiam faucibus cursus urna ut tellus nulla ut erat id",
       "image": "https://loremflickr.com/320/240/dog",
-      "quantity": 1
+      "quantity": 2
     },
     {
       "id": "38c2c516-3494-41b7-bf4a-6a67dcf77d04",
@@ -350,9 +350,18 @@
       "id": "2tfldX9pe",
       "cart": {
         "6722e4d4-22d0-44ad-bc79-624cde577d25": 2,
-        "711737fb-495a-4634-87dc-d9f106afcf8a": 1,
+        "711737fb-495a-4634-87dc-d9f106afcf8a": 2,
         "f5cbedba-39bc-4f01-8e6f-e7d5f85f0354": 1
       }
+    },
+    {
+      "id": "2tfldX9pe"
+    },
+    {
+      "id": "2tfldX9pe"
+    },
+    {
+      "id": "2tfldX9pe"
     },
     {
       "id": "2tfldX9pe"
