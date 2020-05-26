@@ -28,10 +28,10 @@ module.exports.addToCart = (req, res ) => {
 }
 
 module.exports.hire = (req, res ) =>{
-  
+  console.log(res.locals.user.id);
    var books = res.locals.books;
   var   id = shortid.generate();
-  console.log(books);
+ 
   //     db.get("transactions")
   //       .push(transaction)
   //       .write();

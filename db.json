@@ -5,7 +5,7 @@
       "title": "Beer - Steamwhistle",
       "description": "nunc donec quis orci eget orci vehicula condimentum curabitur in libero ut massa volutpat convallis morbi odio odio",
       "image": "https://loremflickr.com/320/240/dog",
-      "quantity": 1
+      "quantity": 3
     },
     {
       "id": "f5cbedba-39bc-4f01-8e6f-e7d5f85f0354",
@@ -328,7 +328,7 @@
       "id": "610lU0O8s",
       "email": "admin@gmail.com",
       "password": "$2b$10$Pbug69.D3bBzKZZNSmVxH.Ag2OrCB7nMnzhtSVI6ylycWexS1Pcp6",
-      "isAdmin": "true",
+      "isAdmin": true,
       "wrongLoginCount": 0
     },
     {
@@ -349,10 +349,214 @@
     {
       "id": "WoJHHk1Xe",
       "cart": {
-        "6722e4d4-22d0-44ad-bc79-624cde577d25": 1,
+        "6722e4d4-22d0-44ad-bc79-624cde577d25": 3,
         "f5cbedba-39bc-4f01-8e6f-e7d5f85f0354": 1,
         "711737fb-495a-4634-87dc-d9f106afcf8a": 1
       }
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
     },
     {
       "id": "WoJHHk1Xe"
