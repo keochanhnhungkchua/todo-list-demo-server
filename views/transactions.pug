@@ -18,10 +18,8 @@ block headbar
             each transaction, index in transactions  
               tr  
                   td=index +1
-                  if transaction.id
-                    td.d-flex.justify-content-center.align-items-center
-                      img(src=transaction.image, width='64')
-                  td=transaction.title
-                  td=transaction.quantity
+                  td=transaction.id
+                  td=transaction.userId
+                  td=transaction.book
   else
     .alert.text-center.alert-primary Nothing
