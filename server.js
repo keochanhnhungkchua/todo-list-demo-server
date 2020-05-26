@@ -32,7 +32,7 @@ app.get("/" , (req, res)=> {
   res.render("index");
 });
 
-app.use("/users",authMiddleware.isAdmin,authMiddleware.requireAuth , userRouter);
+app.use("/users",authMiddleware.requireAuth,authMiddleware.isAdmin , userRouter);
 app.use("/books", bookRouter);
 app.use("/transactions",authMiddleware.requireAuth , transactionRouter);
 app.use("/login", authRouter);

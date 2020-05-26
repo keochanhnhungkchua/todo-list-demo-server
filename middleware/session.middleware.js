@@ -1,4 +1,6 @@
 var shortid = require("shortid");
+
+const authMiddleware =  require("../middleware/auth.middleware");
 var db = require("../db");
 
 module.exports = function(req, res, next) {
