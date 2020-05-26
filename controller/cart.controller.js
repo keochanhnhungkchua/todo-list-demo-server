@@ -31,9 +31,12 @@ module.exports.hire = (req, res,next ) =>{
     .get("sessions")
     .find({ id: sessionId })
     .value();
-  var userId = db.get('transactions')
-     .find({userId : user.id})
-     .value(); 
+   console.log(user)
+  data.userId= user.id
+   console.log(data);
+  // var userId = db.get('transactions')
+  //    .find({userId : user.id})
+  //    .value(); 
   // if(!userId){
   //  data.id = user.id;
   //  console.log(data);
