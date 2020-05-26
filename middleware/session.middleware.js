@@ -5,17 +5,22 @@ var db = require("../db");
 
 module.exports = function(req, res, next) {
   var sessionId = req.signedCookies.sessionId;
-  if (!sessionId) {
+  console.log(sessionId);
+  if (!sessionId) 
+  {
     var sessionId = shortid.generate();
     res.cookie("sessionId", sessionId, {
       signed: true
     });
+    
     db.get("sessions")
       .push({ id: sessionId })
       .write();
   }
+  //db.get('sessions').push({id : sessionId}).write();
   var data = db.get("sessions").value();
-  data.map(item => {
+  console.log(data)
+    data.map(item => {
     if (item.id !== sessionId) {
       db.get("sessions")
         .remove({ id: item.id })

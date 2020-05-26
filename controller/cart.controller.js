@@ -8,9 +8,7 @@ module.exports.index = function(req, res) {
 module.exports.addToCart = (req, res ) => {
   var bookId = req.params.bookId;
   var sessionId = req.signedCookies.sessionId;
-  var data = db.get('sessions')
-  .find({ id : sessionId})
-  .value();
+  
   if(!sessionId){
     res.redirect('/books');
     return;
