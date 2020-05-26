@@ -36,20 +36,22 @@ module.exports.hire = (req, res ) =>{
      .value(); 
   var transaction = db.get('transactions')
                       .value();
+
   if(!userId){
     transaction.id = id;
     transaction.userId = user.id;
     transaction.transactionBooks = books;
-    db.get('transactions')
-      .push(transaction)
-      .write();
     console.log(transaction)
-    var sessionId = req.signedCookies.sessionId;
-    db.get("sessions")
-    .find({id: sessionId})
-       .unset('cart')
+    db.get('transactions')
+      .push({transaction:transaction})
       .write();
-    res.redirect("/transactions"); 
+    //console.log(transaction)
+    // var sessionId = req.signedCookies.sessionId;
+    // db.get("sessions")
+    // .find({id: sessionId})
+    //    .unset('cart')
+    //   .write();
+    // res.redirect("/transactions"); 
   }
   //     db.get("transactions")
   //       .push(transaction)
