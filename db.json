@@ -358,15 +358,10 @@
         "711737fb-495a-4634-87dc-d9f106afcf8a": 1,
         "f5cbedba-39bc-4f01-8e6f-e7d5f85f0354": 3
       }
+    },
+    {
+      "id": "j5z06zo2a"
     }
   ],
-  "sessions": [
-    {
-      "id": "0pklk2s_z7",
-      "cart": {
-        "711737fb-495a-4634-87dc-d9f106afcf8a": 1,
-        "f5cbedba-39bc-4f01-8e6f-e7d5f85f0354": 3
-      }
-    }
-  ]
+  "sessions": []
 }

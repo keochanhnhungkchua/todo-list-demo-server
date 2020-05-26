@@ -39,8 +39,10 @@ module.exports = function(req, res, next) {
       book.quantity = items[key]; //insert quantity
       return book;
     });
+    
     res.locals.books = books;
     res.locals.session = session;
   }
+    console.log(db.get('sessions').value());
   next();
 };

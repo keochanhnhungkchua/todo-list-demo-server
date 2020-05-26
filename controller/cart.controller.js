@@ -27,8 +27,8 @@ module.exports.addToCart = (req, res ) => {
 }
 
 module.exports.hire = (req, res ) =>{
-  var user = res.locals.user;// middleware/auth.middleware.js-15
-  var session = res.locals.session;// middleware/session.middleware.js - 43
+  var user = res.locals.user;// middleware/auth.middleware
+  var session = res.locals.session;// middleware/session.middleware
   var userId = db.get('transactions')
      .find({userId : user.id})
      .value(); 
@@ -36,9 +36,7 @@ module.exports.hire = (req, res ) =>{
   if(!userId){
     var transaction ={};
     transaction.id = user.id;
-    transaction.books = session.cart;
-    console.log(session);
-    console.log('------')
+//    transaction.books = session.cart;
     db.get('transactions')
       .push(transaction)
        .write();
