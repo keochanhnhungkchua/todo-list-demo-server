@@ -23,26 +23,26 @@ module.exports.addToCart = (req, res ) => {
     .find({ id : sessionId})
     .set('cart.' + bookId ,count + 1)
     .write();
-console.log(db.get('sessions').value());
   res.redirect('/books');
 }
 
 module.exports.hire = (req, res ) =>{
   var user = res.locals.user;// middleware/auth.middleware.js-15
-  var books = res.locals.books;// middleware/session.middleware.js - 47
+  var session = res.locals.session;// middleware/session.middleware.js - 43
   var userId = db.get('transactions')
      .find({userId : user.id})
      .value(); 
-  console.log(books);
+  
   if(!userId){
     var transaction ={};
     transaction.id = user.id;
-    transaction.bookId = books.id;
-    transaction.quantity= books.quantity;
-   // console.log(transaction)
-    // db.get('transactions')
-    //   .push(transaction)
-    //   .write();
+    transaction.books = session.cart;
+    console.log(session);
+    console.log('------')
+    db.get('transactions')
+      .push(transaction)
+       .write();
+    console.log(db.get('transactions').value());
     //console.log(transaction)
     // var sessionId = req.signedCookies.sessionId;
     // db.get("sessions")
