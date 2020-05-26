@@ -28,10 +28,16 @@ module.exports.addToCart = (req, res ) => {
 }
 
 module.exports.hire = (req, res ) =>{
-  console.log(res.locals.user.id);
-   var books = res.locals.books;
+  var user = res.locals.user;
+  var books = res.locals.books;
   var   id = shortid.generate();
- 
+  var userId = db.get('transactions')
+     .find({userId : user.id})
+     .value(); 
+  if(!userId){
+    transactions.userId = userId;
+    
+  }
   //     db.get("transactions")
   //       .push(transaction)
   //       .write();
