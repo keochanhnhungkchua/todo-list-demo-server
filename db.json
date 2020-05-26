@@ -5,7 +5,7 @@
       "title": "Beer - Steamwhistle",
       "description": "nunc donec quis orci eget orci vehicula condimentum curabitur in libero ut massa volutpat convallis morbi odio odio",
       "image": "https://loremflickr.com/320/240/dog",
-      "quantity": 2
+      "quantity": 1
     },
     {
       "id": "f5cbedba-39bc-4f01-8e6f-e7d5f85f0354",
@@ -334,45 +334,31 @@
     },
     {
       "name": "Rob",
-      "email": "demo3@gmail.com",
+      "email": "demo@gmail.com",
       "id": "aodaU6zjl",
-      "avatar": "http://res.cloudinary.com/keochanhnhungkchua/image/upload/v1590288005/wunun9zs12y3daqcfgn8.jpg"
-    },
-    {
-      "name": "Windy",
-      "email": "Windyo@gmail.com",
-      "id": "J1WECCWhY",
-      "avatar": "http://res.cloudinary.com/keochanhnhungkchua/image/upload/v1590290531/z8fpl4r9nqqolnngx4kz.png"
+      "avatar": "http://res.cloudinary.com/keochanhnhungkchua/image/upload/v1590288005/wunun9zs12y3daqcfgn8.jpg",
+      "password": "$2b$10$Pbug69.D3bBzKZZNSmVxH.Ag2OrCB7nMnzhtSVI6ylycWexS1Pcp6",
+      "wrongLoginCount": 0
     }
   ],
   "transactions": [
     {
-      "id": "j5z06zo2a",
-      "books": {
-        "711737fb-495a-4634-87dc-d9f106afcf8a": 1,
-        "f5cbedba-39bc-4f01-8e6f-e7d5f85f0354": 3
-      }
-    },
-    {
-      "id": "j5z06zo2a",
-      "books": {
-        "711737fb-495a-4634-87dc-d9f106afcf8a": 1,
-        "f5cbedba-39bc-4f01-8e6f-e7d5f85f0354": 3
-      }
-    },
-    {
-      "id": "j5z06zo2a"
-    }
-  ],
-  "sessions": [
-    {
-      "id": "5ethCNvg8",
-      "cart": {
+      "id": "YvB8PATEv",
+      "userId": "j5z06zo2a",
+      "book": {
         "711737fb-495a-4634-87dc-d9f106afcf8a": 1,
         "f5cbedba-39bc-4f01-8e6f-e7d5f85f0354": 1,
         "38c2c516-3494-41b7-bf4a-6a67dcf77d04": 1,
         "ff599e82-5a6a-48a1-ac9f-503fbf39e330": 1,
         "6722e4d4-22d0-44ad-bc79-624cde577d25": 1
+      }
+    }
+  ],
+  "sessions": [
+    {
+      "id": "ZaxW1xclr",
+      "cart": {
+        "711737fb-495a-4634-87dc-d9f106afcf8a": 1
       }
     }
   ]

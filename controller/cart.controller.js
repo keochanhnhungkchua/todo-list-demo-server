@@ -27,10 +27,9 @@ module.exports.addToCart = (req, res ) => {
 module.exports.hire = (req, res) =>{
   var user = res.locals.user;// middleware/auth.middleware
   var sessionId = req.signedCookies.sessionId;
-  var data = db
-    .get("sessions")
-    .find({ id: sessionId })
-    .value();
+  var data =db.get("sessions")
+              .find({ id: sessionId })
+              .value();
 
   var userId = db.get('transactions')
      .find({userId : user.id})
@@ -40,17 +39,15 @@ module.exports.hire = (req, res) =>{
     transaction.id = shortid.generate();
     transaction.userId =  user.id;
     transaction.book = data.cart;
-    // db.get('transactions')
-    //   .push(transaction)
-    //    .write();
-    // console.log(db.get('transactions').value());
-    //console.log(transaction)
-    // var sessionId = req.signedCookies.sessionId;
-    // db.get("sessions")
-    // .find({id: sessionId})
-    //    .unset('cart')
-    //   .write();
-    // res.redirect("/transactions"); 
+    db.get('transactions')
+      .push(transaction)
+       .write();
+    //emty 
+    db.get("sessions")
+    .find({id: sessionId})
+       .unset('cart')
+      .write();
+    res.redirect("/transactions"); 
   }
   //     db.get("transactions")
   //       .push(transaction)

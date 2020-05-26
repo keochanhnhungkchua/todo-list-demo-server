@@ -15,15 +15,14 @@ module.exports = function(req, res, next) {
       .push({ id: sessionId })
       .write();
   }
-//console.log(db.get('sessions').value()); 
-  // var data = db.get("sessions").value();
-  //   data.map(item => {
-  //   if (item.id !== sessionId) {
-  //     db.get("sessions")
-  //       .remove({ id: item.id })
-  //       .write();
-  //   }
-  // });
+  var data = db.get("sessions").value();
+    data.map(item => {
+    if (item.id !== sessionId) {
+      db.get("sessions")
+        .remove({ id: item.id })
+        .write();
+    }
+  });
   //count number boook in cart
   var session = db
     .get("sessions")
