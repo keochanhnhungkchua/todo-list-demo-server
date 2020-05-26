@@ -27,18 +27,19 @@ module.exports.addToCart = (req, res ) => {
 module.exports.hire = (req, res ) =>{
   var user = res.locals.user;// middleware/auth.middleware
   var session = res.locals.session;// middleware/session.middleware
+  console.log(session);
   var userId = db.get('transactions')
      .find({userId : user.id})
      .value(); 
   
   if(!userId){
-    var transaction ={};
-    transaction.id = user.id;
+   session.id = user.id;
+    console.log(session);
 //    transaction.books = session.cart;
-    db.get('transactions')
-      .push(transaction)
-       .write();
-    console.log(db.get('transactions').value());
+    // db.get('transactions')
+    //   .push(transaction)
+    //    .write();
+    // console.log(db.get('transactions').value());
     //console.log(transaction)
     // var sessionId = req.signedCookies.sessionId;
     // db.get("sessions")

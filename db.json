@@ -12,7 +12,7 @@
       "title": "Lamb - Whole Head Off,nz",
       "description": "ornare imperdiet sapien urna pretium nisl ut volutpat sapien arcu sed augue aliquam erat volutpat in",
       "image": "https://loremflickr.com/320/240/dog",
-      "quantity": 3
+      "quantity": 2
     },
     {
       "id": "711737fb-495a-4634-87dc-d9f106afcf8a",
@@ -45,7 +45,8 @@
       "id": "8da989d7-c5c5-4471-8e0a-f2e0972c9ef1",
       "title": "Crab - Claws, 26 - 30",
       "description": "amet nunc viverra dapibus nulla suscipit ligula in lacus curabitur at ipsum ac tellus semper interdum mauris",
-      "image": "https://loremflickr.com/320/240/dog"
+      "image": "https://loremflickr.com/320/240/dog",
+      "quantity": 1
     },
     {
       "id": "ff599e82-5a6a-48a1-ac9f-503fbf39e330",
@@ -365,7 +366,11 @@
   ],
   "sessions": [
     {
-      "id": "s4zOL5FQA"
+      "id": "WrH8Vs6xW",
+      "cart": {
+        "f5cbedba-39bc-4f01-8e6f-e7d5f85f0354": 2,
+        "8da989d7-c5c5-4471-8e0a-f2e0972c9ef1": 1
+      }
     }
   ]
 }
