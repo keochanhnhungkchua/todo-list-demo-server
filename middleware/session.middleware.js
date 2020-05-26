@@ -15,7 +15,7 @@ module.exports = function(req, res, next) {
       .push({ id: sessionId })
       .write();
   }
- console.log(db.get('sessions').value());
+ //console.log(db.get('sessions').value());
   // var data = db.get("sessions").value();
   //   data.map(item => {
   //   if (item.id !== sessionId) {
@@ -43,7 +43,6 @@ module.exports = function(req, res, next) {
     });
     
     res.locals.books = books;
-    res.locals.session = session;
   }
   next();
 };

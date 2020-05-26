@@ -26,16 +26,13 @@ module.exports.addToCart = (req, res ) => {
 
 module.exports.hire = (req, res ) =>{
   var user = res.locals.user;// middleware/auth.middleware
-  var session = res.locals.session;// middleware/session.middleware
-  console.log(session);
-  console.log('++++++++');
+  var session = db.get('sessions').value();// middleware/session.middleware
   var userId = db.get('transactions')
      .find({userId : user.id})
      .value(); 
-  
   if(!userId){
-   session.id = user.id;
-    console.log(session);
+   //session.id = user.id;
+   // console.log(session);
 //    transaction.books = session.cart;
     // db.get('transactions')
     //   .push(transaction)
@@ -59,5 +56,5 @@ module.exports.hire = (req, res ) =>{
   // .find({id: sessionId})
   //    .unset('cart')
   //   .write();
-  // res.redirect("/transactions");
+   res.redirect("/transactions");
 }

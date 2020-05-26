@@ -12,7 +12,7 @@
       "title": "Lamb - Whole Head Off,nz",
       "description": "ornare imperdiet sapien urna pretium nisl ut volutpat sapien arcu sed augue aliquam erat volutpat in",
       "image": "https://loremflickr.com/320/240/dog",
-      "quantity": 2
+      "quantity": 1
     },
     {
       "id": "711737fb-495a-4634-87dc-d9f106afcf8a",
@@ -369,7 +369,8 @@
       "id": "5ethCNvg8",
       "cart": {
         "711737fb-495a-4634-87dc-d9f106afcf8a": 1,
-        "f5cbedba-39bc-4f01-8e6f-e7d5f85f0354": 1
+        "f5cbedba-39bc-4f01-8e6f-e7d5f85f0354": 1,
+        "38c2c516-3494-41b7-bf4a-6a67dcf77d04": 1
       }
     }
   ]
