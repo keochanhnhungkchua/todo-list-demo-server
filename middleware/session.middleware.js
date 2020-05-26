@@ -32,9 +32,9 @@ if (session && session.cart){
     
     //console.log(items);
     res.locals.quantity = Object.values(items).reduce((a, b) => a + b);
-    //get data for cart page
+   
     var books = Object.keys(items).map(key => {
-      var book = db //get data form books with id form session input by user
+      var book = db 
         .get("books")
         .find({ id: key })
         .value();

@@ -11,8 +11,6 @@ module.exports.addToCart = (req, res ) => {
   var data = db.get('sessions')
   .find({ id : sessionId})
   .value();
-  console.log(data);
-  
   if(!sessionId){
     res.redirect('/books');
     return;

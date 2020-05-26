@@ -72,7 +72,6 @@ module.exports.postLogin = async(req, res) => {
   res.cookie("userId", user.id ,
              {signed: true});
   res.locals.userName = user.name;
-  console.log(user.name)
       if (!user.isAdmin) {
         res.redirect("login/userTransaction");
         return;
