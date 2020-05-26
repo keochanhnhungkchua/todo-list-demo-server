@@ -352,13 +352,20 @@
         "ff599e82-5a6a-48a1-ac9f-503fbf39e330": 1,
         "6722e4d4-22d0-44ad-bc79-624cde577d25": 1
       }
+    },
+    {
+      "id": "QGPa9ciei",
+      "userId": "aodaU6zjl",
+      "book": {
+        "711737fb-495a-4634-87dc-d9f106afcf8a": 1
+      }
     }
   ],
   "sessions": [
     {
       "id": "ZaxW1xclr",
       "cart": {
-        "711737fb-495a-4634-87dc-d9f106afcf8a": 1
+        "8da989d7-c5c5-4471-8e0a-f2e0972c9ef1": 1
       }
     }
   ]

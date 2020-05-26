@@ -30,34 +30,38 @@ module.exports.hire = (req, res) =>{
   var data =db.get("sessions")
               .find({ id: sessionId })
               .value();
-
-  var userId = db.get('transactions')
-     .find({userId : user.id})
-     .value(); 
-  if(!userId){
-  var transaction = {};
+console.log(data);
+  var transactionId = db.get('transactions')
+                         .find({userId : user.id})
+                         .value(); 
+  console.log(transactionId);
+  
+  if(!transactionId)
+  {
+    var transaction = {};
     transaction.id = shortid.generate();
     transaction.userId =  user.id;
     transaction.book = data.cart;
     db.get('transactions')
       .push(transaction)
        .write();
-    //emty 
+    //empty for cart
     db.get("sessions")
-    .find({id: sessionId})
-       .unset('cart')
+      .find({id: sessionId})
+      .unset('cart')
       .write();
-    res.redirect("/transactions"); 
+    res.redirect("/transactions");
+  }else{
+    var addBook = Object.assign(transactionId.book,data.cart);
+    console.log(addBook);
+    // db.get('transactions')
+    // .find({ userId: user.id })
+    // .assign({ title: 'hi!'})
+    // .write()
+    
+    console.log('1123')
+    res.redirect("/transactions");
   }
-  //     db.get("transactions")
-  //       .push(transaction)
-  //       .write();
-     
+  
    
-  // var sessionId = req.signedCookies.sessionId;
-  // db.get("sessions")
-  // .find({id: sessionId})
-  //    .unset('cart')
-  //   .write();
-   res.redirect("/cart");
 }
