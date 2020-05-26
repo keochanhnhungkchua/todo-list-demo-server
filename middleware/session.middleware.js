@@ -43,6 +43,7 @@ module.exports = function(req, res, next) {
     });
     
     res.locals.books = books;
+   // res.locals.session = session;
   }
   next();
 };
