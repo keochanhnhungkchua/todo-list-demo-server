@@ -344,56 +344,7 @@
       "avatar": "http://res.cloudinary.com/keochanhnhungkchua/image/upload/v1590290531/z8fpl4r9nqqolnngx4kz.png"
     }
   ],
-  "transactions": [
-    {
-      "userTransaction": "Rolado",
-      "bookTransaction": "harry poster",
-      "id": "qv6wW_Ews",
-      "isComplete": false
-    },
-    {
-      "userTransaction": "donald trump",
-      "bookTransaction": "one pice",
-      "id": "e1e1D66rZ",
-      "isComplete": false
-    },
-    {
-      "userTransaction": "Messi",
-      "bookTransaction": "harry poster",
-      "id": "vZffWaite",
-      "isComplete": true
-    },
-    {
-      "userTransaction": "Rolado",
-      "bookTransaction": "demo",
-      "id": "WIz1I8qDX",
-      "isComplete": true
-    },
-    {
-      "userTransaction": "donald trump",
-      "bookTransaction": "harry poster",
-      "id": "I2tuqjxYt",
-      "isComplete": false
-    },
-    {
-      "userTransaction": "Messi",
-      "bookTransaction": "harry poster",
-      "id": "ZNy1Y-PBX",
-      "isComplete": false
-    },
-    {
-      "userTransaction": "Rolado",
-      "bookTransaction": "Solutions",
-      "id": "LPpfQeMCF",
-      "isComplete": false
-    },
-    {
-      "userTransaction": "donald trump",
-      "bookTransaction": "Nut - Hazelnut, Ground, Natural",
-      "id": "sIyNADyvo",
-      "isComplete": false
-    }
-  ],
+  "transactions": [],
   "sessions": [
     {
       "id": "WoJHHk1Xe",
@@ -402,6 +353,54 @@
         "f5cbedba-39bc-4f01-8e6f-e7d5f85f0354": 1,
         "711737fb-495a-4634-87dc-d9f106afcf8a": 1
       }
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
+    },
+    {
+      "id": "WoJHHk1Xe"
     }
   ]
 }
