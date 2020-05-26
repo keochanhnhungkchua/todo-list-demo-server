@@ -41,7 +41,7 @@ module.exports.hire = (req, res ) =>{
     transaction.userId = user.id;
     transaction.bookId = books.id;
     transaction.quantity= books.quantity;
-    console.log(transaction)
+   // console.log(transaction)
     // db.get('transactions')
     //   .push(transaction)
     //   .write();
