@@ -24,19 +24,19 @@ module.exports.addToCart = (req, res ) => {
   res.redirect('/books');
 }
 
-module.exports.hire = (req, res ) =>{
+module.exports.hire = (req, res,next ) =>{
   var user = res.locals.user;// middleware/auth.middleware
   var sessionId = req.signedCookies.sessionId;
-  var session = db
+  var data = db
     .get("sessions")
     .find({ id: sessionId })
     .value();
   var userId = db.get('transactions')
      .find({userId : user.id})
      .value(); 
-  if(!userId){
-   session.id = user.id;
-    console.log(session);
+  // if(!userId){
+  //  data.id = user.id;
+  //  console.log(data);
 //    transaction.books = session.cart;
     // db.get('transactions')
     //   .push(transaction)
@@ -49,7 +49,7 @@ module.exports.hire = (req, res ) =>{
     //    .unset('cart')
     //   .write();
     // res.redirect("/transactions"); 
-  }
+  //}
   //     db.get("transactions")
   //       .push(transaction)
   //       .write();
@@ -61,4 +61,5 @@ module.exports.hire = (req, res ) =>{
   //    .unset('cart')
   //   .write();
    res.redirect("/cart");
+  next();
 }
