@@ -1,43 +1,29 @@
 extends index
-
+  
 block headbar
-
   br
-  br  
-  form(action="/transactions/create" method="POST")
-    label Create new transaction:
-    br
-    label Choose a user :
-    |
-    |
-    select(name="userTransaction")
-      each user in users
-        option(value=user.name)=user.name
-    br
-    label Choose a book:
-    |
-    |
-    select(name="bookTransaction")
-      each book in books
-        option(value=book.title)=book.title
-    br
-    button.btn.btn-primary.ml-2 Create
-  caption Transactions List: 
-  table.table 
-      tr
-        th Index
-        th Id
-        th User Name
-        th Book
-        th Status
-        each transaction,index in transactions 
-          tr 
-            td=index+1
-            td=transaction.id
-            td=transaction.userTransaction
-            td=transaction.bookTransaction
-            if transaction.isComplete 
-              td=transaction.isComplete
-            else
-              td
-                a(href='/transactions/'+transaction.id+'/complete')=transaction.isComplete
+  br
+  
+  if books 
+    .container
+    .row.justify-content-md-center
+      .col-8
+              
+          table.table.table-bordered.table-striped ten nguoi dung
+            tr
+              th Index
+              th Cover
+              th Title
+              th Quantity
+            each book, index in books  
+              tr  
+                  td=index +1
+                  if book.image
+                    td.d-flex.justify-content-center.align-items-center
+                      img(src=book.image, width='64')
+                  td=book.title
+                  td=book.quantity
+          
+          a.btn.btn-primary(href='/cart/hire') Hire
+  else
+    .alert.text-center.alert-primary Nothing

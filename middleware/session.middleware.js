@@ -1,6 +1,6 @@
 var shortid = require("shortid");
 
-const authMiddleware =  require("../middleware/auth.middleware");
+const authMiddleware = require("../middleware/auth.middleware");
 var db = require("../db");
 
 module.exports = function(req, res, next) {
@@ -29,14 +29,11 @@ module.exports = function(req, res, next) {
     .value();
 
   //get values of ojbect and sum => show (set locals for "quantity" show(index>cart)
-if (session && session.cart){
-  var items = session.cart;
-    
-    //console.log(items);
+  if (session && session.cart) {
+    var items = session.cart;
     res.locals.quantity = Object.values(items).reduce((a, b) => a + b);
-   
     var books = Object.keys(items).map(key => {
-      var book = db 
+      var book = db
         .get("books")
         .find({ id: key })
         .value();
@@ -44,6 +41,6 @@ if (session && session.cart){
       return book;
     });
     res.locals.books = books;
-}
+  }
   next();
 };
