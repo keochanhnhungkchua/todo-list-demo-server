@@ -30,11 +30,9 @@ module.exports.hire = (req, res) =>{
   var data =db.get("sessions")
               .find({ id: sessionId })
               .value();
-console.log(data);
   var transactionId = db.get('transactions')
                          .find({userId : user.id})
                          .value(); 
-  console.log(transactionId);
   
   if(!transactionId)
   {
@@ -54,12 +52,14 @@ console.log(data);
   }else{
     var addBook = Object.assign(transactionId.book,data.cart);
     console.log(addBook);
-    // db.get('transactions')
-    // .find({ userId: user.id })
-    // .assign({ title: 'hi!'})
-    // .write()
-    
-    console.log('1123')
+    db.get('transactions')
+    .find({ userId: user.id })
+    .assign({ book: addBook})
+    .write()
+    db.get("sessions")
+      .find({id: sessionId})
+      .unset('cart')
+      .write();
     res.redirect("/transactions");
   }
   
