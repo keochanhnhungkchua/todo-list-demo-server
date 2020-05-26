@@ -40,7 +40,6 @@ module.exports.hire = (req, res) =>{
     transaction.id = shortid.generate();
     transaction.userId =  user.id;
     transaction.book = data.cart;
-    console.log(transaction)
     // db.get('transactions')
     //   .push(transaction)
     //    .write();
