@@ -34,17 +34,17 @@ module.exports.hire = (req, res ) =>{
   var userId = db.get('transactions')
      .find({userId : user.id})
      .value(); 
-  var transactions = db.get('transactions')
-                      .value();
-
- // if(!userId){
+  console.log(books);
+  if(!userId){
+    var transaction ={};
     transaction.id = id;
     transaction.userId = user.id;
-  //  transaction.bookId = books.id;
+    transaction.bookId = books.id;
+    transaction.quantity= books.quantity;
     console.log(transaction)
-    db.get('transactions')
-      .push(transaction)
-      .write();
+    // db.get('transactions')
+    //   .push(transaction)
+    //   .write();
     //console.log(transaction)
     // var sessionId = req.signedCookies.sessionId;
     // db.get("sessions")
@@ -52,7 +52,7 @@ module.exports.hire = (req, res ) =>{
     //    .unset('cart')
     //   .write();
     // res.redirect("/transactions"); 
- // }
+  }
   //     db.get("transactions")
   //       .push(transaction)
   //       .write();
