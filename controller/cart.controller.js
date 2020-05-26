@@ -24,7 +24,7 @@ module.exports.addToCart = (req, res ) => {
   res.redirect('/books');
 }
 
-module.exports.hire = (req, res,next ) =>{
+module.exports.hire = (req, res) =>{
   var user = res.locals.user;// middleware/auth.middleware
   var sessionId = req.signedCookies.sessionId;
   var data = db
@@ -37,7 +37,10 @@ module.exports.hire = (req, res,next ) =>{
      .value(); 
   if(!userId){
   var transaction = {};
-    transaction.id = ;
+    transaction.id = shortid.generate();
+    transaction.userId =  user.id;
+    transaction.book = data.cart;
+    console.log(transaction)
     // db.get('transactions')
     //   .push(transaction)
     //    .write();
@@ -61,5 +64,4 @@ module.exports.hire = (req, res,next ) =>{
   //    .unset('cart')
   //   .write();
    res.redirect("/cart");
-  next();
 }
