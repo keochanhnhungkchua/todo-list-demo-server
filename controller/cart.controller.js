@@ -34,9 +34,22 @@ module.exports.hire = (req, res ) =>{
   var userId = db.get('transactions')
      .find({userId : user.id})
      .value(); 
+  var transaction = db.get('transactions')
+                      .value();
   if(!userId){
-    transactions.userId = userId;
-    
+    transaction.id = id;
+    transaction.userId = user.id;
+    transaction.transactionBooks = books;
+    db.get('transactions')
+      .push(transaction)
+      .write();
+    console.log(transaction)
+    var sessionId = req.signedCookies.sessionId;
+    db.get("sessions")
+    .find({id: sessionId})
+       .unset('cart')
+      .write();
+    res.redirect("/transactions"); 
   }
   //     db.get("transactions")
   //       .push(transaction)
