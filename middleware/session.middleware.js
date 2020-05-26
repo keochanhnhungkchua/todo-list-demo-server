@@ -13,12 +13,7 @@ module.exports = function(req, res, next) {
     db.get("sessions")
       .push({ id: sessionId })
       .write();
-  }else{
-     db.get("sessions")
-      .push({ id: sessionId })
-      .write();
   }
-  
   var data = db.get("sessions").value();
   data.map(item => {
     if (item.id !== sessionId) {
@@ -32,6 +27,7 @@ module.exports = function(req, res, next) {
     .get("sessions")
     .find({ id: sessionId })
     .value();
+  console.log(session);
   //get values of ojbect and sum => show (set locals for "quantity" show(index>cart)
   if (session && session.cart) {
     var items = session.cart;
