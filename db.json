@@ -365,7 +365,10 @@
   ],
   "sessions": [
     {
-      "id": "Nh_2WbUWb"
+      "id": "bhQSWANXo",
+      "cart": {
+        "6722e4d4-22d0-44ad-bc79-624cde577d25": 1
+      }
     }
   ]
 }

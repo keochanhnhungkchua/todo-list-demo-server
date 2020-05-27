@@ -3,12 +3,12 @@ const shortid= require("shortid");
 const db = require("../db");
 
 module.exports.index = (req, res) => {
-  //var user = res.locals.user
+  var user = res.locals.user
   var transactions = db.get('transactions')
-                      //.find({userId : user.id})
-                      .value()  
+                      .find({userId : user.id})
+                      .value();  
   console.log(transactions)
-  res.render("transactions", transactions);
+  res.render("transactions", {transactions});
 }
 
 
