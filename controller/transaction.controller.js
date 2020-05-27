@@ -4,11 +4,20 @@ const db = require("../db");
 
 module.exports.index = (req, res) => {
   var user = res.locals.user
-  var transactions = db.get('transactions')
+  var transaction = db.get('transactions')
                       .find({userId : user.id})
                       .value();  
-  console.log(transactions)
-  res.render("transactions", {transactions});
+  var items = transaction.book;
+    var books = Object.keys(items).map(key => {
+      var book = db
+        .get("books")
+        .find({ id: key })
+        .value();
+      book.quantity = items[key]; //insert quantity
+      return book;
+    });
+  console.log(books)
+  res.render("transactions", {books});
 }
 
 

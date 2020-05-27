@@ -51,7 +51,6 @@ module.exports.hire = (req, res) =>{
     res.redirect("/transactions");
   }else{
     var addBook = Object.assign(transactionId.book,data.cart);
-    console.log(addBook);
     db.get('transactions')
     .find({ userId: user.id })
     .assign({ book: addBook})
