@@ -1,40 +1,45 @@
-const shortid= require("shortid");
+const shortid = require("shortid");
 
 const db = require("../db");
 
 module.exports.index = (req, res) => {
-  var user = res.locals.user
-  var transaction = db.get('transactions')
-                      .find({userId : user.id})
-                      .value();  
-  var items = transaction.book;
-    var books = Object.keys(items).map(key => {
-      var book = db
-        .get("books")
-        .find({ id: key })
-        .value();
-      book.quantity = items[key]; //insert quantity
-      return book;
-    });
-  console.log(books)
-  res.render("transactions", {books});
-}
+  var user = res.locals.user;
+  var transaction = db
+    .get("transactions")
+    .find({ userId: user.id })
+    .value();
+  if(!transaction){
+    res.redirect("books");
+    return;
+  }
+  else{
+    var items = transaction.book;
+  var books = Object.keys(items).map(key => {
+    var book = db
+      .get("books")
+      .find({ id: key })
+      .value();
+    book.quantity = items[key]; //insert quantity
+    return book;
+  });
+  res.render("transactions", { books });
+  }
+  
+};
 
-
-module.exports.postCreateTransaction = (req, res) =>{
-  req.body.id=shortid.generate();
+module.exports.postCreateTransaction = (req, res) => {
+  req.body.id = shortid.generate();
   req.body.isComplete = false;
   db.get("transactions")
     .push(req.body)
     .write();
   res.redirect("back");
-}
-
+};
 
 module.exports.complete = (req, res) => {
   let id = req.params.id;
-  let transaction = 
-  db.get("transactions")
+  let transaction = db
+    .get("transactions")
     .find({ id })
     .value();
   if (transaction) {

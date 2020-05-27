@@ -5,8 +5,7 @@ var db = require("../db");
 
 module.exports = function(req, res, next) {
   var sessionId = req.signedCookies.sessionId;
-  if (!sessionId) 
-  {
+  if (!sessionId) {
     var sessionId = shortid.generate();
     res.cookie("sessionId", sessionId, {
       signed: true
@@ -16,7 +15,7 @@ module.exports = function(req, res, next) {
       .write();
   }
   var data = db.get("sessions").value();
-    data.map(item => {
+  data.map(item => {
     if (item.id !== sessionId) {
       db.get("sessions")
         .remove({ id: item.id })
@@ -40,7 +39,7 @@ module.exports = function(req, res, next) {
       book.quantity = items[key]; //insert quantity
       return book;
     });
-    
+
     res.locals.books = books;
   }
   next();
