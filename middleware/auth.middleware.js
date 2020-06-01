@@ -1,13 +1,14 @@
-var db = require('../db')
+//var db = require('../db')
+var User = require('../models/user.model');
 
-
-module.exports.requireAuth = (req, res, next) => {
+module.exports.requireAuth = async (req, res, next) => {
   var cookie = req.signedCookies.userId;
   if(!cookie){
     res.redirect('/login');
     return ;
   }
-  var user = db.get('users').find({id : cookie}).value();
+  //var user = db.get('users').find({id : cookie}).value();
+  var user =await User.find({id : cookie});
   if(!user){
      res.redirect('/login');
     return ;

@@ -1,4 +1,6 @@
-var db = require("../db");
+//var db = require("../db");
+
+var User = require("../models/user.model")
 
 const bcrypt = require("bcrypt");
 
@@ -16,10 +18,11 @@ module.exports.postLogin = async(req, res) => {
   var email = req.body.email;
   var password = req.body.password;
   
-  var user = db
-    .get("users")
-    .find({ email })
-    .value();
+  // var user = db
+  //   .get("users")
+  //   .find({ email })
+  //   .value();
+  var user = await 
   if (!user) {
     res.render("login", {
       errors: ["user does not exists."],
