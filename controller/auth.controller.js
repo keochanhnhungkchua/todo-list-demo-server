@@ -94,11 +94,11 @@ module.exports.postLogin = async(req, res) => {
 //userTransaction when login
 module.exports.userTransaction = (req, res) => {
   var name= res.locals.userName;
-  var userTransaction = db
-    .get("transactions")
-    .filter({ userTransaction: name })
-    .value();
-  res.render("userTransaction", { userTransaction });
+  // var userTransaction = db
+  //   .get("transactions")
+  //   .filter({ userTransaction: name })
+  //   .value();
+  //res.render("userTransaction", { userTransaction });
 };
 //login false
 module.exports.loginFalse = (req, res) =>
