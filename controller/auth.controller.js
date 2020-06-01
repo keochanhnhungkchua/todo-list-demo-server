@@ -19,7 +19,6 @@ module.exports.postLogin = async (req, res) => {
   //   .get("users")
   //   .find({ email })
   //   .value();
-
   if (!user) {
     res.render("login", {
       errors: ["user does not exists."],
@@ -78,6 +77,7 @@ module.exports.postLogin = async (req, res) => {
   await user.save();
   //create cookie
   res.cookie("userId", user.id, { signed: true });
+  
   if (!user.isAdmin) {
     res.redirect("transactions");
     return;

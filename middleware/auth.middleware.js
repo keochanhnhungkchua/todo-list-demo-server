@@ -9,6 +9,7 @@ module.exports.requireAuth = async (req, res, next) => {
   }
   //var user = db.get('users').find({id : cookie}).value();
   var user =await User.find({_id : cookie});
+  console.log(user)
   if(!user){
      res.redirect('/login');
     return ;
