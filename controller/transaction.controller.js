@@ -11,25 +11,25 @@ module.exports.index = (req, res) => {
   //   .get("transactions")
   //   .find({ userId: user.id })
   //   .value();
-  var transaction = Transaction.findOne({userId : user.id})
-  if(!transaction){
-    res.redirect("books");
-    return;
-  }
-  else{
-  var items = transaction.books;
-  var books = Object.keys(items).map(key => {
-    // var book = db
-    //   .get("books")
-    //   .find({ id: key })
-    //   .value();
-    var book = Book.findOne
-    book.quantity = items[key]; //insert quantity
-    return book;
-  });
-  res.render("transactions", { books });
-  }
-  
+  var transaction = Transaction.findOne({userId : user.id});
+  // if(!transaction){
+  //   res.redirect("books");
+  //   return;
+  // }
+  // else{
+  // var items = transaction.books;
+  // var books = Object.keys(items).map(key => {
+  //   // var book = db
+  //   //   .get("books")
+  //   //   .find({ id: key })
+  //   //   .value();
+  //   var book = Book.findOne
+  //   book.quantity = items[key]; //insert quantity
+  //   return book;
+  // });
+  // res.render("transactions", { books });
+  // }
+  res.render("transactions");
 };
 
 // module.exports.postCreateTransaction = (req, res) => {

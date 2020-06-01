@@ -6,7 +6,7 @@ var userSchema = new mongoose.Schema({
   password: String,
   avtar : String,
   wrongLoginCount:{
-    type : String,
+    type : Number,
     default: 0
   } ,
   isAdmin: Boolean
