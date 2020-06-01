@@ -12,7 +12,7 @@ module.exports.index = (req, res) => {
   //   .get("transactions")
   //   .find({ userId: user.id })
   //   .value();
-  var transaction = Transaction.findOne({userId : user.id});
+  var transaction = Transaction.findOne({userId : user._id});
   //console.log(transaction);
   // if(!transaction){
   //   res.redirect("books");
