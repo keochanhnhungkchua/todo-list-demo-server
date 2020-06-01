@@ -4,8 +4,8 @@ var controller = require("../controller/transaction.controller");
 
 router.get("/", controller.index);
 
-router.post("/create", controller.postCreateTransaction);
+// router.post("/create", controller.postCreateTransaction);
 
-router.get("/:id/complete", controller.complete);
+// router.get("/:id/complete", controller.complete);
 
 module.exports= router;
