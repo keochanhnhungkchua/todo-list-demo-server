@@ -5,7 +5,10 @@ var userSchema = new mongoose.Schema({
   email: String,
   password: String,
   avtar : String,
-  wrongLoginCount: Number,
+  wrongLoginCount:{
+    type : String,
+    default: 0
+  } ,
   isAdmin: Boolean
 });
  module.exports = mongoose.model("User", userSchema);

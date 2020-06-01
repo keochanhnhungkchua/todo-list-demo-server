@@ -17,12 +17,12 @@ module.exports.login = (req, res) => {
 module.exports.postLogin = async(req, res) => {
   var email = req.body.email;
   var password = req.body.password;
-  
+  var user = await User.findOne({email : email})
   // var user = db
   //   .get("users")
   //   .find({ email })
   //   .value();
-  var user = await 
+  
   if (!user) {
     res.render("login", {
       errors: ["user does not exists."],
@@ -35,7 +35,7 @@ module.exports.postLogin = async(req, res) => {
   const msg = {
     to: `${user.email}`,
     //from: `${user.email}`,
-    from:"tamja9x@gmail.com",
+    from:"demodemo@gmail.com",
     subject: 'Login Failed',
     text: 'You fail to enter the correct password 3 times in a row when logging in',
     html: '<strong>if you forgot your password click here: <a href="https://glitch.com/~weak-giddy-geometry">change password</a></strong>',
@@ -57,21 +57,26 @@ module.exports.postLogin = async(req, res) => {
   //check pass
   var match = await bcrypt.compare(password, user.password);
   if (!match){
-    db.get("users")
-      .find({ email })
-      .assign({ wrongLoginCount: user.wrongLoginCount + 1 })
-      .write();
+//     db.get("users")
+//       .find({ email })
+//       .assign({ wrongLoginCount: user.wrongLoginCount + 1 })
+//       .write();
    
-    res.render("login", {
-        errors: ["wrong password"],
-        values: req.body
-      });
-      return;
+//     res.render("login", {
+//         errors: ["wrong password"],
+//         values: req.body
+//       });
+    user.wrongLoginCount = user.wrongLoginCount + 1;
+    await user.save();
+    res.render("login", { errors: ["Wrong password"], values: req.body });
+    return;
     }
-  db.get("users")
-    .find({ email })
-    .assign({ wrongLoginCount: 0 })
-    .write();
+  // db.get("users")
+  //   .find({ email })
+  //   .assign({ wrongLoginCount: 0 })
+  //   .write();
+  user.wrongLoginCount = 0;
+  await user.save();
   //create cookie 
   
   res.cookie("userId", user.id ,
