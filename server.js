@@ -4,6 +4,24 @@ const express = require("express");
 
 const bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser')
+var mongoose = require('mongoose');
+var url ='mongodb+srv://admin:123a123@keochanhnhungkchua-nzm8q.gcp.mongodb.net/book-store?retryWrites=true&w=majority';
+
+
+// mongoose.connect(process.env.MONGO_URI, { 
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+//   useFindAndModify: false  
+// });
+mongoose.connect(url, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false
+});
+mongoose.connection.on('connected', () => {
+  console.log('connect mongo db'); 
+})
+
 
 const userRouter = require("./routes/user.router");
 const bookRouter = require("./routes/book.router");
