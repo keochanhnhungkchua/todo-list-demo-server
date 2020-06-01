@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 var transactionSchema = new mongoose.Schema({
   userId : String,
-  books: Object
+  booksId: Object
 });
 
 module.exports = mongoose.model("Transaction", transactionSchema);
