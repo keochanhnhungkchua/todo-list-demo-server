@@ -1,5 +1,3 @@
-//var db = require("../db");
-
 var User = require("../models/user.model");
 
 const bcrypt = require("bcrypt");
