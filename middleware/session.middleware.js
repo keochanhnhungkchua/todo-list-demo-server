@@ -15,6 +15,8 @@ module.exports = function(req, res, next) {
       .push({ id: sessionId })
       .write();
   }
+  
+  
   var data = db.get("sessions").value();
   data.map(item => {
     if (item.id !== sessionId) {
