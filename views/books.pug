@@ -1,0 +1,41 @@
+extends index
+
+block headbar
+ nav.m-5(aria-label='Page navigation example')
+  ul.pagination.justify-content-end
+    li.page-item
+      a.page-link(href='#') Previous
+    li.page-item
+      a.page-link(href='#') 1
+    li.page-item.active
+      a.page-link(href='#') 2
+    li.page-item
+      a.page-link(href='#') 3
+    li.page-item
+      a.page-link(href='#') Next
+      
+ .container
+    .row
+        each book in books
+            .col-3.p-3
+              .card
+                img.card-img-top(src=book.image)
+                .card-body
+                  h5.card-title= book.title
+                  p.card-text=book.description
+                  a.btn.btn-primary(href='/cart/add/'+book.id) Add to Cart
+                                   
+ nav.m-5(aria-label='Page navigation example')
+  ul.pagination.justify-content-end
+    li.page-item
+      a.page-link(href='#') Previous
+    li.page-item
+      a.page-link(href='#') 1
+    li.page-item.active
+      a.page-link(href='#') 2
+    li.page-item
+      a.page-link(href='#') 3
+    li.page-item
+      a.page-link(href='#') Next
+  
+                  

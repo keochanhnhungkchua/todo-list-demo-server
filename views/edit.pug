@@ -1,0 +1,15 @@
+h1 Update title for books
+  br
+  br
+form(action="/books/" +book.id+ "/edit" method="POST")
+  lable Enter new title here :
+  |
+  |
+  input(type="text" name="title"  value=book.title)
+  |
+  |
+  button Update
+  h4 title :
+   span=book.title
+  h4 Descripttion: 
+   span=book.description 
