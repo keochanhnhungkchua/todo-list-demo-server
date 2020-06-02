@@ -1,8 +1,9 @@
 var shortid = require("shortid");
 
 const authMiddleware = require("../middleware/auth.middleware");
-var db = require("../db");
-
+//var db = require("../db");
+var Session = require('../models/session.model');
+//create sessionId
 module.exports = function(req, res, next) {
   var sessionId = req.signedCookies.sessionId;
   if (!sessionId) {
@@ -10,18 +11,20 @@ module.exports = function(req, res, next) {
     res.cookie("sessionId", sessionId, {
       signed: true
     });
-    db.get("sessions")
-      .push({ id: sessionId })
-      .write();
+    
+    // db.get("sessions")
+    //   .push({ id: sessionId })
+    //   .write();
+    Session.id = sessionId
   }
-  var data = db.get("sessions").value();
-  data.map(item => {
-    if (item.id !== sessionId) {
-      db.get("sessions")
-        .remove({ id: item.id })
-        .write();
-    }
-  });
+  // var data = db.get("sessions").value();
+  // data.map(item => {
+  //   if (item.id !== sessionId) {
+  //     db.get("sessions")
+  //       .remove({ id: item.id })
+  //       .write();
+  //   }
+  // });
   //count number boook in cart
   var session = db
     .get("sessions")
