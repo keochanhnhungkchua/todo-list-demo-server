@@ -5,14 +5,13 @@ const shortid = require("shortid");
 var Transaction = require("../models/transaction.model");
 var Book = require("../models/book.model")
 
-module.exports.index = (req, res) => {
+module.exports.index = async (req, res) => {
   var user = res.locals.user;
-  console.log(user._id);
   // var transaction = db
   //   .get("transactions")
   //   .find({ userId: user.id })
   //   .value();
-  var transaction = Transaction.find();
+  var transaction =await Transaction.findOne({userId : user._id});
   console.log(transaction);
   // if(!transaction){
   //   res.redirect("books");
