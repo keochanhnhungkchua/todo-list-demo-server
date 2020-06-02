@@ -1,21 +1,24 @@
 var shortid = require("shortid");
 
 const authMiddleware = require("../middleware/auth.middleware");
-//var db = require("../db");
+var db = require("../db");
 var Session = require('../models/session.model');
 //create sessionId
-module.exports = function(req, res, next) {
+module.exports =async function(req, res, next) {
   var sessionId = req.signedCookies.sessionId;
   if (!sessionId) {
     var sessionId = shortid.generate();
     res.cookie("sessionId", sessionId, {
       signed: true
     });
+    console.log(sessionId);  
     
     // db.get("sessions")
     //   .push({ id: sessionId })
     //   .write();
-    Session.id = sessionId
+    var session = Session.findOne({id: sessionId});
+    session.id = sessionId;
+    await session.save();
   }
   // var data = db.get("sessions").value();
   // data.map(item => {

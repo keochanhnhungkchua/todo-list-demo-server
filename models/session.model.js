@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 
 var sessionSchema = new mongoose.Schema({
-  userId : String,
+  id : String,
   booksId: Object
 });
 module.exports = mongoose.model("Session", sessionSchema);
