@@ -16,10 +16,9 @@ module.exports =async function(req, res, next) {
     // db.get("sessions")
     //   .push({ id: sessionId })
     //   .write();
-    var session = await Session.findOne({id: sessionId});
-    session.id = sessionId;
+    await Session.create({id: sessionId});
     console.log(session); 
-    await session.save(); 
+   // await session.save(); 
   }
   // var data = db.get("sessions").value();
   // data.map(item => {
