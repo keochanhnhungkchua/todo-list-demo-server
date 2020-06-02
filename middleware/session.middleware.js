@@ -17,6 +17,7 @@ module.exports =async function(req, res, next) {
     //   .push({ id: sessionId })
     //   .write();
     await Session.create({id: sessionId});
+    var session = await Session.findOne({id : sessionId});
     console.log(session); 
    // await session.save(); 
   }
