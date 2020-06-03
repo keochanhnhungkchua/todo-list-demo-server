@@ -16,8 +16,9 @@ module.exports.addToCart =async (req, res ) => {
     return;
   }
   if(!session.cart){
-    await Session.create({ sessionId: sessionId }, function(err, small) {
-      if (err) return console.log(err);
+    await Session.create({cart: {}}, function(err, small) {
+      if (err) return console.log(err); 
+    });
   }
   // var count = db.get('sessions')
   //               .find({ id : sessionId})
