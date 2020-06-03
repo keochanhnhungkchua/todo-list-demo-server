@@ -40,8 +40,7 @@ module.exports = async function(req, res, next) {
   
   //get values quantity of cart=> show(index>cart) 
   var session = await Session.findOne({sessionId : sessionId});
-  console.log(session.cart);
-  if  (session && session.cart.keys.length > 0) {
+  if  (session && Object.keys(session.cart).length > 0) {
     var items = session.cart;  
     res.locals.quantity = Object.values(items).reduce((a, b) => a + b);
     //dag lam

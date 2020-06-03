@@ -10,8 +10,9 @@ module.exports.index = async function(req, res) {
   var items = session.cart;
 
   var ids = Object.keys(items);
+  var value=Object.values(items);
   var data = await Book.find().where('_id').in(ids).exec();
-  console.log(data);
+  console.log(items);
   // var books = Object.keys(items).map(key => {
   //   // var book = db
   //   //   .get("books")
