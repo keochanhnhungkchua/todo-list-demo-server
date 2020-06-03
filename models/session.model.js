@@ -2,6 +2,6 @@ var mongoose = require("mongoose");
 
 var sessionSchema = new mongoose.Schema({
   sessionId : String,
-  booksId: Object
+  cart: Object
 });
 module.exports = mongoose.model("Session", sessionSchema, 'sessions');
