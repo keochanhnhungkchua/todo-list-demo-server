@@ -8,16 +8,17 @@ module.exports.index = async function(req, res) {
   var sessionId = req.signedCookies.sessionId;
   var session = await Session.findOne({ sessionId: sessionId });
   var items = session.cart;
-  var books = await Object.keys(items).map(key => {
-    // var book = db
-    //   .get("books")
-    //   .find({ id: key })
-    //   .value();
-    var data = Book.findById(key,'title image').then(book => book);
-     data.quantity = items[key]; //insert quantity
-    console.log(data)
-    return data;
-  });
+  // var books = Object.keys(items).map(key => {
+  //   // var book = db
+  //   //   .get("books")
+  //   //   .find({ id: key })
+  //   //   .value();
+  //   var data = await Book.findById(key,'title image')
+  //    console.log(data)
+  //    //data.quantity = items[key]; //insert quantity
+  //   //console.log(data)
+  //   return data;
+  // });
 
   res.render("cart", { books });
 };
