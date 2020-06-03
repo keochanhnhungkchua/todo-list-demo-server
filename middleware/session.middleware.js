@@ -34,14 +34,15 @@ module.exports = async function(req, res, next) {
   // });
   //count number boook in cart
   // var session = db
-  //   .get("sessions")
+  //   .get("sessions") 
   //   .find({ id: sessionId })
   //   .value();
   
-  //get values quantity of cart=> show(index>cart)
+  //get values quantity of cart=> show(index>cart) 
   var session = await Session.findOne({sessionId : sessionId});
-  if  (session && session.cart) {
-    var items = session.cart; 
+  console.log(session.cart);
+  if  (session.cart.length) {
+    var items = session.cart;  
     res.locals.quantity = Object.values(items).reduce((a, b) => a + b);
     //dag lam
   //   var books = await Object.keys(items).map(key => {
