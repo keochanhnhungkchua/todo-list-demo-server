@@ -8,6 +8,11 @@ module.exports.index = async function(req, res) {
   var sessionId = req.signedCookies.sessionId;
   var session = await Session.findOne({ sessionId: sessionId });
   var items = session.cart;
+  
+  var ids = Object.keys(items);
+  var books = await Book.find().where('_id').in(ids).exec();
+  //console.log(data);
+
   // var books = Object.keys(items).map(key => {
   //   // var book = db
   //   //   .get("books")
