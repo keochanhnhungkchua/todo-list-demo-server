@@ -3,7 +3,7 @@ var shortid = require("shortid");
 const authMiddleware = require("../middleware/auth.middleware");
 var db = require("../db");
 var Session = require("../models/session.model");
-var Book = require("../")
+var Book = require("../models/book.model")
 //create sessionId
 module.exports = async function(req, res, next) {
   var sessionId = req.signedCookies.sessionId;
@@ -40,19 +40,20 @@ module.exports = async function(req, res, next) {
   
   //get values quantity of cart=> show(index>cart)
   var session = await Session.findOne({sessionId : sessionId});
-  if (session && session.cart) {
+  if  (session && session.cart) {
     var items = session.cart; 
-    console.log(items);
     res.locals.quantity = Object.values(items).reduce((a, b) => a + b);
-    var books = Object.keys(items).map(key => {
-      var book = db
-        .get("books")
-        .find({ id: key })
-        .value();
+    
+    var books = await Object.keys(items).map(key => {
+      // var book = db
+      //   .get("books")
+      //   .find({ id: key })
+      //   .value();
+      var book = Book.findOne({_id : key})
       book.quantity = items[key]; //insert quantity
       return book;
     });
-
+  console.log(books);
     res.locals.books = books;
   }
   next();
