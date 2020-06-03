@@ -11,15 +11,16 @@ module.exports =async function(req, res, next) {
     res.cookie("sessionId", sessionId, {
       signed: true
     });
-    console.log(sessionId);  
-    
     // db.get("sessions")
     //   .push({ id: sessionId })
     //   .write();
-    await Session.create({id: sessionId});
+    //save sessionId in database
+    await Session.create({id: sessionId},function (err, small) {
+    if (err) return console.log(err);
+    });
+    await Session.deleteMany({ sessionId: { $ne: sessionId } });
     var session = await Session.findOne({id : sessionId});
-    console.log(session); 
-   // await session.save(); 
+    console.log(session);  
   }
   // var data = db.get("sessions").value();
   // data.map(item => {
