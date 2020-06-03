@@ -10,22 +10,20 @@ module.exports.index = async function(req, res) {
   var items = session.cart;
 
   var ids = Object.keys(items);
-  var value=Object.values(items);
-  var data = await Book.find().where('_id').in(ids).exec();
-  console.log(items);
-  // var books = Object.keys(items).map(key => {
-  //   // var book = db
-  //   //   .get("books")
-  //   //   .find({ id: key })
-  //   //   .value();
-  //   var data = await Book.findById(key,'title image')
-  //    console.log(data)
-  //    //data.quantity = items[key]; //insert quantity
-  //   //console.log(data)
-  //   return data;
-  // });
+  var values=Object.values(items);
+  var book = await Book.find().where('_id').in(ids).exec();
+  console.log(values);
+  var books = Object.keys(items).map(data => {
+    // var book = db
+    //   .get("books")
+    //   .find({ id: key })
+    //   .value();
+     //data.quantity = items[key]; //insert quantity
+    for( i=0, i< values.length , i++)
+    data.quantity = values[i]
+  });
 
-  //res.render("cart", { books });
+  res.render("cart", { book});
 };
 
 module.exports.addToCart = async (req, res) => {
