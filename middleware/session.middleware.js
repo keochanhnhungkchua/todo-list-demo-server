@@ -2,9 +2,9 @@ var shortid = require("shortid");
 
 const authMiddleware = require("../middleware/auth.middleware");
 var db = require("../db");
-var Session = require('../models/session.model');
+var Session = require("../models/session.model");
 //create sessionId
-module.exports =async function(req, res, next) {
+module.exports = async function(req, res, next) {
   var sessionId = req.signedCookies.sessionId;
   if (!sessionId) {
     var sessionId = shortid.generate();
@@ -15,12 +15,13 @@ module.exports =async function(req, res, next) {
     //   .push({ id: sessionId })
     //   .write();
     //save sessionId in database
-    await Session.create({id: sessionId},function (err, small) {
-    if (err) return console.log(err);
+    await Session.create({ sessionId: sessionId }, function(err, small) {
+      if (err) return console.log(err);
     });
+  }else{
     await Session.deleteMany({ sessionId: { $ne: sessionId } });
-    var session = await Session.findOne({id : sessionId});
-    console.log(session);  
+    var session = await Session.findOne({sessionId : sessionId});
+    //console.log(session);  
   }
   // var data = db.get("sessions").value();
   // data.map(item => {
@@ -31,12 +32,15 @@ module.exports =async function(req, res, next) {
   //   }
   // });
   //count number boook in cart
-  var session = db
-    .get("sessions")
-    .find({ id: sessionId })
-    .value();
+  // var session = db
+  //   .get("sessions")
+  //   .find({ id: sessionId })
+  //   .value();
+  
   //get values quantity of cart=> show(index>cart)
-  if (session && session.cart) {
+  var session = await Session.findOne({sessionId : sessionId});
+  console.log(session);
+  if (session && session.booksId) {
     var items = session.cart;
     res.locals.quantity = Object.values(items).reduce((a, b) => a + b);
     var books = Object.keys(items).map(key => {
