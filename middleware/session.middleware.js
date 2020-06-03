@@ -21,7 +21,7 @@ module.exports = async function(req, res, next) {
     });
   }else{
     await Session.deleteMany({ sessionId: { $ne: sessionId } });
-    var session = await Session.findOne({sessionId : sessionId});
+   // var session = await Session.findOne({sessionId : sessionId});
     //console.log(session);  
   }
   // var data = db.get("sessions").value();
@@ -43,18 +43,18 @@ module.exports = async function(req, res, next) {
   if  (session && session.cart) {
     var items = session.cart; 
     res.locals.quantity = Object.values(items).reduce((a, b) => a + b);
-    
-    var books = await Object.keys(items).map(key => {
-      // var book = db
-      //   .get("books")
-      //   .find({ id: key })
-      //   .value();
-      var book = Book.findOne({_id : key})
-      book.quantity = items[key]; //insert quantity
-      return book;
-    });
-  console.log(books);
-    res.locals.books = books;
-  }
+    //dag lam
+  //   var books = await Object.keys(items).map(key => {
+  //     // var book = db
+  //     //   .get("books")
+  //     //   .find({ id: key })
+  //     //   .value();
+  //     var book = Book.findOne({_id : key})
+  //     book.quantity = items[key]; //insert quantity
+  //     return book;
+  //   });
+  // console.log(books);
+  //   res.locals.books = books;
+   }
   next();
 };
