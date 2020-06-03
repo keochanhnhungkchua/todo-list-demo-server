@@ -8,13 +8,13 @@ module.exports.index = async function(req, res) {
   var sessionId = req.signedCookies.sessionId;
   var session = await Session.findOne({ sessionId: sessionId });
   var items = session.cart;
-  console.log(Object.keys(items));
   var books = await Object.keys(items).map(key => {
     // var book = db
     //   .get("books")
     //   .find({ id: key })
     //   .value();
     var book = Book.findOne({ _id: key });
+    console.log(book);
     book.quantity = items[key]; //insert quantity
     return book;
   });
