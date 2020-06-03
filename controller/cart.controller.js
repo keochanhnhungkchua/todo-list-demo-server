@@ -15,11 +15,8 @@ module.exports.addToCart =async (req, res ) => {
     res.redirect('/books');
     return;
   }
-  if(!session.cart){
-    await Session.create({cart: {}}, function(err, small) {
-      if (err) return console.log(err); 
-    });
-  }
+  console.log(session.cart)
+ await Session.set({bookId : 1})
   // var count = db.get('sessions')
   //               .find({ id : sessionId})
   //               .get('cart.' + bookId ,0)
