@@ -15,7 +15,7 @@ module.exports.addToCart =async (req, res ) => {
     res.redirect('/books');
     return;
   }
-  var count = session.get('cart.' + bookId ,0);
+  var count = session.get('cart.' + bookId)|| 0;
   session.set('cart.' + bookId ,count + 1);
   await session.save();
   console.log(session)
