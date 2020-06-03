@@ -10,12 +10,14 @@ module.exports.index = function(req, res) {
 module.exports.addToCart =async (req, res ) => {
   var bookId = req.params.bookId;
   var sessionId = req.signedCookies.sessionId;
-  var session = await Session.findOne({sessionId : sessionId});
+  var session =await Session.findOne({sessionId : sessionId});
   if(!sessionId){
     res.redirect('/books');
     return;
-  }else{
-    
+  }
+  if(!session.cart){
+    await Session.create({ sessionId: sessionId }, function(err, small) {
+      if (err) return console.log(err);
   }
   // var count = db.get('sessions')
   //               .find({ id : sessionId})

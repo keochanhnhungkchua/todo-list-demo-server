@@ -39,7 +39,7 @@ module.exports = async function(req, res, next) {
   
   //get values quantity of cart=> show(index>cart)
   var session = await Session.findOne({sessionId : sessionId});
-  console.log(session);
+  //console.log(session);
   if (session && session.booksId) {
     var items = session.cart;
     res.locals.quantity = Object.values(items).reduce((a, b) => a + b);
