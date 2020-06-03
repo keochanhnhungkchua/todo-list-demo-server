@@ -8,14 +8,10 @@ module.exports.index = async function(req, res) {
   var sessionId = req.signedCookies.sessionId;
   var session = await Session.findOne({ sessionId: sessionId });
   var items = session.cart;
-  
+
   var ids = Object.keys(items);
   var data = await Book.find().where('_id').in(ids).exec();
-  //console.log(data);
-  var books = data.map(key =>{
-    key.quantity = 
-  })
-
+  console.log(data);
   // var books = Object.keys(items).map(key => {
   //   // var book = db
   //   //   .get("books")
@@ -28,7 +24,7 @@ module.exports.index = async function(req, res) {
   //   return data;
   // });
 
-  res.render("cart", { books });
+  //res.render("cart", { books });
 };
 
 module.exports.addToCart = async (req, res) => {
