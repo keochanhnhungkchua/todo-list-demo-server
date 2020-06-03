@@ -13,7 +13,7 @@ module.exports.index = async function(req, res) {
     //   .get("books")
     //   .find({ id: key })
     //   .value();
-    var book = Book.findOne({ _id: key });
+    var book = Book.findById(key,'title image').then;
     console.log(book);
     book.quantity = items[key]; //insert quantity
     return book;
