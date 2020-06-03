@@ -10,20 +10,19 @@ module.exports.index = async function(req, res) {
   var items = session.cart;
 
   var ids = Object.keys(items);
-  var values=Object.values(items);
-  var book = await Book.find().where('_id').in(ids).exec();
-  console.log(values);
-  var books = Object.keys(items).map(data => {
-    // var book = db
-    //   .get("books")
-    //   .find({ id: key })
-    //   .value();
-     //data.quantity = items[key]; //insert quantity
-    for( i=0, i< values.length , i++)
-    data.quantity = values[i]
+  var values = Object.values(items);
+  var book = await Book.find()
+    .where("_id")
+    .in(ids)
+    .exec();
+  //console.log(values);
+  var i = 0;
+  var books = book.map(data => {
+    data.quantity = values[i];
+    i++;
+    return data;
   });
-
-  res.render("cart", { book});
+  res.render("cart", { books });
 };
 
 module.exports.addToCart = async (req, res) => {
