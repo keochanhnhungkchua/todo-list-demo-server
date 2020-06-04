@@ -95,12 +95,13 @@ module.exports.hire = async (req, res) => {
     //   .find({ id: sessionId })
     //   .unset("cart")
     //   .write();
-    var transaction = await Transaction.findOne({ userId: user.id })
-    var addBook = Object.assign(transaction.booksId,data.cart);
-    console.log(addBook);
-   await Transaction.findOneAndUpdate({ userId : user.id }, { cart: {} });
-  await Session.findOneAndUpdate({ sessionId }, { cart: {} });
-    console.log(await Transaction.findOne({ userId: user.id }));
-    res.redirect("/cart");
+    var transaction = await Transaction.findOne({ userId: user.id });
+    var addBook = Object.assign(transaction.booksId, data.cart);
+    await Transaction.findOneAndUpdate(
+      { userId: user.id },
+      { booksId: addBook }
+    );
+    await Session.findOneAndUpdate({ sessionId }, { cart: {} });
+    res.redirect("/transaction");
   }
 };

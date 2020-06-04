@@ -6,6 +6,7 @@ var Transaction = require("../models/transaction.model");
 var Book = require("../models/book.model")
 
 module.exports.index = async (req, res) => {
+  
   var user = res.locals.user;
   // var transaction = db
   //   .get("transactions")
@@ -30,7 +31,7 @@ module.exports.index = async (req, res) => {
   // });
   // res.render("transactions", { books });
   // }
-  res.render("transactions");
+ // res.render("transactions",{transaction});
 };
 
 // module.exports.postCreateTransaction = (req, res) => {
