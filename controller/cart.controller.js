@@ -3,6 +3,7 @@ const db = require("../db");
 
 var Session = require("../models/session.model");
 var Book = require("../models/book.model");
+var Transaction = require("../models/transaction.model")
 
 module.exports.index = async function(req, res) {
   var sessionId = req.signedCookies.sessionId;
@@ -48,31 +49,33 @@ module.exports.addToCart = async (req, res) => {
   res.redirect("/books");
 };
 
-module.exports.hire = (req, res) => {
+module.exports.hire = async (req, res) => {
   var user = res.locals.user; // middleware/auth.middleware
   var sessionId = req.signedCookies.sessionId;
-  var data = db
-    .get("sessions")
-    .find({ id: sessionId })
-    .value();
-  var transactionId = db
-    .get("transactions")
-    .find({ userId: user.id })
-    .value();
-
+  // var data = db
+  //   .get("sessions")
+  //   .find({ id: sessionId })
+  //   .value();
+  var data = await Session.findOne({sessionId : sessionId})
+  // var transactionId = db
+  //   .get("transactions")
+  //   .find({ userId: user.id })
+  //   .value();
+var transactionId =await Transaction.findOne({userId : user.id})
   if (!transactionId) {
-    var transaction = {};
-    transaction.id = shortid.generate();
-    transaction.userId = user.id;
-    transaction.book = data.cart;
-    db.get("transactions")
-      .push(transaction)
-      .write();
-    //empty for cart
-    db.get("sessions")
-      .find({ id: sessionId })
-      .unset("cart")
-      .write();
+    // var transaction = {};
+    // transaction.id = shortid.generate();
+    // transaction.userId = user.id;
+    // transaction.book = data.cart;
+    // db.get("transactions")
+    //   .push(transaction)
+    //   .write();
+    // //empty for cart
+    // db.get("sessions")
+    //   .find({ id: sessionId })
+    //   .unset("cart")
+    //   .write();
+    
     res.redirect("/transactions");
   } else {
     var addBook = Object.assign(transactionId.book, data.cart);
