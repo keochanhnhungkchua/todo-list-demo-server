@@ -9,7 +9,7 @@ module.exports.index = async function(req, res) {
   var sessionId = req.signedCookies.sessionId;
   var session = await Session.findOne({ sessionId: sessionId });
   var items = session.cart;
-
+  
   var ids = Object.keys(items);
   var values = Object.values(items);
   var book = await Book.find()
