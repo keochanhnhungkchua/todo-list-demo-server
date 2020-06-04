@@ -70,7 +70,10 @@ var transactionId =await Transaction.findOne({userId : user.id})
      await Transaction.create(item, function(err, small) {
       if (err) return console.log(err);
     });
-    console.log(transactionId);
+    await Session.findOneAndUpdate({ sessionId }, { cart: [] });
+    console.log(data.cart);
+    console.log(user.id);
+    console.log(await Transaction.findOne({userId : user.id}));
     // var transaction = {};
     // transaction.id = shortid.generate();
     // transaction.userId = user.id;
@@ -86,15 +89,16 @@ var transactionId =await Transaction.findOne({userId : user.id})
     
     res.redirect("/transactions");
   } else {
-    var addBook = Object.assign(transactionId.book, data.cart);
-    db.get("transactions")
-      .find({ userId: user.id })
-      .assign({ book: addBook })
-      .write();
-    db.get("sessions")
-      .find({ id: sessionId })
-      .unset("cart")
-      .write();
+    // var addBook = Object.assign(transactionId.book, data.cart);
+    // db.get("transactions")
+    //   .find({ userId: user.id })
+    //   .assign({ book: addBook })
+    //   .write();
+    // db.get("sessions")
+    //   .find({ id: sessionId })
+    //   .unset("cart")
+    //   .write();
+    await Transaction.findOneAndUpdate(user.Id , { booksId:  });
     res.redirect("/transactions");
   }
 };
