@@ -71,9 +71,6 @@ module.exports.hire = async (req, res) => {
       if (err) return console.log(err);
     });
     await Session.findOneAndUpdate({ sessionId }, { cart: {} });
-    console.log(data.cart);
-    console.log(user.id);
-    console.log(await Transaction.findOne({ userId: user.id }));
     // var transaction = {};
     // transaction.id = shortid.generate();
     // transaction.userId = user.id;
@@ -98,11 +95,12 @@ module.exports.hire = async (req, res) => {
     //   .find({ id: sessionId })
     //   .unset("cart")
     //   .write();
+    var transaction = await Transaction.findOne({ userId: user.id })
+    console.log(transaction.booksId );
     console.log(data.cart);
-    console.log(user.id);
-  await  Transaction.findOneAndUpdate({userId:user.id}, { booksId: data.cart  },{Upsert: true, new : true});
-  await Session.findOneAndUpdate({ sessionId }, { cart: {} });
-    console.log(await Transaction.findOne({ userId: user.id }));
+   
+  //await Session.findOneAndUpdate({ sessionId }, { cart: {} });
+   // console.log(await Transaction.findOne({ userId: user.id }));
     res.redirect("/transactions");
   }
 };
