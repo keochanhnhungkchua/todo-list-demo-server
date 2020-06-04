@@ -70,7 +70,7 @@ var transactionId =await Transaction.findOne({userId : user.id})
      await Transaction.create(item, function(err, small) {
       if (err) return console.log(err);
     });
-    await Session.findOneAndUpdate({ sessionId }, { cart: [] });
+    await Session.findOneAndUpdate({ sessionId }, { cart: {} });
     console.log(data.cart);
     console.log(user.id);
     console.log(await Transaction.findOne({userId : user.id}));
@@ -98,7 +98,9 @@ var transactionId =await Transaction.findOne({userId : user.id})
     //   .find({ id: sessionId })
     //   .unset("cart")
     //   .write();
-    await Transaction.findOneAndUpdate(user.Id , { booksId:  });
+    await Transaction.findOneAndUpdate(user.Id , { booksId: data.cart });
+    await Session.findOneAndUpdate({ sessionId }, { cart: {} });
+    console.log(await Transaction.findOne({userId : user.id}));
     res.redirect("/transactions");
   }
 };
