@@ -53,29 +53,16 @@ module.exports.postLogin = async (req, res) => {
   //check pass
   var match = await bcrypt.compare(password, user.password);
   if (!match) {
-    //     db.get("users")
-    //       .find({ email })
-    //       .assign({ wrongLoginCount: user.wrongLoginCount + 1 })
-    //       .write();
-
-    //     res.render("login", {
-    //         errors: ["wrong password"],
-    //         values: req.body
-    //       });
     user.wrongLoginCount = user.wrongLoginCount + 1;
     await user.save();
     res.render("login", { errors: ["Wrong password"], values: req.body });
     return;
   }
-  // db.get("users")
-  //   .find({ email })
-  //   .assign({ wrongLoginCount: 0 })
-  //   .write();
   user.wrongLoginCount = 0;
   await user.save();
   //create cookie
   res.cookie("userId", user.id, { signed: true });
-  
+
   if (!user.isAdmin) {
     res.redirect("transactions");
     return;
@@ -84,15 +71,9 @@ module.exports.postLogin = async (req, res) => {
     return;
   }
 };
-
 //userTransaction when login
 module.exports.userTransaction = (req, res) => {
   var name = res.locals.userName;
-  // var userTransaction = db
-  //   .get("transactions")
-  //   .filter({ userTransaction: name })
-  //   .value();
-  //res.render("userTransaction", { userTransaction });
 };
 //login false
 module.exports.loginFalse = (req, res) => {
