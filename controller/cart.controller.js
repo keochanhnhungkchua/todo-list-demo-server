@@ -98,12 +98,9 @@ module.exports.hire = async (req, res) => {
     //   .find({ id: sessionId })
     //   .unset("cart")
     //   .write();
-    await Transaction.findOneAndUpdate
-    (user.Id, { booksId: data.cart },  {
-  new: true,
-  upsert: true // Make this update into an upsert
-});
-    await Session.findOneAndUpdate({ sessionId }, { cart: {} });
+    Transaction.findByIdAndUpdate(user.id, { booksId: data.cart  });
+    await Transaction.save();
+    //await Session.findOneAndUpdate({ sessionId }, { cart: {} });
     console.log(await Transaction.findOne({ userId: user.id }));
     res.redirect("/transactions");
   }
