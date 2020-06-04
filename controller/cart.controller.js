@@ -63,6 +63,14 @@ module.exports.hire = async (req, res) => {
   //   .value();
 var transactionId =await Transaction.findOne({userId : user.id})
   if (!transactionId) {
+    var item = {
+      booksId :data.cart,
+      userId : user.id
+    }
+     await Transaction.create(item, function(err, small) {
+      if (err) return console.log(err);
+    });
+    console.log(transactionId);
     // var transaction = {};
     // transaction.id = shortid.generate();
     // transaction.userId = user.id;
