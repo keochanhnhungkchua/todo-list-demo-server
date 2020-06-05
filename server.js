@@ -29,6 +29,7 @@ const transactionRouter =  require("./routes/transaction.router");
 const authRouter = require("./routes/auth.router");
 const cartRouter = require("./routes/cart.router"); 
 
+const apiTransactionRouter = require("./api/routes/transaction.router");
 
 const authMiddleware =  require("./middleware/auth.middleware");
 const sessionIdMiddleware = require('./middleware/session.middleware');
@@ -40,7 +41,6 @@ app.set('views', './views');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-//app.use(cookieParser(process.env.SECRET_COOKIES));
 app.use(cookieParser("process.env.SECRET_COOKIES"));
 
 app.use(sessionIdMiddleware);
@@ -56,6 +56,7 @@ app.use("/transactions",authMiddleware.requireAuth , transactionRouter);
 app.use("/login", authRouter);
 app.use("/cart", cartRouter);
 
+app.use("/api/transactions", apiTransactionRouter);
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {

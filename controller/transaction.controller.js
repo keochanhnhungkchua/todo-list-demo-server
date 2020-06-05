@@ -24,7 +24,6 @@ module.exports.index = async (req, res) => {
       i++;
       return data;
     });
-    console.log(books);
     res.render("transactions", { books });
   }
 };
