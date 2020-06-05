@@ -24,6 +24,9 @@ mongoose.connection.on("connected", () => {
 
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger.json");
+var options = {
+  customCss: '.swagger-ui .topbar { display: none }'
+};
 
 //const userRouter = require("./routes/user.router");
 const bookRouter = require("./routes/book.router");
@@ -64,7 +67,7 @@ app.use("/api/transactions", apiTransactionRouter);
 app.use("/api/login", apiAuthRouter);
 app.use("/api/books", apiBookRouter);
 
-app.use("/api", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use("/api", swaggerUi.serve, swaggerUi.setup(swaggerDocument, options));
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
