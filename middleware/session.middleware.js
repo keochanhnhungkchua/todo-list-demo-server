@@ -1,7 +1,6 @@
 var shortid = require("shortid");
 
 const authMiddleware = require("../middleware/auth.middleware");
-var db = require("../db");
 var Session = require("../models/session.model");
 var Book = require("../models/book.model");
 //create sessionId

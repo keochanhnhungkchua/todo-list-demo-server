@@ -1,5 +1,4 @@
 const shortid = require("shortid");
-const db = require("../db");
 
 var Session = require("../models/session.model");
 var Book = require("../models/book.model");

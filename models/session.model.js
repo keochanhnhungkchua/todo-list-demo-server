@@ -1,10 +1,10 @@
 var mongoose = require("mongoose");
 
 var sessionSchema = new mongoose.Schema({
-  sessionId : String,
+  sessionId: String,
   cart: {
-        type: Object,
-        default: {}
-    }
+    type: Object,
+    default: {}
+  }
 });
-module.exports = mongoose.model("Session", sessionSchema, 'sessions');
+module.exports = mongoose.model("Session", sessionSchema, "sessions");

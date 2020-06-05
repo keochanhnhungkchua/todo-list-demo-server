@@ -23,7 +23,7 @@ mongoose.connection.on('connected', () => {
 })
 
 
-const userRouter = require("./routes/user.router");
+//const userRouter = require("./routes/user.router");
 const bookRouter = require("./routes/book.router");
 const transactionRouter =  require("./routes/transaction.router");
 const authRouter = require("./routes/auth.router");
@@ -50,7 +50,7 @@ app.get("/" , (req, res)=> {
   res.render("index");
 });
 
-app.use("/users",authMiddleware.requireAuth,authMiddleware.isAdmin , userRouter);
+//app.use("/users",authMiddleware.requireAuth,authMiddleware.isAdmin , userRouter);
 app.use("/books", bookRouter);
 app.use("/transactions",authMiddleware.requireAuth , transactionRouter);
 app.use("/login", authRouter);

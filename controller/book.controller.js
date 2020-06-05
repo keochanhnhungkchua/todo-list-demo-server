@@ -1,16 +1,11 @@
-const shortid= require("shortid");
-var Book = require("../models/book.model"); 
+const shortid = require("shortid");
+var Book = require("../models/book.model");
 
 //get
 module.exports.index = async (req, res) => {
-  // var page = parseInt(req.query.page) || 1;//x
-  // var perPage=8;//n
-  // var start = (page-1)*perPage;
-  // var end = page*perPage;
-  //res.render("books",{books:db.get("books").value().slice(start,end)});
   var books = await Book.find();
-  res.render('books', {books});
-}
+  res.render("books", { books });
+};
 
 // module.exports.deleteBook = (req, res) =>{
 //   var id = req.params.id;
@@ -18,7 +13,7 @@ module.exports.index = async (req, res) => {
 //     .remove({id})
 //     .write();
 //   res.redirect("back");
-// } 
+// }
 
 // module.exports.editBook = (req, res) => {
 //   var id= req.params.id;
@@ -33,7 +28,7 @@ module.exports.index = async (req, res) => {
 //     .push(req.body)
 //     .write();
 //   res.redirect("back");
-// } 
+// }
 
 // module.exports.postEditBook = (req, res) => {
 // var id= req.params.id;
