@@ -1,10 +1,13 @@
 var User = require("../../models/user.model");
 
 const bcrypt = require("bcrypt");
-//check mail
+
 module.exports.postLogin = async (req, res) => {
   var email = req.body.email;
   var password = req.body.password;
+  console.log(email)
+    console.log(password)
+
   var user = await User.findOne({ email: email });
   if (!user) {
     const errors = ["User does not exist"];

@@ -30,7 +30,7 @@ const authRouter = require("./routes/auth.router");
 const cartRouter = require("./routes/cart.router"); 
 
 const apiTransactionRouter = require("./api/routes/transaction.router");
-const apiSuthRouter = require("./api/routes/transaction.router");
+const apiAuthRouter = require("./api/routes/auth.router");
 
 const authMiddleware =  require("./middleware/auth.middleware");
 const sessionIdMiddleware = require('./middleware/session.middleware');
@@ -58,6 +58,7 @@ app.use("/login", authRouter);
 app.use("/cart", cartRouter);
 
 app.use("/api/transactions", apiTransactionRouter);
+app.use("/api/auth", apiAuthRouter);
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
