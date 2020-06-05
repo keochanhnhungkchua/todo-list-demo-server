@@ -22,6 +22,11 @@ mongoose.connection.on('connected', () => {
   console.log('connect mongo db'); 
 })
 
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
+ 
+
+
 
 //const userRouter = require("./routes/user.router");
 const bookRouter = require("./routes/book.router");
@@ -62,6 +67,7 @@ app.use("/api/transactions", apiTransactionRouter);
 app.use("/api/login", apiAuthRouter);
 app.use("/api/book", apiBookRouter);
 
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {

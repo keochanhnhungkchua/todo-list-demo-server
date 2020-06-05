@@ -1,0 +1,66 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is book store server",
+    "version": "1.0.0",
+    "title": "Bookstore"
+  },
+  "tags": [
+    {
+      "name": "login",
+      "description": "Login"
+    },
+    {
+      "name": "books",
+      "description": "show books store"
+    },
+    {
+      "name": "transaction",
+      "description": "show transacstions"
+    }
+  ],
+  "paths": {
+    "/api/login": {
+      "post": {
+        "tags": [
+          "login"
+        ],
+        "summary": "Login",
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/books": {
+      "get": {
+        "tags": [
+          "books"
+        ],
+        "summary": "Returns books",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/api/transactions": {
+      "get": {
+        "tags": [
+          "transaction"
+        ],
+        "summary": "Get transactions",
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    }
+  }
+}
