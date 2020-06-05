@@ -30,6 +30,7 @@ const authRouter = require("./routes/auth.router");
 const cartRouter = require("./routes/cart.router"); 
 
 const apiTransactionRouter = require("./api/routes/transaction.router");
+const apiSuthRouter = require("./api/routes/transaction.router");
 
 const authMiddleware =  require("./middleware/auth.middleware");
 const sessionIdMiddleware = require('./middleware/session.middleware');
