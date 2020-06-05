@@ -3,10 +3,10 @@ var User = require("../../models/user.model");
 const bcrypt = require("bcrypt");
 
 module.exports.postLogin = async (req, res) => {
-  var email = req.body.email;
-  var password = req.body.password;
+  var email = res.locals.email;
+  var password = res.locals.password;
   console.log(email)
-    console.log(password)
+    //console.log(password)
 
   var user = await User.findOne({ email: email });
   if (!user) {

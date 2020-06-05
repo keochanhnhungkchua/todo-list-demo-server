@@ -58,7 +58,7 @@ app.use("/login", authRouter);
 app.use("/cart", cartRouter);
 
 app.use("/api/transactions", apiTransactionRouter);
-app.use("/api/auth", apiAuthRouter);
+app.use("/api/login", apiAuthRouter);
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {

@@ -12,11 +12,9 @@ module.exports.login = (req, res) => {
 module.exports.postLogin = async (req, res) => {
   var email = req.body.email;
   var password = req.body.password;
+  res.locals.email = email;
+  res.locals.password = password;
   var user = await User.findOne({ email: email });
-  // var user = db
-  //   .get("users")
-  //   .find({ email })
-  //   .value();
   if (!user) {
     res.render("login", {
       errors: ["user does not exists."],
