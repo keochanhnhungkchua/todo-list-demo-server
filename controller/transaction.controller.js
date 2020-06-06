@@ -27,10 +27,10 @@ module.exports.index = async (req, res) => {
       });
      res.render("transactions", { books });
     }
-    console.log(bnbnmfas)
+    console.log(yuryuyu);//demo error by use try catch
   } catch (error) {
     console.log(error);
-    res.render("error");
+   // res.render("error");
   }
 };
 
