@@ -5,26 +5,32 @@ var Book = require("../models/book.model");
 var Session = require("../models/session.model");
 
 module.exports.index = async (req, res) => {
-  var user = res.locals.user;
-  var transaction = await Transaction.findOne({ userId: user._id });
-  if (!transaction) {
-    res.redirect("books");
-    return;
-  } else {
-    var items = transaction.booksId;
-    var ids = Object.keys(items);
-    var values = Object.values(items);
-    var book = await Book.find()
-      .where("_id")
-      .in(ids)
-      .exec();
-    var i = 0;
-    var books = book.map(data => {
-      data.quantity = values[i];
-      i++;
-      return data;
-    });
-    res.render("transactions", { books });
+  try {
+    var user = res.locals.user;
+    var transaction = await Transaction.findOne({ userId: user._id });
+    if (!transaction) {
+      res.redirect("books");
+      return;
+    } else {
+      var items = transaction.booksId;
+      var ids = Object.keys(items);
+      var values = Object.values(items);
+      var book = await Book.find()
+        .where("_id")
+        .in(ids)
+        .exec();
+      var i = 0;
+      var books = book.map(data => {
+        data.quantity = values[i];
+        i++;
+        return data;
+      });
+     res.render("transactions", { books });
+    }
+    console.log(bnbnmfas)
+  } catch (error) {
+    console.log(error);
+    res.render("error");
   }
 };
 
