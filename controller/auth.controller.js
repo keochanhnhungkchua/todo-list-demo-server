@@ -8,6 +8,10 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 module.exports.login = (req, res) => {
   res.render("login");
 };
+module.exports.logout = (req, res ) => {
+  req.session.destroy();
+  res.redirect("books");
+}
 //check mail
 module.exports.postLogin = async (req, res) => {
   var email = req.body.email;
