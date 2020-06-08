@@ -8,10 +8,7 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 module.exports.login = (req, res) => {
   res.render("login");
 };
-module.exports.logout = (req, res ) => {
-  req.session.destroy();
-  res.redirect("books");
-}
+
 //check mail
 module.exports.postLogin = async (req, res) => {
   var email = req.body.email;
@@ -73,6 +70,21 @@ module.exports.postLogin = async (req, res) => {
     return;
   }
 };
+
+module.exports.logout = (req, res ) => {
+   if (req.session) {
+        // delete session object
+        req.session.destroy(function(err) {
+            if(err) {
+                return res.json({err});
+            } else {
+                return res.json({'logout': "Success"});
+            }
+        });
+    }
+  console.log("123hhihi")
+  res.redirect("books");
+}
 //userTransaction when login
 module.exports.userTransaction = (req, res) => {
   var name = res.locals.userName;
