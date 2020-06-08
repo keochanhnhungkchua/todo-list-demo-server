@@ -3,7 +3,7 @@ var router = express.Router();
 
 var controller = require("../controller/auth.controller");
 //get
-router.get("/", controller.login);
+//router.get("/", controller.login);
 router.get("/", controller.logout);
 
 router.get("/userTransaction", controller.userTransaction);

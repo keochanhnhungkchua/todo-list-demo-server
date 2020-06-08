@@ -5,14 +5,14 @@ const bcrypt = require("bcrypt");
 const sgMail = require("@sendgrid/mail");
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-module.exports.login = (req, res) => {
-  res.render("login");
-};
+// module.exports.login = (req, res) => {
+//   res.render("login");
+// };
 module.exports.logout = (req, res ) => {
   console.log(req.signedCookies.sessionId)
 res.clearCookie('sessionId');
   console.log("123hhihi")
-  //res.redirect("books");
+  res.redirect("books");
 }
 //check mail
 module.exports.postLogin = async (req, res) => {
