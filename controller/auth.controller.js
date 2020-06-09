@@ -5,12 +5,15 @@ const bcrypt = require("bcrypt");
 const sgMail = require("@sendgrid/mail");
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-// module.exports.login = (req, res) => {
-//   res.render("login");
-// };
+module.exports.login = (req, res) => {
+  res.render("login");
+};
 module.exports.logout = (req, res ) => {
   console.log(req.signedCookies.sessionId)
-res.clearCookie('sessionId');
+res.cookie('sessionId', '', {
+      maxAge: 0,
+      overwrite: true,
+    });
   console.log("123hhihi")
   res.redirect("books");
 }
