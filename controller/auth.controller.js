@@ -10,13 +10,13 @@ module.exports.login = (req, res) => {
 };
 
 module.exports.logout = (req, res ) => {
-  console.log(req.signedCookies.sessionId)
+  console.log(req.signedCookies.userId)
 // res.cookie('sessionId', '', {
 //       maxAge: 0,
 //       overwrite: true,
 //       path:"/"
 //     });
-  res.clearCookie('userId' ,{path:'/'})
+  res.clearCookie('userId' )//,{path:'/'})
   console.log("123hhihi")
   res.redirect("/books");
 }
@@ -74,10 +74,10 @@ module.exports.postLogin = async (req, res) => {
   res.cookie("userId", user.id, { signed: true });
 
   if (!user.isAdmin) {
-    res.redirect("transactions");
+    res.redirect("/transactions");
     return;
   } else {
-    res.redirect("/");
+    res.redirect("/transactions");
     return;
   }
 };
