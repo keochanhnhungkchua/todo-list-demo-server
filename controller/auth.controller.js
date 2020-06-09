@@ -8,11 +8,13 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 module.exports.login = (req, res) => {
   res.render("login");
 };
+
 module.exports.logout = (req, res ) => {
   console.log(req.signedCookies.sessionId)
 res.cookie('sessionId', '', {
       maxAge: 0,
       overwrite: true,
+      path:"/"
     });
   console.log("123hhihi")
   res.redirect("books");
