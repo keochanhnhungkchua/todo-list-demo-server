@@ -3,12 +3,12 @@ var User = require("../models/user.model");
 module.exports.requireAuth = async (req, res, next) => {
   var cookie = req.signedCookies.userId;
   if (!cookie) {
-    res.redirect("/login");
+    res.redirect("auth/login");
     return;
   }
   var user = await User.findOne({ _id: cookie });
   if (!user) {
-    res.redirect("/login");
+    res.redirect("auth/login");
     return;
   }
   res.locals.user = user;

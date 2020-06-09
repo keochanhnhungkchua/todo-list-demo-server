@@ -60,8 +60,7 @@ app.get("/", (req, res) => {
 //app.use("/users",authMiddleware.requireAuth,authMiddleware.isAdmin , userRouter);
 app.use("/books", bookRouter);
 app.use("/transactions", authMiddleware.requireAuth, transactionRouter);
-app.use("/login", authRouter);
-app.use("/logout", authRouter);
+app.use("/auth", authRouter);
 app.use("/cart", cartRouter);
 
 app.use("/api/transactions", apiTransactionRouter);

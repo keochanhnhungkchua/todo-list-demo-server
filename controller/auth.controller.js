@@ -11,13 +11,14 @@ module.exports.login = (req, res) => {
 
 module.exports.logout = (req, res ) => {
   console.log(req.signedCookies.sessionId)
-res.cookie('sessionId', '', {
-      maxAge: 0,
-      overwrite: true,
-      path:"/"
-    });
+// res.cookie('sessionId', '', {
+//       maxAge: 0,
+//       overwrite: true,
+//       path:"/"
+//     });
+  res.clearCookie('userId' ,{path:'/'})
   console.log("123hhihi")
-  res.redirect("books");
+  res.redirect("/books");
 }
 //check mail
 module.exports.postLogin = async (req, res) => {
