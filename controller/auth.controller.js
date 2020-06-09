@@ -72,14 +72,14 @@ module.exports.postLogin = async (req, res) => {
   await user.save();
   //create cookie
   res.cookie("userId", user.id, { signed: true });
-
-  if (!user.isAdmin) {
-    res.redirect("/transactions");
-    return;
-  } else {
-    res.redirect("/transactions");
-    return;
-  }
+  res.redirect("/books");
+  // if (!user.isAdmin) {
+  //   res.redirect("/transactions");
+  //   return;
+  // } else {
+  //   res.redirect("/transactions");
+  //   return;
+  // }
 };
 
 
