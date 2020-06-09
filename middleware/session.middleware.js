@@ -6,6 +6,7 @@ var Book = require("../models/book.model");
 //create sessionId
 module.exports = async function(req, res, next) {
   var sessionId = req.signedCookies.sessionId;
+  
   if (!sessionId) {
     var sessionId = shortid.generate();
     res.cookie("sessionId", sessionId, {

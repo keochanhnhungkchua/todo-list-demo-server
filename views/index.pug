@@ -5,8 +5,8 @@ block content
     a.text-decoration-none.text-danger(href='/') I love coderX
     |
     |
-    if(user)
-    a.btn.btn-primary(href='auth/logout') Logout
+    if user
+      a.btn.btn-primary(href='auth/logout') Logout
   nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
     ul.navbar-nav.mr-auto
       li.nav-item.text-uppercase
