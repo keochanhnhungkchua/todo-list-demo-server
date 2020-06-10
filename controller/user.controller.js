@@ -10,7 +10,7 @@ cloudinary.config({
 });
 
 module.exports.index = async (req, res) => {
-  var users = await User.find("-password");
+  var users = await User.find();
   res.render("users", { users });
 };
 
