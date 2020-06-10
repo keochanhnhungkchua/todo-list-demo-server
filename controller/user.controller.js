@@ -33,29 +33,28 @@ module.exports.editUser = async (req, res) => {
 //post
 module.exports.postCreateUser = async (req, res) => {
  // req.body.id = shortid.generate();
+  var avatarUrl;
   if (req.file) {
     cloudinary.uploader.upload(req.file.path, 
                                { tags: "avatar" },
-                               function(err,result){
-                                req.body.avatar = result.url;
-                                // db.get("users")
-                                //   .push(req.body)
-                                //   .write();
-      console.log(req.body.avatar);
+                                await function(err,result){
+                                avatarUrl= result.url;
                                 });
-    // await User.create(req.body, function(err) {
-    //   if (err) return console.log(err);
-    // });
-    res.redirect("back");
-  } else {
-    // db.get("users")
-    //   .push(req.body)
-    //   .write();
+  }
+  req.body.avatar = avatarUrl;
+  console.log(req.body.avatar)
     await User.create(req.body, function(err) {
       if (err) return console.log(err);
     });
-    res.redirect("/users"); 
-  }
+    res.redirect("back");
+  // } else {
+  //   // db.get("users")
+  //   //   .push(req.body)
+  //   //   .write();
+  //   await User.create(req.body, function(err) {
+  //     if (err) return console.log(err);
+  //   });
+  //   res.redirect("/users"); }
 };
 
 module.exports.postEditUser = async (req, res) => {
