@@ -35,6 +35,7 @@ module.exports.editTransaction = async (req, res) => {
   var id = req.params.id;
   var userId = await User.findById(id, "-password");
   res.locals.userName = userId.name;
+  var userTransaction = userId;
   var transaction = await Transaction.findOne({ userId: id });
   if (!transaction) {
     res.redirect("/books");
