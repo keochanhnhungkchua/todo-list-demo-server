@@ -7,6 +7,8 @@ block content
     |
     if user
       a.btn.btn-outline-danger(href='auth/logout') Logout
+    else
+      a.btn.btn-outline-primary(href='auth/login') Login
   nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
     ul.navbar-nav.mr-auto
       li.nav-item.text-uppercase
@@ -26,5 +28,3 @@ block content
         br
         br
         //h1 Book Store
-        br
-        a.btn.btn-primary(href='auth/login') Login

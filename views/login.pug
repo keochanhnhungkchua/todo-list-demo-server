@@ -12,10 +12,10 @@ block content
   form.px-4.py-3(action="/auth/postLogin" method="POST" )
     .form-group
       label(for="email") Email
-      input#exampleDropdownFormEmail1.form-control(type='email',value = values ? values.email : '', placeholder='email@example.com')
+      input#exampleDropdownFormEmail1.form-control(type='email',name="email", value = values ? values.email : '', placeholder='email@example.com')
     .form-group
       label(for='exampleDropdownFormPassword1') Password
-      input#exampleDropdownFormPassword1.form-control(type='password', placeholder='Password')
+      input#exampleDropdownFormPassword1.form-control(type="password" name="password" value = values ? values.password : '' placeholder='Password')
     .form-group
       .form-check
         input#dropdownCheck.form-check-input(type='checkbox')
@@ -25,15 +25,4 @@ block content
   .dropdown-divider
   a.dropdown-item(href='#') New around here? Sign up
   a.dropdown-item(href='#') Forgot password?
-      
-  form(action="/auth/postLogin" method="POST" )
-    label(for="email") Email
-    input#email.form-control.ml-2.mr-2(type="email" name="email" value = values ? values.email : ''  placeholder="Enter email here....")
-    br
-    br
-    label(for="password") Password
-    input#password.form-control.ml-2.mr-2(type="password" name="password" value = values ? values.password : ''  placeholder='Enter password here...')
-    br
-    br
-    button.btn.btn-primary.ml-2 Login
   
