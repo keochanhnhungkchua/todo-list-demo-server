@@ -3,7 +3,6 @@ var cloudinary = require("cloudinary").v2;
 
 //const db = require("../db");
 var User = require("../models/user.model");
-var cookies = 0;
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
@@ -16,13 +15,14 @@ module.exports.index = async (req, res) => {
   res.render("users", { users });
 };
 
-// module.exports.deleteUser = (req, res) =>{
-//   var id=req.params.id;
-//   db.get("users")
-//     .remove({id})
-//     .write();
-//   res.redirect("back");
-// }
+module.exports.deleteUser =async (req, res) =>{
+  var id=req.params.id;
+  // db.get("users")
+  //   .remove({id})
+  //   .write();
+   await User.findByIdAndDelete(id)
+  res.redirect("back");
+}
 
 module.exports.editUser = async (req, res) => {
   var id = req.params.id;
@@ -32,8 +32,7 @@ module.exports.editUser = async (req, res) => {
 
 //post
 module.exports.postCreateUser = async (req, res) => {
-  req.body.id = shortid.generate();
-
+ // req.body.id = shortid.generate();
   if (req.file) {
     cloudinary.uploader.upload(req.file.path, 
                                { tags: "avatar" },
