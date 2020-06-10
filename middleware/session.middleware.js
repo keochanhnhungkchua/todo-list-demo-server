@@ -6,7 +6,10 @@ var Book = require("../models/book.model");
 //create sessionId
 module.exports = async function(req, res, next) {
   var sessionId = req.signedCookies.sessionId;
-  var user = res.locals.user
+  var user = req.signedCookies.userId;
+  // if(user){
+  //   res.locals.user
+  // }
   console.log("hi123",user);
   
   if (!sessionId) {
