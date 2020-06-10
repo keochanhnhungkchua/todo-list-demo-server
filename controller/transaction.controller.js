@@ -36,7 +36,7 @@ module.exports.editTransaction = async (req, res) =>{
  var id = req.params.id;
 var transaction = await Transaction.findOne({ userId: id });
     if (!transaction) {
-      res.redirect("books");
+      res.redirect("/books");
       return;
     } else {
       var items = transaction.booksId;
