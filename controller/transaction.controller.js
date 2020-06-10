@@ -1,5 +1,3 @@
-//const shortid = require("shortid");
-
 var Transaction = require("../models/transaction.model");
 var Book = require("../models/book.model");
 var User = require("../models/user.model");
@@ -58,6 +56,11 @@ module.exports.editTransaction = async (req, res) => {
     res.render("editTransaction", { books });
   }
 };
+module.exports.removeTransaction = async (req, res) =>{
+  var id = req.params.id;
+  console.log(id);
+  res.redirect("back");
+}
 // module.exports.postCreateTransaction = (req, res) => {
 //   req.body.id = shortid.generate();
 //   req.body.isComplete = false;

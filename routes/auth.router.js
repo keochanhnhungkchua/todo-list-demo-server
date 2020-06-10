@@ -5,13 +5,8 @@ var controller = require("../controller/auth.controller");
 //get
 router.get("/login", controller.login);
 router.get("/logout", controller.logout);
-
-router.get("/userTransaction", controller.userTransaction);
-
 router.get("/loginFalse", controller.loginFalse);
 
 router.post("/postLogin", controller.postLogin);
-
-
 
 module.exports = router;

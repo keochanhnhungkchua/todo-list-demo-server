@@ -1,7 +1,6 @@
-const shortid = require("shortid");
+
 var cloudinary = require("cloudinary").v2;
 
-//const db = require("../db");
 var User = require("../models/user.model");
 
 cloudinary.config({
@@ -17,9 +16,6 @@ module.exports.index = async (req, res) => {
 
 module.exports.deleteUser = async (req, res) => {
   var id = req.params.id;
-  // db.get("users")
-  //   .remove({id})
-  //   .write();
   await User.findByIdAndDelete(id);
   res.redirect("back");
 };

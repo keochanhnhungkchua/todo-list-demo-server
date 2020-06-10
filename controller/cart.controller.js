@@ -1,5 +1,3 @@
-const shortid = require("shortid");
-
 var Session = require("../models/session.model");
 var Book = require("../models/book.model");
 var Transaction = require("../models/transaction.model");

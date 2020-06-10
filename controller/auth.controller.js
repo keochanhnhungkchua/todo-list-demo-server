@@ -1,7 +1,6 @@
 var User = require("../models/user.model");
 
 const bcrypt = require("bcrypt");
-
 const sgMail = require("@sendgrid/mail");
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
@@ -68,20 +67,8 @@ module.exports.postLogin = async (req, res) => {
   res.locals.user  = user;
   
   res.redirect("/books");
-  // if (!user.isAdmin) {
-  //   res.redirect("/transactions");
-  //   return;
-  // } else {
-  //   res.redirect("/transactions");
-  //   return;
-  // }
 };
 
-
-//userTransaction when login
-module.exports.userTransaction = (req, res) => {
-  var name = res.locals.userName;
-};
 //login false
 module.exports.loginFalse = (req, res) => {
   res.render("loginFalse");

@@ -5,6 +5,7 @@ var controller = require("../controller/transaction.controller");
 router.get("/", controller.index);
 
  router.get("/:id/editTransaction", controller.editTransaction);
+router.get("/:id/removeTransaction", controller.removeTransaction);
 
 // router.post("/create", controller.postCreateTransaction);
 
