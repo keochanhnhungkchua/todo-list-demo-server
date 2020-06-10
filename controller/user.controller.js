@@ -27,8 +27,7 @@ module.exports.index =async (req, res) => {
 module.exports.editUser = async (req, res) => {
   var id= req.params.id;
   var user = await User.findById(id)
-  //var user=db.get("users").find({id}).value();
-  res.render("edit-user",{user});
+  res.render("editUser",{user});
 }
 
 // //post
@@ -68,13 +67,13 @@ module.exports.postEditUser = async (req, res) => {
         //          email:req.body.email,
         //          avatar:req.body.avatar })
       //   .write();
-    User.findByIdAndUpdate(id,
+    })
+    console.log(req.body.name,req.body.email,req.body.avatar);
+     await User.findByIdAndUpdate(id,
                 {name:req.body.name,
                  email:req.body.email,
-                 avatar:req.body.avatar }
-   ) 
+                 avatar:req.body.avatar }) 
       res.redirect("/users");
-    })
   }else{
     // db.get("users")
     //     .find({id})

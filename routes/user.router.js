@@ -17,7 +17,7 @@ router.get("/", controller.index);
 
 //router.get("/:id/delete", controller.deleteUser);
 
-router.get("/:id/edit-user", controller.editUser);
+router.get("/:id/editUser", controller.editUser);
 
 //post user
 // router.post(
@@ -27,6 +27,6 @@ router.get("/:id/edit-user", controller.editUser);
 //   controller.postCreateUser
 // );
 
-// router.post("/:id/edit-user", upload.single("avatar"), controller.postEditUser);
+router.post("/:id/editUser", upload.single("avatar"), controller.postEditUser);
 
  module.exports = router;

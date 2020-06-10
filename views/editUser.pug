@@ -4,7 +4,7 @@ block headbar
   br
   br
   a.bnt.btn-primary.m-4.p-2.pl-3.pr-3(href="/users") Back
-  form.mt-2(action="/users/" +user.id+ "/edit-user" method="POST" enctype="multipart/form-data")
+  form.mt-2(action="/users/" +user.id+ "/editUser" method="POST" enctype="multipart/form-data")
     lable Edit name:
     input.form-control.ml-4(type="text" name="name"  value=user.name)
     lable Edit email:
