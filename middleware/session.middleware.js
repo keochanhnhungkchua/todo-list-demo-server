@@ -3,9 +3,12 @@ var shortid = require("shortid");
 const authMiddleware = require("../middleware/auth.middleware");
 var Session = require("../models/session.model");
 var Book = require("../models/book.model");
+var Auth = require ("../controller/auth.controller")
 //create sessionId
 module.exports = async function(req, res, next) {
   var sessionId = req.signedCookies.sessionId;
+  var user = res.locals.user
+  console.log("hi123",user);
   
   if (!sessionId) {
     var sessionId = shortid.generate();

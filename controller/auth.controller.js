@@ -11,21 +11,14 @@ module.exports.login = (req, res) => {
 
 module.exports.logout = (req, res ) => {
   console.log(req.signedCookies.userId)
-// res.cookie('sessionId', '', {
-//       maxAge: 0,
-//       overwrite: true,
-//       path:"/"
-//     });
   res.clearCookie('userId' )//,{path:'/'})
-  console.log("123hhihi")
   res.redirect("/books");
 }
 //check mail
 module.exports.postLogin = async (req, res) => {
   var email = req.body.email;
   var password = req.body.password;
-  res.locals.email = email;
-  res.locals.password = password;
+  
   var user = await User.findOne({ email: email });
   if (!user) {
     res.render("login", {
@@ -72,6 +65,8 @@ module.exports.postLogin = async (req, res) => {
   await user.save();
   //create cookie
   res.cookie("userId", user.id, { signed: true });
+  res.locals.user  = user;
+  
   res.redirect("/books");
   // if (!user.isAdmin) {
   //   res.redirect("/transactions");
