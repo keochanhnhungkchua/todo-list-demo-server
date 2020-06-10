@@ -6,12 +6,13 @@ block content
     |
     |
     if user
-    a.btn.btn-primary(href='auth/logout') Logout
+      a.btn.btn-primary(href='auth/logout') Logout
   nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
     ul.navbar-nav.mr-auto
       li.nav-item.text-uppercase
         a.navbar-brand.nav-link(href="/books") Books
-        a.navbar-brand.nav-link(href="/users") Users
+        if isAdmin
+          a.navbar-brand.nav-link(href="/users") Users
         a.navbar-brand.nav-link(href="/transactions") Transactions
         
         if quantity > 0
