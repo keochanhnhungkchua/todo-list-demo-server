@@ -42,10 +42,11 @@ module.exports.postCreateUser = async (req, res) => {
                                 // db.get("users")
                                 //   .push(req.body)
                                 //   .write();
+      console.log(req.body.avatar);
                                 });
-    await User.create(req.body, function(err) {
-      if (err) return console.log(err);
-    });
+    // await User.create(req.body, function(err) {
+    //   if (err) return console.log(err);
+    // });
     res.redirect("back");
   } else {
     // db.get("users")
