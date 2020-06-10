@@ -1,18 +1,20 @@
-// const shortid= require("shortid");
-// var cloudinary = require('cloudinary').v2
+const shortid= require("shortid");
+var cloudinary = require('cloudinary').v2
 
-// const db = require("../db");
-// var cookies=0;
+//const db = require("../db");
+var User = require("../models/user.model")
+var cookies=0;
 
-// cloudinary.config({
-//   cloud_name: process.env.CLOUD_NAME,
-//   api_key: process.env.CLOUDINARY_API_KEY,
-//   api_secret: process.env.CLOUDINARY_API_SECRET
-// });
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
+});
 
-// module.exports.index = (req, res) => {
-//   res.render("users",{users:db.get("users").value()});
-// };
+module.exports.index =async (req, res) => {
+  var users =await User.find();
+  res.render("users",{users});
+};
 
 // module.exports.deleteUser = (req, res) =>{
 //   var id=req.params.id;
