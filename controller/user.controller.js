@@ -24,17 +24,12 @@ module.exports.index =async (req, res) => {
 //   res.redirect("back");
 // }
 
-// module.exports.editUser = (req, res) => {
-  
-//   if (req.cookies){
-//   cookies ++; 
-//   console.log(req.cookies, ':' ,cookies);
-//   }
-  
-//   var id= req.params.id;
-//   var user=db.get("users").find({id}).value();
-//   res.render("edit-user",{user});
-// }
+module.exports.editUser = async (req, res) => {
+  var id= req.params.id;
+  var user = await User.findById(id)
+  //var user=db.get("users").find({id}).value();
+  res.render("edit-user",{user});
+}
 
 // //post
 // module.exports.postCreateUser = (req, res) =>{ 
@@ -60,29 +55,29 @@ module.exports.index =async (req, res) => {
 //             }
 // }
 
-// module.exports.postEditUser = (req, res) => {
-//   var id = req.params.id
-//   if (req.file){
-//   cloudinary.uploader.upload(req.file.path, 
-//                              {tags : "avatar"},
-//                              function(err, result){
-//        req.body.avatar= result.url;
-//       db.get("users")
-//         .find({id})
-//         .assign({name:req.body.name,
-//                  email:req.body.email,
-//                  avatar:req.body.avatar })
-//         .write();
-//       res.redirect("/users");
-//     })
-//   }else{
-//     db.get("users")
-//         .find({id})
-//         .assign({name:req.body.name,
-//                  email:req.body.email,
-//                  })
-//         .write();
-//       res.redirect("/users");
-//   }
+module.exports.postEditUser = (req, res) => {
+  var id = req.params.id
+  if (req.file){
+  cloudinary.uploader.upload(req.file.path, 
+                             {tags : "avatar"},
+                             function(err, result){
+       req.body.avatar= result.url;
+      db.get("users")
+        .find({id})
+        .assign({name:req.body.name,
+                 email:req.body.email,
+                 avatar:req.body.avatar })
+        .write();
+      res.redirect("/users");
+    })
+  }else{
+    db.get("users")
+        .find({id})
+        .assign({name:req.body.name,
+                 email:req.body.email,
+                 })
+        .write();
+      res.redirect("/users");
+  }
   
-// }
+}

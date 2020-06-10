@@ -17,7 +17,7 @@ router.get("/", controller.index);
 
 //router.get("/:id/delete", controller.deleteUser);
 
-//router.get("/:id/edit-user", controller.editUser);
+router.get("/:id/edit-user", controller.editUser);
 
 //post user
 // router.post(
