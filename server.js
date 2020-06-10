@@ -54,7 +54,7 @@ app.use(sessionIdMiddleware);
 
 //home page
 app.get("/", (req, res) => {
-  res.render("home");
+  res.render("index");
 });
 
 app.use("/users",authMiddleware.requireAuth,authMiddleware.isAdmin , userRouter);
