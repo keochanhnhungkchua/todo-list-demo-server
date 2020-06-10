@@ -1,4 +1,4 @@
-const shortid = require("shortid");
+//const shortid = require("shortid");
 
 var Transaction = require("../models/transaction.model");
 var Book = require("../models/book.model");
@@ -35,7 +35,9 @@ module.exports.index = async (req, res) => {
 
 module.exports.editTransaction = async (req, res) =>{
 var id = req.params.id;
-var userId = await User.findById(id);  
+var userId = await User.findById(id,"-password");
+ res.locals.userName = userId.name 
+  console.log(userId);
 var transaction = await Transaction.findOne({ userId: id });
     if (!transaction) {
       res.redirect("/books");
