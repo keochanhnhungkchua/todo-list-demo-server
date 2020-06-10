@@ -1,0 +1,27 @@
+extends index
+  
+block headbar
+  br
+  br
+  
+  if books 
+    .container
+    .row.justify-content-md-center
+      .col-8
+          lable.text-danger.text-uppercase list transaction of: #{user.name}    
+          table.table.table-bordered.table-striped
+            tr
+              th Index
+              th Cover
+              th Title
+              th Quantity
+            each book, index in books  
+              tr  
+                  td=index +1
+                  if book.image
+                    td.d-flex.justify-content-center.align-items-center
+                      img(src=book.image, width='64')
+                  td=book.title
+                  td=book.quantity
+  else
+    .alert.text-center.alert-primary Nothing

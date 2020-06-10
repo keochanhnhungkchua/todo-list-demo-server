@@ -63,18 +63,10 @@ module.exports.postEditUser = async (req, res) => {
         .then(user => res.redirect("/users"))
         .catch(err => console.log(err));
     });
-    // await User.findByIdAndUpdate(id, {
-    //   name: req.body.name,
-    //   email: req.body.email,
-    //   avatar: req.body.avatar
-    //});
-   // res.redirect("/users");
   } else {
-    await User.findByIdAndUpdate(id, {
-      name: req.body.name,
-      email: req.body.email,
-      avatar: req.body.avatar
-    });
+    User.findByIdAndUpdate(id, req.body, { new: true })
+      .then(user => res.redirect("/users"))
+      .catch(err => console.log(err));
     res.redirect("/users");
   }
 };
