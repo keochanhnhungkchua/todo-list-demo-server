@@ -26,40 +26,38 @@ module.exports.index = async (req, res) => {
         i++;
         return data;
       });
-     res.render("transactions", { books });
+      res.render("transactions", { books });
     }
   } catch (error) {
     console.log(error);
   }
 };
 
-module.exports.editTransaction = async (req, res) =>{
-var id = req.params.id;
-var userId = await User.findById(id,"-password");
- res.locals.userName = userId.name 
-  console.log(userId);
-var transaction = await Transaction.findOne({ userId: id });
-    if (!transaction) {
-      res.redirect("/books");
-      return;
-    } else {
-      var items = transaction.booksId;
-      var ids = Object.keys(items);
-      var values = Object.values(items);
-      var book = await Book.find()
-        .where("_id") 
-        .in(ids)
-        .exec();
-      var i = 0;
-      var books = book.map(data => {
-        data.quantity = values[i];
-        i++;
-        return data;
-      });
-     res.render("editTransaction", { books });
-  
-}
-}
+module.exports.editTransaction = async (req, res) => {
+  var id = req.params.id;
+  var userId = await User.findById(id, "-password");
+  res.locals.userName = userId.name;
+  var transaction = await Transaction.findOne({ userId: id });
+  if (!transaction) {
+    res.redirect("/books");
+    return;
+  } else {
+    var items = transaction.booksId;
+    var ids = Object.keys(items);
+    var values = Object.values(items);
+    var book = await Book.find()
+      .where("_id")
+      .in(ids)
+      .exec();
+    var i = 0;
+    var books = book.map(data => {
+      data.quantity = values[i];
+      i++;
+      return data;
+    });
+    res.render("editTransaction", { books });
+  }
+};
 // module.exports.postCreateTransaction = (req, res) => {
 //   req.body.id = shortid.generate();
 //   req.body.isComplete = false;
