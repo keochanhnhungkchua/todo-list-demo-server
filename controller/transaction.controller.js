@@ -2,6 +2,7 @@ const shortid = require("shortid");
 
 var Transaction = require("../models/transaction.model");
 var Book = require("../models/book.model");
+var User = require("../models/user.model");
 var Session = require("../models/session.model");
 
 module.exports.index = async (req, res) => {
@@ -33,7 +34,8 @@ module.exports.index = async (req, res) => {
 };
 
 module.exports.editTransaction = async (req, res) =>{
- var id = req.params.id;
+var id = req.params.id;
+var userId = await User.findById(id);  
 var transaction = await Transaction.findOne({ userId: id });
     if (!transaction) {
       res.redirect("/books");

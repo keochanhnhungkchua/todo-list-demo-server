@@ -15,6 +15,7 @@ block headbar
               th Cover
               th Title
               th Quantity
+              th Change
             each book, index in books  
               tr  
                   td=index +1
@@ -23,5 +24,10 @@ block headbar
                       img(src=book.image, width='64')
                   td=book.title
                   td=book.quantity
+                  td
+                      span
+                       |
+                       |
+                       a.mx-1.btn.btn-outline-info(href="/transactions/" +book.id+ "/removeTransaction") Remove
   else
     .alert.text-center.alert-primary Nothing
