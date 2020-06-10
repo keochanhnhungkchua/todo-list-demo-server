@@ -20,12 +20,12 @@ router.get("/", controller.index);
 router.get("/:id/editUser", controller.editUser);
 
 //post user
-// router.post(
-//   "/create",
-//   upload.single("avatar"),
-//   validate.postCreatUser,
-//   controller.postCreateUser
-// );
+router.post(
+  "/create",
+  upload.single("avatar"),
+  validate.postCreatUser,
+  controller.postCreateUser
+);
 
 router.post("/:id/editUser", upload.single("avatar"), controller.postEditUser);
 
