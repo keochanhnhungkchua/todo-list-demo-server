@@ -55,28 +55,33 @@ module.exports.editUser = async (req, res) => {
 //             }
 // }
 
-module.exports.postEditUser = (req, res) => {
+module.exports.postEditUser = async (req, res) => {
   var id = req.params.id
   if (req.file){
   cloudinary.uploader.upload(req.file.path, 
                              {tags : "avatar"},
                              function(err, result){
        req.body.avatar= result.url;
-      db.get("users")
-        .find({id})
-        .assign({name:req.body.name,
+      // db.get("users")
+      //   .find({id})
+        // .assign({name:req.body.name,
+        //          email:req.body.email,
+        //          avatar:req.body.avatar })
+      //   .write();
+    User.findByIdAndUpdate(id,
+                {name:req.body.name,
                  email:req.body.email,
-                 avatar:req.body.avatar })
-        .write();
+                 avatar:req.body.avatar }
+   ) 
       res.redirect("/users");
     })
   }else{
-    db.get("users")
-        .find({id})
-        .assign({name:req.body.name,
-                 email:req.body.email,
-                 })
-        .write();
+    // db.get("users")
+    //     .find({id})
+    //     .assign({name:req.body.name,
+    //              email:req.body.email,
+    //              })
+    //     .write();
       res.redirect("/users");
   }
   
