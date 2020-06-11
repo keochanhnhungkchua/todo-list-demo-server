@@ -3,6 +3,8 @@ var Book = require("../models/book.model");
 var User = require("../models/user.model");
 var Session = require("../models/session.model");
 
+//let cachedValuea
+
 module.exports.index = async (req, res) => {
   try {
     var user = res.locals.user;
@@ -34,6 +36,7 @@ module.exports.index = async (req, res) => {
 module.exports.editTransaction = async (req, res) => {
   var id = req.params.id;
   var userId = await User.findById(id, "-password");
+  //cachedValuea = userId;
   res.locals.userName = userId.name;
   var userTransaction = userId;
   var transaction = await Transaction.findOne({ userId: id });
@@ -59,8 +62,7 @@ module.exports.editTransaction = async (req, res) => {
 };
 module.exports.removeTransaction = async (req, res) =>{
   var id = req.params.id;
-  var user =res.locals.userName;
-  console.log(res.locals.userName);
+ // console.log(cachedValuea);
   res.redirect("back");
 }
 // module.exports.postCreateTransaction = (req, res) => {
