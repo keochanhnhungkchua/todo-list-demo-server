@@ -35,9 +35,7 @@ const apiBookRouter = require("./api/routes/book.router");
 const authMiddleware = require("./middleware/auth.middleware");
 const sessionIdMiddleware = require("./middleware/session.middleware");
 
-//const app = express();
-
-var app = module.exports = express();
+const app = express();
 
 app.set("view engine", "pug");
 app.set("views", "./views");
