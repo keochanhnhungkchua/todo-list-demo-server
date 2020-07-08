@@ -2,6 +2,8 @@ require("dotenv").config();
 
 const express = require("express");
 
+var cors = require('cors');
+
 const bodyParser = require("body-parser");
 var cookieParser = require("cookie-parser");
 var mongoose = require("mongoose");
@@ -36,6 +38,8 @@ const authMiddleware = require("./middleware/auth.middleware");
 const sessionIdMiddleware = require("./middleware/session.middleware");
 
 const app = express();
+
+app.use(cors());
 
 app.set("view engine", "pug");
 app.set("views", "./views");

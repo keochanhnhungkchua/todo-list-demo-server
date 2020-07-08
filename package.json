@@ -22,7 +22,8 @@
     "cloudinary": "^1.22.0",
     "mongoose": "^5.9.18",
     "swagger-ui-express": "^4.1.4",
-    "express-session": "^1.17.1"
+    "express-session": "^1.17.1",
+    "cors": "^2.8.5"
   },
   "engines": {
     "node": "12.x"
