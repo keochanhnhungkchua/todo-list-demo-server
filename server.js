@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-const express = require("express");
+var  express = require("express");
 
 var cors = require('cors');
 
@@ -39,10 +39,12 @@ const sessionIdMiddleware = require("./middleware/session.middleware");
 
 const app = express();
 
-app.use(cors());
+
 
 app.set("view engine", "pug");
 app.set("views", "./views");
+
+app.use(cors());
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
