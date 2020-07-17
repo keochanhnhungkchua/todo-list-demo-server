@@ -3,12 +3,12 @@ var User = require("../../models/user.model");
 const bcrypt = require("bcrypt");
 
 module.exports.postLogin = async (req, res) => {
-  console.log(req.body);
+  //console.log(req.body);
   var email = res.locals.email;
   var password = res.locals.password;
  // console.log(email)
     //console.log(password)
-
+return req.body
   var user = await User.findOne({ email: email });
   if (!user) {
     const errors = ["User does not exist"];
