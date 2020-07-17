@@ -1,17 +1,20 @@
 var User = require("../../models/user.model");
 
 const bcrypt = require("bcrypt");
+var jwt = require('jsonwebtoken');
+var token = jwt.sign({ foo: 'bar' }, 'shhhhh');
 
 module.exports.postLogin = async (req, res) => {
-  //console.log(req.body);
-  var email = res.body.email;
-  var password = res.body.password;
+  console.log(req.body);
+  var data = req.body
+  // var email = res.body.email;
+  // var password = res.body.password;
   // console.log(email)
   //console.log(password)
 
   return res.json({
     success: true,
-    email: email
+    data: data
   });
   // var user = await User.findOne({ email: email });
   // if (!user) {
