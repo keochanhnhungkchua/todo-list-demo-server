@@ -4,14 +4,10 @@ var User = require("../../models/user.model");
 const bcrypt = require("bcrypt");
 
 module.exports.postLogin = async (req, res) => {
-  var token = jwt.sign({ foo: "bar" }, "shhhhh");
+  
   var email = req.body.email;
   var password = req.body.password;
 
-//   return res.json({
-//     success: true,
-//     token:token
-//   });
   
   var user = await User.findOne({ email: email });
   if (!user) {
@@ -37,7 +33,12 @@ module.exports.postLogin = async (req, res) => {
   user.wrongLoginCount = 0;
   await user.save();
   //create cookie
-  res
-    .cookie("userId", user.id, { signed: true })
-    .json({ id: user.id, name: user.name, isAdmin: user.isAdmin, avatar:user.avatar });
+  // res
+  //   .cookie("userId", user.id, { signed: true })
+  //   .json({ id: user.id, name: user.name, isAdmin: user.isAdmin, avatar:user.avatar });
+  var token = jwt.sign({ id: user.id }, "shhhhh");
+  return res.json({
+    success:'true',
+    token:token
+  })
 };
