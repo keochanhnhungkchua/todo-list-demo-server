@@ -4,36 +4,40 @@ const bcrypt = require("bcrypt");
 
 module.exports.postLogin = async (req, res) => {
   //console.log(req.body);
-  var email = res.locals.email;
-  var password = res.locals.password;
+  // var email = res.locals.email;
+  // var password = res.locals.password;
  // console.log(email)
     //console.log(password)
-return req.body
-  var user = await User.findOne({ email: email });
-  if (!user) {
-    const errors = ["User does not exist"];
-    res.status(404).json(errors);
-    return;
-  }
-  //check wrong login
-  if (user.wrongLoginCount > 3) {
-    const errors = ["User wrong login > 3"];
-    res.status(404).json(errors);
-    return;
-  }
-  //check pass
-  var match = await bcrypt.compare(password, user.password);
-  if (!match) {
-    user.wrongLoginCount = user.wrongLoginCount + 1;
-    await user.save();
-    const errors = ["Wrong password"];
-    res.status(404).json(errors);
-    return;
-  }
-  user.wrongLoginCount = 0;
-  await user.save();
-  //create cookie
-  res
-    .cookie("userId", user.id, { signed: true })
-    .json({ id: user.id, name: user.name, isAdmin: user.isAdmin });
+  var data = "req.body"
+return res.json({
+									success: true,
+  data: data
+								})
+  // var user = await User.findOne({ email: email });
+  // if (!user) {
+  //   const errors = ["User does not exist"];
+  //   res.status(404).json(errors);
+  //   return;
+  // }
+  // //check wrong login
+  // if (user.wrongLoginCount > 3) {
+  //   const errors = ["User wrong login > 3"];
+  //   res.status(404).json(errors);
+  //   return;
+  // }
+  // //check pass
+  // var match = await bcrypt.compare(password, user.password);
+  // if (!match) {
+  //   user.wrongLoginCount = user.wrongLoginCount + 1;
+  //   await user.save();
+  //   const errors = ["Wrong password"];
+  //   res.status(404).json(errors);
+  //   return;
+  // }
+  // user.wrongLoginCount = 0;
+  // await user.save();
+  // //create cookie
+  // res
+  //   .cookie("userId", user.id, { signed: true })
+  //   .json({ id: user.id, name: user.name, isAdmin: user.isAdmin });
 };
