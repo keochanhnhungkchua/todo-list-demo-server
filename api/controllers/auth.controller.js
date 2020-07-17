@@ -4,15 +4,15 @@ const bcrypt = require("bcrypt");
 
 module.exports.postLogin = async (req, res) => {
   //console.log(req.body);
-  // var email = res.locals.email;
-  // var password = res.locals.password;
- // console.log(email)
-    //console.log(password)
-  var data = "req.body"
-return res.json({
-									success: true,
-  data: data
-								})
+  var email = res.body.email;
+  var password = res.body.password;
+  // console.log(email)
+  //console.log(password)
+
+  return res.json({
+    success: true,
+    email: email
+  });
   // var user = await User.findOne({ email: email });
   // if (!user) {
   //   const errors = ["User does not exist"];
