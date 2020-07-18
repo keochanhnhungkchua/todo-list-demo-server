@@ -36,7 +36,7 @@ module.exports.postLogin = async (req, res) => {
   // res
   //   .cookie("userId", user.id, { signed: true })
   //   .json({ id: user.id, name: user.name, isAdmin: user.isAdmin, avatar:user.avatar });
-  var token = jwt.sign({ id: user.id, name: user.name, isAdmin: user.isAdmin, avatar:user.avatar }, process.env.SECRET_COOKIES,{ expiresIn: '1d' });
+  var token = jwt.sign({ id: user.id, name: user.name, isAdmin: user.isAdmin, avatar:user.avatar, key:process.env.SECRET }, process.env.SECRET_COOKIES,{ expiresIn: '1d' });
   return res.json({
     success:'true',
     token:token
