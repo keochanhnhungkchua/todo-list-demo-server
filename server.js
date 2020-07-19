@@ -33,7 +33,7 @@ const cartRouter = require("./routes/cart.router");
 const apiTransactionRouter = require("./api/routes/transaction.router");
 const apiAuthRouter = require("./api/routes/auth.router");
 const apiBookRouter = require("./api/routes/book.router");
-const apiPost = require("./api/routes/post.router");
+const apiPostRouter = require("./api/routes/post.router");
 
 const authMiddleware = require("./middleware/auth.middleware");
 const sessionIdMiddleware = require("./middleware/session.middleware");
@@ -67,7 +67,7 @@ app.use("/cart", cartRouter);
 app.use("/api/transactions", apiTransactionRouter);
 app.use("/api/login", apiAuthRouter);
 app.use("/api/books", apiBookRouter);
-app.use("/api/post", apiPost);
+app.use("/api/posts", apiPostRouter);
 
 app.use("/api", swaggerUi.serve, swaggerUi.setup(swaggerDocument, options));
 
