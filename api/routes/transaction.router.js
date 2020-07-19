@@ -3,15 +3,11 @@ var router = express.Router();
 var controller = require("../controllers/transaction.controller");
 var jwt = require('jsonwebtoken');
 
-// router.get("/", controller.index);
-// module.exports = router;
-
-
 function veryfiToken(req, res, next){
-  const token = req.header('Authorization').slice(7);
+  const token = req.header('Authorization');
   if(!token) { return res.status(400).send('Access denied 123')};
   try{
-    const verified = jwt.verify(token, process.env.SECRET_COOKIES)
+    const verified = jwt.verify(token.slice(7), process.env.SECRET_COOKIES)
     process.env.SECRET=verified.key;
     next();
   }catch(error){
@@ -19,6 +15,7 @@ function veryfiToken(req, res, next){
 
   }
 }
-
+//index post
 router.post("/",veryfiToken, controller.index);
+
 module.exports = router;
