@@ -1,11 +1,11 @@
 var Post = require("../../models/post.model");
 
-module.exports.index = async (req, res) => {
-  const posts = await Post.find();
-  res.json(posts);
+module.exports.postAdd = async (req, res) => {
+  const token = req.header('Authorization').slice(7);
+  //const posts = await Post.find();
+  //res.json(posts);
 
-//   return res.json({
-//     success: "true transactions",
-//     transactions: transactions
-//   });
+  return res.json({
+    success: "true transactions"
+  });
 };
