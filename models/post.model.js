@@ -1,9 +1,14 @@
 const mongoose = require("mongoose");
 
+const User = require("./user.model");
+
 const postSchema = new mongoose.Schema({
-  user:  { type: ObjectId, ref: 'people', autopopulate: true , required: true}
-   
-  ,
+  user:  { 
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    autopopulate: true ,
+    required: true
+  },
   text: {
     type: String,
     required: true
@@ -13,5 +18,7 @@ const postSchema = new mongoose.Schema({
     default: Date.now
   }
 });
-postSchema.plugin(autopopulate);
+postSchema.plugin(require('mongoose-autopopulate'));
+
 module.exports = mongoose.model("Post", postSchema);
+ 
