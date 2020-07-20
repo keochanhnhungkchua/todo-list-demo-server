@@ -7,6 +7,7 @@ const postSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     autopopulate: true ,
+    "autopopulate":{"select" : "name"}
     required: true
   },
   text: {

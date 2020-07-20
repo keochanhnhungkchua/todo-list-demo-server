@@ -19,7 +19,7 @@ module.exports.postAdd = async (req, res) => {
 
 //get all post
 module.exports.index = async (req, res) => {
-  const posts = await Post.find({ "$ne": "user" } );
+  const posts = await Post.find( );
   res.json({ posts, a: "123" });
 };
 //get by userId
