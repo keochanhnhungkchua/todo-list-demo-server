@@ -1,12 +1,12 @@
 var Post = require("../../models/post.model");
 var jwt = require("jsonwebtoken");
+const User = require("../../models/user.model");
 
 module.exports.postAdd = async (req, res) => {
   const token = req.header("Authorization").slice(7);
   const user = jwt.decode(token, { complete: true }).payload.id;
   const text = req.body.text.trim();
-  //const posts = await Post.find();
-  //res.json(posts);
+  
   const newPost = new Post({
     user,
     text
@@ -20,8 +20,8 @@ module.exports.postAdd = async (req, res) => {
 
 //get all post
 module.exports.index = async (req, res) => {
-  const posts = await Post.find({ "user": { "$ne": password } });
-  res.json(posts);
+  const posts = await Post.find({ user: { "$ne": user.password } });
+  res.json({posts, a:'123'});
 };
 //get by userId
 module.exports.userId = async (req, res) => {
