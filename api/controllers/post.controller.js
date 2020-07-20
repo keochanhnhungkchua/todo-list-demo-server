@@ -6,7 +6,7 @@ module.exports.postAdd = async (req, res) => {
   const token = req.header("Authorization").slice(7);
   const user = jwt.decode(token, { complete: true }).payload.id;
   const text = req.body.text.trim();
-  
+
   const newPost = new Post({
     user,
     text
@@ -20,8 +20,8 @@ module.exports.postAdd = async (req, res) => {
 
 //get all post
 module.exports.index = async (req, res) => {
-  const posts = await Post.find({ user: { "$ne": user.password } });
-  res.json({posts, a:'123'});
+  const posts = await Post.find({ "user": { "$nin": {password, img} }} );
+  res.json({ posts, a: "123" });
 };
 //get by userId
 module.exports.userId = async (req, res) => {
