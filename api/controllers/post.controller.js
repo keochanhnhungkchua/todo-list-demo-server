@@ -12,10 +12,9 @@ module.exports.postAdd = async (req, res) => {
     text
   });
   await newPost.save();
-  
+
   return res.json({
-    userId: user,
-    text: text
+    save: "success"
   });
 };
 
@@ -23,11 +22,12 @@ module.exports.postAdd = async (req, res) => {
 module.exports.index = async (req, res) => {
   const posts = await Post.find();
   res.json(posts);
-  
 };
 //get by userId
 module.exports.userId = async (req, res) => {
-  const posts = await Post.find({ user: "5ed26ad48b71f1a732997213" });
+  // const token = req.header("Authorization").slice(7);
+  // const userId = jwt.decode(token, { complete: true }).payload.id;
+  const userId = req.body.userId;
+  const posts = await Post.find({ user: userId });
   res.json(posts);
-  
 };
