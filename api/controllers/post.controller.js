@@ -24,9 +24,7 @@ module.exports.index = async (req, res) => {
 };
 //get by userId
 module.exports.userId = async (req, res) => {
-  // const token = req.header("Authorization").slice(7);
-  // const userId = jwt.decode(token, { complete: true }).payload.id;
-  const userId = req.body.userId;
+  const userId = req.params.id;
   const posts = await Post.find({ user: userId });
   res.json(posts);
 };
