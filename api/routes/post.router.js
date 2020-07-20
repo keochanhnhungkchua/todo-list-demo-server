@@ -19,8 +19,8 @@ function veryfiToken(req, res, next){
 router.post("/add",veryfiToken, controller.postAdd);
 //get all post
 router.get("/",veryfiToken, controller.index);
-//
-
+//get by post of user
+router.get("/:id",veryfiToken, controller.index);
 
 module.exports = router;
  
