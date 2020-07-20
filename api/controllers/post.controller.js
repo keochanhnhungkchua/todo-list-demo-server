@@ -14,3 +14,13 @@ module.exports.postAdd = async (req, res) => {
     text: text
   });
 };
+
+//get all post
+module.exports.index = async (req, res) => {
+  // var posts = await Post.find();
+  // res.json(posts );
+  return res.json({
+    success: 'decoded.payload'
+    
+  });
+};

@@ -15,7 +15,12 @@ function veryfiToken(req, res, next){
 
   }
 }
-
+//add new post
 router.post("/add",veryfiToken, controller.postAdd);
+//get all post
+router.get("/",veryfiToken, controller.index);
+//
+
+
 module.exports = router;
  
