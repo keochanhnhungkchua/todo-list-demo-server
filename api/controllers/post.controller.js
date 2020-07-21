@@ -12,9 +12,7 @@ module.exports.postAdd = async (req, res) => {
   });
   await newPost.save();
 
-  return res.json({
-    save: "success"
-  });
+  return res.json(newPost);
 };
 
 //get all post
