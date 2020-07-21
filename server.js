@@ -65,7 +65,7 @@ app.use("/auth", authRouter);
 app.use("/cart", cartRouter);
 
 app.use("/api/transactions", apiTransactionRouter);
-app.use("/api/login", apiAuthRouter);
+app.use("/api/auth", apiAuthRouter);
 app.use("/api/books", apiBookRouter);
 app.use("/api/posts", apiPostRouter);
 
