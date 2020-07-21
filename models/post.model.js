@@ -13,6 +13,11 @@ const postSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  imageUrl: {
+    type: String,
+    default:
+      "https://cdn.glitch.com/1efbf7e2-61ae-47c1-b0b6-c9e2715b61d6%2Fngay-ngat-sac-hoa-anh-dao-sydney.jpg"
+  },
   createdAt: {
     type: Date,
     default: Date.now
