@@ -4,11 +4,9 @@ var User = require("../../models/user.model");
 var bcrypt = require("bcrypt");
 
 module.exports.postLogin = async (req, res) => {
-  
   const email = req.body.email;
   const password = req.body.password;
 
-  
   const user = await User.findOne({ email: email });
   if (!user) {
     const errors = ["User does not exist"];
@@ -32,19 +30,28 @@ module.exports.postLogin = async (req, res) => {
   }
   user.wrongLoginCount = 0;
   await user.save();
-  
-  const token = jwt.sign({ id: user.id, name: user.name, isAdmin: user.isAdmin, avatar:user.avatar, key:process.env.SECRET }, process.env.SECRET_COOKIES,{ expiresIn: '1w' });
+
+  const token = jwt.sign(
+    {
+      id: user.id,
+      name: user.name,
+      isAdmin: user.isAdmin,
+      avatar: user.avatar,
+      key: process.env.SECRET
+    },
+    process.env.SECRET_COOKIES,
+    { expiresIn: "1w" }
+  );
   return res.json({
-    success:'true',
-    token:token
-  })
+    success: "true",
+    token: token
+  });
 };
 
-
 module.exports.postRegister = async (req, res) => {
-  const name = req.body.name;
-  const email = req.body.email;
-  const password = req.body.password;
+  // const name = req.body.name;
+  // const email = req.body.email;
+  // const password = req.body.password;
 
   // const newUser = new User({
   //   user,
@@ -52,10 +59,24 @@ module.exports.postRegister = async (req, res) => {
   // });
   //await newUser.save();
 
-  return res.json({
-    save: "success",
-    name:name,
-    email:email,
-    password:password
+  await User.findOne({ email: req.body.email }).then(user => {
+    if (user) {
+      return res.status(404).json("Email was used!");
+    }
+
+    bcrypt.genSalt(10, function(err, salt) {
+      bcrypt.hash(req.body.password, salt, function(err, hash) {
+        const newUser = new User({
+          email: req.body.email,
+          login: req.body.login,
+          password: hash
+        });
+
+        newUser
+          .save()
+          .then(newUser => res.json(newUser))
+          .catch(err => console.log(err));
+      });
+    });
   });
 };

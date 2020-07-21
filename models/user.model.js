@@ -1,11 +1,17 @@
 var mongoose = require("mongoose");
 
 var userSchema = new mongoose.Schema({
-  name: String,
-  email: String,
+  name:{
+    type: String,
+    required: true
+  },
+  email: {
+    type: String,
+    required: true
+  },
   password: {
     type: String,
-    default:"$2b$10$Pbug69.D3bBzKZZNSmVxH.Ag2OrCB7nMnzhtSVI6ylycWexS1Pcp6"
+    required: true
   },
   avatar: {
     type: String,
@@ -19,6 +25,10 @@ var userSchema = new mongoose.Schema({
  isAdmin:{
     type: Boolean,
     default: false
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
   }
 });
 module.exports = mongoose.model("User", userSchema);
