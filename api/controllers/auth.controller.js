@@ -32,10 +32,7 @@ module.exports.postLogin = async (req, res) => {
   }
   user.wrongLoginCount = 0;
   await user.save();
-  //create cookie
-  // res
-  //   .cookie("userId", user.id, { signed: true })
-  //   .json({ id: user.id, name: user.name, isAdmin: user.isAdmin, avatar:user.avatar });
+  
   const token = jwt.sign({ id: user.id, name: user.name, isAdmin: user.isAdmin, avatar:user.avatar, key:process.env.SECRET }, process.env.SECRET_COOKIES,{ expiresIn: '1w' });
   return res.json({
     success:'true',
@@ -56,6 +53,9 @@ module.exports.postRegister = async (req, res) => {
   //await newUser.save();
 
   return res.json({
-    save: "success"
+    save: "success",
+    name:name,
+    email:email,
+    password:password
   });
 };
