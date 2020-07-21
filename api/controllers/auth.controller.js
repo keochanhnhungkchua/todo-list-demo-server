@@ -59,24 +59,23 @@ module.exports.postRegister = async (req, res) => {
   // });
   //await newUser.save();
 
-  await User.findOne({ email: req.body.email }).then(user => {
+   const user =  await User.findOne({ email: req.body.email })
     if (user) {
       return res.status(404).json("Email was used!");
     }
 
-    bcrypt.genSalt(10, function(err, salt) {
-      bcrypt.hash(req.body.password, salt, function(err, hash) {
-        const newUser = new User({
-          email: req.body.email,
-          login: req.body.login,
-          password: hash
-        });
-
-        newUser
-          .save()
-          .then(newUser => res.json(newUser))
-          .catch(err => console.log(err));
+  await bcrypt.genSalt(10, function(err, salt) {
+    bcrypt.hash(req.body.password, salt, function(err, hash) {
+      const newUser = new User({
+        email: req.body.email,
+        name: req.body.name,
+        password: hash
       });
+
+      newUser
+        .save()
+        .then(newUser => res.json(newUser))
+        .catch(err => console.log(err));
     });
   });
 };
