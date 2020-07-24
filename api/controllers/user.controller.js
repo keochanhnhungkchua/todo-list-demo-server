@@ -9,23 +9,17 @@ module.exports.postLike = async (req, res) => {
   if (like.length === 0) {
     post.like = [userId];
     await post.save();
-    return res.json({
-      newPost: post
-    });
+    return res.json(post);
   } else {
     const index = like.indexOf(userId);
     if (index === -1) {
       post.like = [...like, userId];
       await post.save();
-      return res.json({
-        newPost: post
-      });
+      return res.json(post);
     } else {
       post.like = [...like.slice(0, index), ...like.slice(index + 1)];
       await post.save();
-      return res.json({
-        newPost: post
-      });
+      return res.json(post);
     }
   }
 };
