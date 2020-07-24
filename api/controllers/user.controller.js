@@ -6,7 +6,8 @@ module.exports.postLike = async (req, res) => {
   const postId = req.body.postId;
   const posts = await Post.findById(postId);
 if(!posts.like){
-  
+  const like ={userId};
+  const posts = await Post.findByIdAndUpdate(postId,like);
 }
   // const newPost = new Post({
   //   user,

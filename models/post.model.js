@@ -20,7 +20,8 @@ const postSchema = new mongoose.Schema({
   },
   like: {
     type: Object,
-    default: {}
+    default: {},
+    required: true
   },
   
   createdAt: {
