@@ -68,7 +68,7 @@ app.use("/cart", cartRouter);
 app.use("/api/transactions", apiTransactionRouter);
 app.use("/api/auth", apiAuthRouter);
 app.use("/api/books", apiBookRouter);
-app.use("/api/post", apiPostsRouter);
+app.use("/api/posts", apiPostsRouter);
 app.use("/api/users", apiUsersRouter);
 
 app.use("/api", swaggerUi.serve, swaggerUi.setup(swaggerDocument, options));

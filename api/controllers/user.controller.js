@@ -2,9 +2,9 @@ var Post = require("../../models/post.model");
 var jwt = require("jsonwebtoken");
 
 module.exports.postLike = async (req, res) => {
-  const token = req.header("Authorization").slice(7);
-  const user = jwt.decode(token, { complete: true }).payload.id;
-  const text = req.body;
+  const userId = req.body.userId;
+  const postId = req.body.postId;
+  const posts = await Post.findByIdAndUpdate(postId);
 
   // const newPost = new Post({
   //   user,
@@ -12,7 +12,7 @@ module.exports.postLike = async (req, res) => {
   // });
   // await newPost.save();
 
-  return res.json(text);
+  return res.json(posts);
 };
 
 // //get all post
