@@ -5,22 +5,37 @@ module.exports.postLike = async (req, res) => {
   const userId = req.body.userId;
   const postId = req.body.postId;
   const post = await Post.findById(postId);
-  const like = post.like;
-  const index = like.indexOf(userId);
+  
 
   if (!post.like.length) {
-    // post.like=[userId]
-    // post.save();
-    return res.json("1");
+    post.like=[userId]
+    post.save();
+    return res.json({
+
+      like: post.like,
+      step: " 1 create"
+    });
   } else {
+    const like = post.like;
+  const index = like.indexOf(userId);
     if (index === -1) {
       post.like = [...like, userId];
-      //await post.save();
-      return res.json("2");
+      await post.save();
+      return res.json({
+        index: index,
+        user: userId,
+        like: like,
+        step: "2 add"
+      });
     } else {
       post.like = [...like.slice(0, index), ...like.slice(index + 1)];
       await post.save();
-      return res.json("3");
+      return res.json({
+        index: index,
+        user: userId,
+        like: like,
+        step: "3 remove"
+      });
     }
   }
 };
