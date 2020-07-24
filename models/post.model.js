@@ -19,15 +19,8 @@ const postSchema = new mongoose.Schema({
       "https://cdn.glitch.com/1efbf7e2-61ae-47c1-b0b6-c9e2715b61d6%2Fngay-ngat-sac-hoa-anh-dao-sydney.jpg"
   },
   like: {
-    userLike: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-      autopopulate: { select: "_id name avatar" }
-    },
-    likeAt: {
-      type: Date,
-      default: Date.now
-    }
+    type: Object,
+    default: {}
   },
   comment: {
     userComment: {
@@ -71,3 +64,16 @@ module.exports = mongoose.model("Post", postSchema);
 //   }
 //https://stackoverflow.com/questions/26915116/mongoose-mongodb-exclude-fields-from-populated-query-data
 // });
+
+////
+// like: {
+//     userLike: {
+//       type: mongoose.Schema.Types.ObjectId,
+//       ref: "User",
+//       autopopulate: { select: "_id name avatar" }
+//     },
+//     likeAt: {
+//       type: Date,
+//       default: Date.now
+//     }
+//   }
