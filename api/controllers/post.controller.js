@@ -17,7 +17,7 @@ module.exports.postAdd = async (req, res) => {
 
 //get all post
 module.exports.index = async (req, res) => {
-  const posts = await Post.find().sort({ createdAt: -1 }).limit(2);
+  const posts = await Post.find().sort({ createdAt: -1 }).limit(20);
   res.json(posts);
 };
 //get by userId
