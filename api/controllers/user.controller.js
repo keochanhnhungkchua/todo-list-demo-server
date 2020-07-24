@@ -6,12 +6,7 @@ module.exports.postLike = async (req, res) => {
   const postId = req.body.postId;
   const post = await Post.findById(postId);
 
-  if (!post.like.length) {
-    // const posts = await Post.findByIdAndUpdate(
-    //   postId,
-    //   { $set: { like: [userId] } },
-    //   { new: true }
-    // );
+  if (post.like.length===0) {
     post.like=[userId]
     post.save();
     return res.json(post);
@@ -28,11 +23,7 @@ module.exports.postLike = async (req, res) => {
       return res.json(post);
     }
   }
-  // const newPost = new Post({
-  //   user,
-  //   text
-  // });
-  // await newPost.save();
+ 
 };
 
 // //get all post
