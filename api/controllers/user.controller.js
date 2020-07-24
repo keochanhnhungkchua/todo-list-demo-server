@@ -10,24 +10,21 @@ module.exports.postLike = async (req, res) => {
     post.like = [userId];
     await post.save();
     return res.json({
- 
-      step: " 1 create"
+      success: true
     });
   } else {
     const index = like.indexOf(userId);
     if (index === -1) {
       post.like = [...like, userId];
-       await post.save();
+      await post.save();
       return res.json({
-      
-        step: "2 add"
+        success: true
       });
     } else {
       post.like = [...like.slice(0, index), ...like.slice(index + 1)];
       await post.save();
       return res.json({
-  
-        step: "3 remove"
+        success: true
       });
     }
   }
