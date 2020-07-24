@@ -4,9 +4,13 @@ var jwt = require("jsonwebtoken");
 module.exports.postLike = async (req, res) => {
   const userId = req.body.userId;
   const postId = req.body.postId;
-  const posts = await Post.findById(postId);
-if(!posts.like.length){
-  const posts = await Post.findByIdAndUpdate(postId,  { $set: { like: [userId] }});
+  const post = await Post.findById(postId);
+if(!post.like.length){
+  const posts = await Post.findByIdAndUpdate(postId,  { $set: { like: [userId] }}, {new: true});
+  return res.json(posts);
+}else{
+  const like = post.like;
+  if(like.findIndex(userId))
 }
   // const newPost = new Post({
   //   user,
@@ -14,7 +18,7 @@ if(!posts.like.length){
   // });
   // await newPost.save();
 
-  return res.json(posts);
+  
 };
 
 // //get all post
