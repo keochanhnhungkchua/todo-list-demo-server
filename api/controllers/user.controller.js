@@ -10,7 +10,13 @@ if(!post.like.length){
   return res.json(posts);
 }else{
   const like = post.like;
-  if(like.findIndex(userId))
+  if(like.findIndex(userId)){
+    const newLike =[];
+  }else{
+    const newLike =[...like,userId]
+    const posts = await Post.findByIdAndUpdate(postId,  { $set: { like: newLike}}, {new: true});
+  return res.json(posts);
+  }
 }
   // const newPost = new Post({
   //   user,
