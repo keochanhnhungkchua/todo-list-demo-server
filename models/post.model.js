@@ -22,20 +22,7 @@ const postSchema = new mongoose.Schema({
     type: Object,
     default: {}
   },
-  comment: {
-    userComment: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-      autopopulate: { select: "_id name avatar" }
-    },
-    commenttText: {
-      type: String
-    },
-    commentAt: {
-      type: Date,
-      default: Date.now
-    }
-  },
+  
   createdAt: {
     type: Date,
     default: Date.now
@@ -77,3 +64,19 @@ module.exports = mongoose.model("Post", postSchema);
 //       default: Date.now
 //     }
 //   }
+
+
+// comment: {
+//     userComment: {
+//       type: mongoose.Schema.Types.ObjectId,
+//       ref: "User",
+//       autopopulate: { select: "_id name avatar" }
+//     },
+//     commentText: {
+//       type: String
+//     },
+//     commentAt: {
+//       type: Date,
+//       default: Date.now
+//     }
+//   },
