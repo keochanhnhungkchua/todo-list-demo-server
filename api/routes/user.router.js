@@ -16,7 +16,7 @@ function veryfiToken(req, res, next){
   }
 }
 //add new post
-router.post("/like",veryfiToken, controller.postLike);
+router.post("/like", controller.postLike);
 
 
 module.exports = router;
