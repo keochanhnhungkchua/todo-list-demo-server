@@ -25,16 +25,13 @@ var options = {
 };
 
 const userRouter = require("./routes/user.router");
-const bookRouter = require("./routes/book.router");
-const transactionRouter = require("./routes/transaction.router");
 const authRouter = require("./routes/auth.router");
-const cartRouter = require("./routes/cart.router");
-const todosRouter = require("./routes/todos.router");
+const categoryRouter = require("./routes/category.router");
+const tasksRouter = require("./routes/tasks.router");
 
-const apiTransactionRouter = require("./api/routes/transaction.router");
+const apiCategoryRouter = require("./api/routes/category.router");
 const apiAuthRouter = require("./api/routes/auth.router");
-const apiBookRouter = require("./api/routes/book.router");
-const apiPostsRouter = require("./api/routes/post.router");
+const apiTaskRouter = require("./api/routes/task.router");
 const apiUsersRouter = require("./api/routes/user.router");
 
 const authMiddleware = require("./middleware/auth.middleware");
@@ -64,17 +61,14 @@ app.use(
   authMiddleware.isAdmin,
   userRouter
 );
-app.use("/books", bookRouter);
-app.use("/transactions", authMiddleware.requireAuth, transactionRouter);
-app.use("/auth", authRouter);
-app.use("/cart", cartRouter);
-// app.use("/todos", todosRouter);
-app.use("/category", todosRouter);
 
-app.use("/api/transactions", apiTransactionRouter);
+app.use("/auth", authRouter);
+app.use("/task", tasksRouter);
+app.use("/category", categoryRouter);
+
+app.use("/api/category", apiCategoryRouter);
 app.use("/api/auth", apiAuthRouter);
-app.use("/api/books", apiBookRouter);
-app.use("/api/posts", apiPostsRouter);
+app.use("/api/task", apiTaskRouter);
 app.use("/api/users", apiUsersRouter);
 
 app.use("/api", swaggerUi.serve, swaggerUi.setup(swaggerDocument, options));

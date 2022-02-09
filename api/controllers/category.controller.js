@@ -1,4 +1,4 @@
-var Todos = require("../models/todos.model");
+var Todos = require("../../models/categorys.model");
 var jwt = require("jsonwebtoken");
 
 const decodeToken = function (req) {
@@ -9,9 +9,7 @@ const decodeToken = function (req) {
 
 module.exports.index = async (req, res) => {
   const user = decodeToken(req);
-  const todos = await Todos.find({ email: user.email })
-    .sort({ createdAt: -1 })
-    .limit(20);
+  const todos = await Todos.find().sort({ createdAt: -1 }).limit(20).select("-__v  ");
   res.json(todos);
 };
 
@@ -34,14 +32,6 @@ module.exports.deleteTodo = async (req, res) => {
 };
 module.exports.editTodo = async (req, res) => {
   const { todoId } = req.params;
-  await Todos.findByIdAndUpdate(todoId, { $set: req.body }, { new: true });
-  const todo = await Todos.findById(todoId);
-  res.status(200).json({ success: true, todo: todo });
-};
-
-module.exports.isCompleted = async (req, res) => {
-  const { todoId } = req.params;
-
   await Todos.findByIdAndUpdate(todoId, { $set: req.body }, { new: true });
   const todo = await Todos.findById(todoId);
   res.status(200).json({ success: true, todo: todo });

@@ -1,9 +1,9 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "This is book store server",
+    "description": "Todo list server",
     "version": "1.0.0",
-    "title": "Bookstore"
+    "title": "Todo-List-Server"
   },
   "tags": [
     {
@@ -11,12 +11,12 @@
       "description": "Login"
     },
     {
-      "name": "books",
-      "description": "show books store"
+      "name": "tasks",
+      "description": "show tasks "
     },
     {
-      "name": "transaction",
-      "description": "show transacstions"
+      "name": "category",
+      "description": "show categorys"
     }
   ],
   "paths": {
@@ -33,12 +33,12 @@
         }
       }
     },
-    "/api/books": {
+    "/api/task": {
       "get": {
         "tags": [
-          "books"
+          "tasks"
         ],
-        "summary": "Returns books",
+        "summary": "Returns tasks",
         "produces": [
           "application/json"
         ],
@@ -49,12 +49,12 @@
         }
       }
     },
-    "/api/transactions": {
+    "/api/category": {
       "get": {
         "tags": [
-          "transaction"
+          "category"
         ],
-        "summary": "Get transactions",
+        "summary": "Get categorys",
         "responses": {
           "default": {
             "description": "successful operation"
