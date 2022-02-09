@@ -1,4 +1,4 @@
-var Todos = require("../../models/categorys.model");
+var Categorys = require("../models/categorys.model");
 var jwt = require("jsonwebtoken");
 
 const decodeToken = function (req) {
@@ -8,31 +8,29 @@ const decodeToken = function (req) {
 };
 
 module.exports.index = async (req, res) => {
-  const user = decodeToken(req);
-  const todos = await Todos.find().sort({ createdAt: -1 }).limit(20).select("-__v  ");
-  res.json(todos);
+  //const user = decodeToken(req);
+  const categorys = await Categorys.find()
+    .select("-__v  ")
+    .sort({ createdAt: -1 })
+    .limit(20);
+  res.json(categorys);
 };
 
-module.exports.postTodo = async (req, res) => {
-  const { name } = req.body;
+module.exports.postCategory = async (req, res) => {
   const user = decodeToken(req);
+  const newCategory = new Categorys({ ...req.body, email: user.email });
+  await newCategory.save();
 
-  const newTodo = new Todos({
-    name: name,
-    email: user.email,
-  });
-  await newTodo.save();
-
-  return res.status(200).json(newTodo);
+  return res.status(200).json(newCategory);
 };
-module.exports.deleteTodo = async (req, res) => {
+module.exports.deleteCategory = async (req, res) => {
   const { todoId } = req.params;
-  await Todos.findByIdAndDelete(todoId);
+  await Categorys.findByIdAndDelete(todoId);
   res.json({ success: true });
 };
-module.exports.editTodo = async (req, res) => {
+module.exports.editCategory = async (req, res) => {
   const { todoId } = req.params;
-  await Todos.findByIdAndUpdate(todoId, { $set: req.body }, { new: true });
-  const todo = await Todos.findById(todoId);
-  res.status(200).json({ success: true, todo: todo });
+  await Categorys.findByIdAndUpdate(todoId, { $set: req.body }, { new: true });
+  const category = await Categorys.findById(todoId);
+  res.status(200).json({ success: true, category });
 };
