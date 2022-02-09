@@ -1,8 +1,8 @@
 require("dotenv").config();
 
-var  express = require("express");
+var express = require("express");
 
-var cors = require('cors');
+var cors = require("cors");
 
 const bodyParser = require("body-parser");
 var cookieParser = require("cookie-parser");
@@ -11,7 +11,7 @@ var mongoose = require("mongoose");
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  useFindAndModify: false
+  useFindAndModify: false,
 });
 
 mongoose.connection.on("connected", () => {
@@ -21,14 +21,15 @@ mongoose.connection.on("connected", () => {
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger.json");
 var options = {
-  customCss: '.swagger-ui .topbar { display: none }'
+  customCss: ".swagger-ui .topbar { display: none }",
 };
- 
+
 const userRouter = require("./routes/user.router");
-const bookRouter = require("./routes/book.router"); 
+const bookRouter = require("./routes/book.router");
 const transactionRouter = require("./routes/transaction.router");
 const authRouter = require("./routes/auth.router");
 const cartRouter = require("./routes/cart.router");
+const todosRouter = require("./routes/todos.router");
 
 const apiTransactionRouter = require("./api/routes/transaction.router");
 const apiAuthRouter = require("./api/routes/auth.router");
@@ -40,8 +41,6 @@ const authMiddleware = require("./middleware/auth.middleware");
 const sessionIdMiddleware = require("./middleware/session.middleware");
 
 const app = express();
-
-
 
 app.set("view engine", "pug");
 app.set("views", "./views");
@@ -59,11 +58,18 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.use("/users",authMiddleware.requireAuth,authMiddleware.isAdmin , userRouter);
+app.use(
+  "/users",
+  authMiddleware.requireAuth,
+  authMiddleware.isAdmin,
+  userRouter
+);
 app.use("/books", bookRouter);
 app.use("/transactions", authMiddleware.requireAuth, transactionRouter);
 app.use("/auth", authRouter);
 app.use("/cart", cartRouter);
+// app.use("/todos", todosRouter);
+app.use("/category", todosRouter);
 
 app.use("/api/transactions", apiTransactionRouter);
 app.use("/api/auth", apiAuthRouter);
