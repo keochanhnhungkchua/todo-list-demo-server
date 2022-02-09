@@ -1,4 +1,4 @@
-var Categorys = require("../models/categorys.model");
+var Categorys = require("../../models/categorys.model");
 var jwt = require("jsonwebtoken");
 
 const decodeToken = function (req) {
