@@ -25,8 +25,8 @@
     "swagger-ui-express": "^4.1.4",
     "express-session": "^1.17.1",
     "cors": "^2.8.5",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose-autopopulate": "^0.12.1"
+    "jsonwebtoken": "^8.5.1"
+  
   },
   "engines": {
     "node": "12.x"

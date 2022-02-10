@@ -9,7 +9,7 @@ const decodeToken = function (req) {
 
 module.exports.index = async (req, res) => {
   const user = decodeToken(req);
-  const task = await Tasks.find({ email: user.email })
+  const task = await Tasks.find({ userId: user._id })
     .sort({ createdAt: -1 })
     .select("-__v  ")
     .limit(20);
@@ -17,13 +17,14 @@ module.exports.index = async (req, res) => {
 };
 
 module.exports.postTask = async (req, res) => {
-  const { name } = req.body;
-  const user = decodeToken(req);
-
-  const newTask = new Tasks({ ...req.body, email: user.email });
-  await newTask.save();
-
-  return res.status(200).json(newTask);
+  try {
+    const user = decodeToken(req);
+    const newTask = new Tasks({ ...req.body, userId: user._id });
+    await newTask.save();
+    return res.status(200).json(newTask);
+  } catch (error) {
+    res.json(error);
+  }
 };
 module.exports.deleteTask = async (req, res) => {
   const { taskId } = req.params;

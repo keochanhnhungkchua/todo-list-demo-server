@@ -29,13 +29,7 @@ const authRouter = require("./routes/auth.router");
 const categoryRouter = require("./routes/category.router");
 const tasksRouter = require("./routes/tasks.router");
 
-const apiCategoryRouter = require("./api/routes/category.router");
-const apiAuthRouter = require("./api/routes/auth.router");
-const apiTaskRouter = require("./api/routes/task.router");
-const apiUsersRouter = require("./api/routes/user.router");
-
 const authMiddleware = require("./middleware/auth.middleware");
-const sessionIdMiddleware = require("./middleware/session.middleware");
 
 const app = express();
 
@@ -47,8 +41,6 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser("process.env.SECRET_COOKIES"));
-
-app.use(sessionIdMiddleware);
 
 //home page
 app.get("/", (req, res) => {
@@ -65,11 +57,6 @@ app.use(
 app.use("/auth", authRouter);
 app.use("/task", tasksRouter);
 app.use("/category", categoryRouter);
-
-app.use("/api/category", apiCategoryRouter);
-app.use("/api/auth", apiAuthRouter);
-app.use("/api/task", apiTaskRouter);
-app.use("/api/users", apiUsersRouter);
 
 app.use("/api", swaggerUi.serve, swaggerUi.setup(swaggerDocument, options));
 

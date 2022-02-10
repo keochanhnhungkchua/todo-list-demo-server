@@ -1,4 +1,4 @@
-var Categorys = require("../models/categorys.model");
+var Categories = require("../models/category.model");
 var jwt = require("jsonwebtoken");
 
 const decodeToken = function (req) {
@@ -8,29 +8,40 @@ const decodeToken = function (req) {
 };
 
 module.exports.index = async (req, res) => {
-  const user = decodeToken(req);
-  const categorys = await Categorys.find({ email: user.email })
-  .select("-__v  ")
-    .sort({ createdAt: -1 })
-    .limit(20);
-  res.json(categorys);
+  try {
+    const user = decodeToken(req);
+    const categories = await Categories.find({ userId: user._id })
+      .select("-__v  ")
+      .sort({ createdAt: -1 })
+      .limit(20);
+    res.json(categories);
+  } catch (error) {
+    res.json(error);
+  }
 };
 
 module.exports.postCategory = async (req, res) => {
-  const user = decodeToken(req);
-  const newCategory = new Categorys({...req.body,email:user.email});
-  await newCategory.save();
-
-  return res.status(200).json(newCategory);
+  try {
+    const user = decodeToken(req);
+    const newCategory = new Categories({ ...req.body, userId: user._id });
+    await newCategory.save();
+    return res.status(200).json(newCategory);
+  } catch (error) {
+    res.json(error);
+  }
 };
 module.exports.deleteCategory = async (req, res) => {
-  const { todoId } = req.params;
-  await Categorys.findByIdAndDelete(todoId);
+  const { categoryId } = req.params;
+  await Categories.findByIdAndDelete(categoryId);
   res.json({ success: true });
 };
 module.exports.editCategory = async (req, res) => {
-  const { todoId } = req.params;
-  await Categorys.findByIdAndUpdate(todoId, { $set: req.body }, { new: true });
-  const category = await Categorys.findById(todoId);
-  res.status(200).json({ success: true, category });
+  const { categoryId } = req.params;
+  const newCategory = await Categories.findByIdAndUpdate(
+    categoryId,
+    { $set: req.body },
+    { new: true }
+  );
+  // const category = await Categories.findById(categoryId);
+  res.status(200).json({ success: true, category: newCategory });
 };

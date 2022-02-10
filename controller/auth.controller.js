@@ -1,75 +1,73 @@
 var User = require("../models/user.model");
+var jwt = require("jsonwebtoken");
+var bcrypt = require("bcrypt");
+// const sgMail = require("@sendgrid/mail");
+// sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-const bcrypt = require("bcrypt");
-const sgMail = require("@sendgrid/mail");
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-
-module.exports.login = (req, res) => {
-  res.render("login");
+module.exports.postRegister = async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const checkEmail = await User.findOne({ email });
+    if (checkEmail) {
+      return res.json({ success: false, error: { email: "Email was used!" } });
+    }
+    const hashPassword = await bcrypt.hashSync(
+      password,
+      bcrypt.genSaltSync(10)
+    );
+    const newUser = await User.create({ ...req.body, password: hashPassword });
+    res.status(200).json({ success: true });
+  } catch (error) {
+    res.json(error);
+  }
 };
-
-module.exports.logout = (req, res ) => {
-  console.log(req.signedCookies.userId)
-  res.clearCookie('userId' )//,{path:'/'})
-  res.redirect("/books");
-}
 //check mail
 module.exports.postLogin = async (req, res) => {
-  var email = req.body.email;
-  var password = req.body.password;
-  
-  var user = await User.findOne({ email: email });
-  if (!user) {
-    res.render("login", {
-      errors: ["user does not exists."],
-      values: req.body
-    });
-    return;
-  }
-  //check wrong login
-  if (user.wrongLoginCount > 3) {
-    const msg = {
-      to: `${user.email}`,
-      //from: `${user.email}`,
-      from: "demodemo@gmail.com",
-      subject: "Login Failed",
-      text:
-        "You fail to enter the correct password 3 times in a row when logging in",
-      html:
-        '<strong>if you forgot your password click here: <a href="https://glitch.com/~weak-giddy-geometry">change password</a></strong>'
-    };
-    sgMail.send(msg).then(
-      () => {},
-      error => {
-        console.error(error);
+  try {
+    const { email, password } = req.body;
+    const user = await User.findOne({ email: email });
 
-        if (error.response) {
-          console.error(error.response.body);
-        }
+    //check email
+    if (!user) {
+      const error = "Wrong email or password !";
+      return res.json({ success: false, error: error });
+    }
+    //check wrong login
+    if (user.wrongLoginCount > 5) {
+      const error = "You were wrong login > 5 times please contact admin...";
+      return res.json({ success: false, error: error });
+    }
+    //check pass
+    if (password) {
+      const match = await bcrypt.compareSync(password, user.password);
+      if (!match) {
+        user.wrongLoginCount = user.wrongLoginCount + 1;
+        await user.save();
+        const error = "Wrong email or password !";
+        return res.json({ success: false, error: error });
       }
-    );
-
-    res.render("loginFalse");
-    return;
-  }
-  //check pass
-  var match = await bcrypt.compare(password, user.password);
-  if (!match) {
-    user.wrongLoginCount = user.wrongLoginCount + 1;
+    }
+    user.wrongLoginCount = 0;
     await user.save();
-    res.render("login", { errors: ["Wrong password"], values: req.body });
-    return;
+    //creat token
+    const token = jwt.sign(
+      {
+        _id: user._id,
+        isAdmin: user.isAdmin,
+        avatar: user.avatar,
+        username: user.username,
+        role: user.role,
+      },
+      process.env.SECRET_COOKIES,
+      { expiresIn: "1w" }
+    );
+    return res.json({
+      success: "true",
+      access_token: token,
+      message: "",
+      errorCode: 0,
+    });
+  } catch (error) {
+    res.json(error);
   }
-  user.wrongLoginCount = 0;
-  await user.save();
-  //create cookie
-  res.cookie("userId", user.id, { signed: true });
-  res.locals.user  = user;
-  
-  res.redirect("/books");
-};
-
-//login false
-module.exports.loginFalse = (req, res) => {
-  res.render("loginFalse");
 };
