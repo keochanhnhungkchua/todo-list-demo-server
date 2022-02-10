@@ -7,15 +7,6 @@ const decodeToken = function (req) {
   return decodeJwt;
 };
 
-module.exports.index = async (req, res) => {
-  const user = decodeToken(req);
-  const task = await Tasks.find({ userId: user._id })
-    .sort({ createdAt: -1 })
-    .select("-__v  ")
-    .limit(20);
-  res.json(task);
-};
-
 module.exports.postTask = async (req, res) => {
   try {
     const user = decodeToken(req);
@@ -40,7 +31,6 @@ module.exports.editTask = async (req, res) => {
 
 module.exports.isCompleted = async (req, res) => {
   const { taskId } = req.params;
-
   await Tasks.findByIdAndUpdate(taskId, { $set: req.body }, { new: true });
   const task = await Tasks.findById(taskId);
   res.status(200).json({ success: true, task: task });

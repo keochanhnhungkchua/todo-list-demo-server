@@ -6,6 +6,7 @@ var controller = require("../controller/category.controller");
 router
   .get("/", controller.index)
   .post("/", controller.postCategory)
+  .get("/:categoryId", controller.getCategoryById)
   .delete("/:categoryId", controller.deleteCategory)
   .patch("/:categoryId", controller.editCategory);
 //router.get("/:id",veryfiToken, controller.userId);

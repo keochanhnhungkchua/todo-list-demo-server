@@ -1,4 +1,5 @@
 var Categories = require("../models/category.model");
+var Tasks = require("../models/task.model");
 var jwt = require("jsonwebtoken");
 
 const decodeToken = function (req) {
@@ -15,6 +16,19 @@ module.exports.index = async (req, res) => {
       .sort({ createdAt: -1 })
       .limit(20);
     res.json(categories);
+  } catch (error) {
+    res.json(error);
+  }
+};
+
+module.exports.getCategoryById = async (req, res) => {
+  const { categoryId } = req.params;
+  try {
+    const tasks = await Tasks.find({ categoryId })
+      .select("-__v  ")
+      .sort({ createdAt: -1 })
+      .limit(20);
+    res.json(tasks);
   } catch (error) {
     res.json(error);
   }
