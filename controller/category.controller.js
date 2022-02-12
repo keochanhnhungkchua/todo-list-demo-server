@@ -45,17 +45,24 @@ module.exports.postCategory = async (req, res) => {
   }
 };
 module.exports.deleteCategory = async (req, res) => {
-  const { categoryId } = req.params;
-  await Categories.findByIdAndDelete(categoryId);
-  res.json({ success: true });
+  try {
+    const { categoryId } = req.params;
+    await Categories.findByIdAndDelete(categoryId);
+    res.json({ success: true });
+  } catch (error) {
+    res.json(error.message);
+  }
 };
 module.exports.editCategory = async (req, res) => {
-  const { categoryId } = req.params;
-  const newCategory = await Categories.findByIdAndUpdate(
-    categoryId,
-    { $set: req.body },
-    { new: true }
-  );
-  // const category = await Categories.findById(categoryId);
-  res.status(200).json({ success: true, category: newCategory });
+  try {
+    const { categoryId } = req.params;
+    const newCategory = await Categories.findByIdAndUpdate(
+      categoryId,
+      { $set: req.body },
+      { new: true }
+    );
+    res.status(200).json({ success: true, category: newCategory });
+  } catch (error) {
+    res.json(error.message);
+  }
 };

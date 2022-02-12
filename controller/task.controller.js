@@ -18,20 +18,38 @@ module.exports.postTask = async (req, res) => {
   }
 };
 module.exports.deleteTask = async (req, res) => {
-  const { taskId } = req.params;
-  await Tasks.findByIdAndDelete(taskId);
-  res.json({ success: true });
+  try {
+    const { taskId } = req.params;
+    await Tasks.findByIdAndDelete(taskId);
+    res.json({ success: true });
+  } catch (error) {
+    res.json(error.message);
+  }
 };
 module.exports.editTask = async (req, res) => {
-  const { taskId } = req.params;
-  await Tasks.findByIdAndUpdate(taskId, { $set: req.body }, { new: true });
-  const task = await Tasks.findById(taskId);
-  res.status(200).json({ success: true, task: task });
+  try {
+    const { taskId } = req.params;
+    const newData = await Tasks.findByIdAndUpdate(
+      taskId,
+      { $set: req.body },
+      { new: true }
+    );
+    res.status(200).json({ success: true, task: newData });
+  } catch (error) {
+    res.json(error.message);
+  }
 };
 
 module.exports.isCompleted = async (req, res) => {
-  const { taskId } = req.params;
-  await Tasks.findByIdAndUpdate(taskId, { $set: req.body }, { new: true });
-  const task = await Tasks.findById(taskId);
-  res.status(200).json({ success: true, task: task });
+  try {
+    const { taskId } = req.params;
+    const newData = await Tasks.findByIdAndUpdate(
+      taskId,
+      { $set: req.body },
+      { new: true }
+    );
+    res.status(200).json({ success: true, task: newData });
+  } catch (error) {
+    res.json(error.message);
+  }
 };

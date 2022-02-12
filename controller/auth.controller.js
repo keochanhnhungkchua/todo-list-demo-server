@@ -18,7 +18,7 @@ module.exports.postRegister = async (req, res) => {
     const newUser = await User.create({ ...req.body, password: hashPassword });
     res.status(200).json({ success: true });
   } catch (error) {
-    res.json(error);
+    res.json(error.message);
   }
 };
 //check mail
@@ -68,6 +68,6 @@ module.exports.postLogin = async (req, res) => {
       errorCode: 0,
     });
   } catch (error) {
-    res.json(error);
+    res.json(error.message);
   }
 };
