@@ -23,6 +23,7 @@ module.exports.index = async (req, res) => {
 
 module.exports.getCategoryById = async (req, res) => {
   const { categoryId } = req.params;
+
   try {
     const tasks = await Tasks.find({ categoryId })
       .select("-__v  ")
@@ -47,6 +48,7 @@ module.exports.postCategory = async (req, res) => {
 module.exports.deleteCategory = async (req, res) => {
   try {
     const { categoryId } = req.params;
+    await Tasks.deleteMany({ categoryId });
     await Categories.findByIdAndDelete(categoryId);
     res.json({ success: true });
   } catch (error) {
