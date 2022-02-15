@@ -4,7 +4,7 @@ var bcrypt = require("bcrypt");
 // const sgMail = require("@sendgrid/mail");
 // sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-module.exports.postRegister = async (req, res) => {
+module.exports.postSignUp = async (req, res) => {
   const { email, password } = req.body;
   try {
     const checkEmail = await User.findOne({ email });
@@ -15,7 +15,7 @@ module.exports.postRegister = async (req, res) => {
       password,
       bcrypt.genSaltSync(10)
     );
-    const newUser = await User.create({ ...req.body, password: hashPassword });
+    await User.create({ ...req.body, password: hashPassword });
     res.status(200).json({ success: true });
   } catch (error) {
     res.json(error.message);
