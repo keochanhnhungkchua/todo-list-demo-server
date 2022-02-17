@@ -55,6 +55,15 @@ module.exports.deleteCategory = async (req, res) => {
     res.json(error.message);
   }
 };
+module.exports.deleteTaskDone = async (req, res) => {
+  try {
+    const { categoryId } = req.params;
+    await Tasks.deleteMany({ categoryId, status: true });
+    res.json({ success: true });
+  } catch (error) {
+    res.json(error.message);
+  }
+};
 module.exports.editCategory = async (req, res) => {
   try {
     const { categoryId } = req.params;

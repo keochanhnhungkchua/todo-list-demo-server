@@ -8,6 +8,7 @@ router
   .post("/", controller.postCategory)
   .get("/:categoryId", controller.getCategoryById)
   .delete("/:categoryId", controller.deleteCategory)
+  .delete("/:categoryId/task-done", controller.deleteTaskDone)
   .patch("/:categoryId", controller.editCategory);
 //router.get("/:id",veryfiToken, controller.userId);
 module.exports = router;
