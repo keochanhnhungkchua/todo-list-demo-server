@@ -9,13 +9,22 @@ const decodeToken = function (req) {
 };
 
 module.exports.index = async (req, res) => {
+  const user = decodeToken(req);
+  const page = parseInt(req.query.page - 1, 10) || 0;
+  const limit = parseInt(req.query.limit, 10) || 5;
+  const allCategories = await Categories.find({ userId: user._id });
+  const totalPage = Math.ceil(allCategories.length / limit);
   try {
-    const user = decodeToken(req);
     const categories = await Categories.find({ userId: user._id })
+      .skip(page * limit)
+      .limit(limit)
       .select("-__v  ")
-      .sort({ createdAt: -1 })
-      .limit(20);
-    res.json(categories);
+      .sort({ createdAt: -1 });
+    return res.json({
+      success: true,
+      categories,
+      totalPage,
+    });
   } catch (error) {
     res.json(error);
   }
@@ -23,13 +32,21 @@ module.exports.index = async (req, res) => {
 
 module.exports.getCategoryById = async (req, res) => {
   const { categoryId } = req.params;
-
+  const page = parseInt(req.query.page - 1, 10) || 0;
+  const limit = parseInt(req.query.limit, 10) || 5;
+  const allTasks = await Tasks.find({ categoryId });
+  const totalPage = Math.ceil(allTasks.length / limit);
   try {
     const tasks = await Tasks.find({ categoryId })
+      .skip(page * limit)
+      .limit(limit)
       .select("-__v  ")
-      .sort({ createdAt: -1 })
-      .limit(20);
-    res.json(tasks);
+      .sort({ createdAt: -1 });
+    return res.json({
+      success: true,
+      tasks,
+      totalPage,
+    });
   } catch (error) {
     res.json(error);
   }
