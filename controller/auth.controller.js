@@ -1,8 +1,7 @@
 var User = require("../models/user.model");
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcrypt");
-// const sgMail = require("@sendgrid/mail");
-// sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
 
 module.exports.postSignUp = async (req, res) => {
   const { email, password } = req.body;

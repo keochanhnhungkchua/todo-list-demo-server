@@ -1,68 +1,42 @@
-
-var cloudinary = require("cloudinary").v2;
-
-var User = require("../models/user.model");
-
-cloudinary.config({
-  cloud_name: process.env.CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET
-});
+const User = require("../models/user.model");
+const jwt = require("jsonwebtoken");
+var bcrypt = require("bcrypt");
 //add new user
 module.exports.index = async (req, res) => {
-  var users = await User.find();
-  res.render("users", { users });
-};
-
-module.exports.deleteUser = async (req, res) => {
-  var id = req.params.id;
-  await User.findByIdAndDelete(id);
-  res.redirect("back");
-};
-
-module.exports.editUser = async (req, res) => {
-  var id = req.params.id;
-  var user = await User.findById(id);
-  res.render("editUser", { user });
-};
-
-//post
-module.exports.postCreateUser = async (req, res) => {
-  if (req.file) {
-    cloudinary.uploader.upload(
-      req.file.path,
-      { tags: "avatar" },
-      await function(err, result) {
-        req.body.avatar = result.url;
-        User.create(req.body)
-          .then(user => res.redirect("/users"))
-          .catch(err => console.log(err));
-      }
-    );
-  } else {
-    await User.create(req.body, function(err) {
-      if (err) return console.log(err);
-    });
-    res.redirect("/users");
+  try {
+    const users = await User.find().select("-__v -password -role");
+    res.json({ success: true, users });
+  } catch (error) {
+    res.json({ success: false, message: error.message });
   }
 };
 
-module.exports.postEditUser = async (req, res) => {
-  var id = req.params.id;
-  if (req.file) {
-    cloudinary.uploader.upload(req.file.path, { tags: "avatar" }, function(
-      err,
-      result
-    ) {
-      req.body.avatar = result.url;
-      User.findByIdAndUpdate(id, req.body, { new: true })
-        .then(user => res.redirect("/users"))
-        .catch(err => console.log(err));
-    });
-  } else {
-    User.findByIdAndUpdate(id, req.body, { new: true })
-      .then(user => res.redirect("/users"))
-      .catch(err => console.log(err));
-    res.redirect("/users");
+module.exports.deleteUser = async (req, res) => {
+  const { userId } = req.params;
+  try {
+    await User.findByIdAndDelete(userId);
+    res.json({ success: true });
+  } catch (error) {
+    res.json({ success: false, message: error.message });
+  }
+};
+
+module.exports.editUser = async (req, res) => {
+  const { password } = req.body;
+  let newUser = { ...req.body };
+  if (password) {
+    newPassword = await bcrypt.hashSync(password, bcrypt.genSaltSync(10));
+    newUser = { ...req.body, password: newPassword };
+  }
+  try {
+    const { userId } = req.params;
+    const updateUser = await User.findByIdAndUpdate(
+      userId,
+      { $set: newUser },
+      { new: true }
+    ).select("-__v -password -role");
+    res.json({ success: true, user: updateUser });
+  } catch (error) {
+    res.json({ success: false, message: error.message });
   }
 };

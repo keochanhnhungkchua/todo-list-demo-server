@@ -48,15 +48,15 @@ app.get("/", (req, res) => {
 });
 
 app.use(
-  "/users",
-  authMiddleware.requireAuth,
+  "/user",
+  authMiddleware.verifyToken,
   authMiddleware.isAdmin,
   userRouter
 );
 
 app.use("/auth", authRouter);
-app.use("/task", tasksRouter);
-app.use("/category", categoryRouter);
+app.use("/task", authMiddleware.verifyToken, tasksRouter);
+app.use("/category", authMiddleware.verifyToken, categoryRouter);
 
 app.use("/api", swaggerUi.serve, swaggerUi.setup(swaggerDocument, options));
 
